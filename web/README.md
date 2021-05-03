@@ -1,2 +1,2 @@
 ## Web page
-This is a test.
+Do NOT change the name of this directory.
