@@ -15,10 +15,15 @@ $sql = "SELECT id FROM test";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-
+<table>
   while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"] . "<br>";
+    
+      <tr>
+        <th>echo "id: " . $row["id"] . "<br>";</th>
+      </tr>
+    
   }
+</table>
 } else {
   echo "0 results";
 }
