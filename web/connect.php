@@ -1,14 +1,26 @@
- <?php
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "dam1";
+$dbname = "bees_project";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
 
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
-?> 
+
+$sql = "SELECT id FROM test";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"] . "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
