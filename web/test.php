@@ -25,6 +25,7 @@
                   while($row = $result->fetch_assoc()) {
                     ?>
                        <option value="<?php echo $row["dni"] . '">' . $row["dni"]?></option>
+                   <?php
                   }
 
                 } else {
