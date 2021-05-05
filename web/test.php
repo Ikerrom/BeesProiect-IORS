@@ -24,7 +24,7 @@
                 if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
                     ?>
-                       <option value="<?php echo $row["dni"] ?>"><?php echo $row["dni"]?></option>
+                       <option value="<?php echo $row["dni"];?>"><?php echo $row["dni"];?></option>
                    <?php
                   }
 
