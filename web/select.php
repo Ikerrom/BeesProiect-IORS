@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT dni, dia_reservado, lata_id, dia_dereserva 
-FROM Reservas 
-INNER JOIN (Personas ON Reservas.dni = Personas.dni) 
+FROM (Reservas 
+INNER JOIN Personas ON Reservas.dni = Personas.dni) 
 INNER JOIN Latas ON Reservas.lata_id = Latas.lata_id";
 $result = $conn->query($sql);
 
