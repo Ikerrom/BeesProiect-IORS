@@ -2,7 +2,7 @@
 <html>
     <body>
         <form>
-                <label for="cars">Choose a car:</label>
+                <label>Choose a car:</label>
                 <select name="test">
                   
                 <?php
@@ -24,7 +24,7 @@
                 if ($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) {
                     ?>
-                          <option value="<?php echo $row["dni"] . '">' . $row["dni"]?></option>
+                       <option value="<?php echo $row["dni"] . '">' . $row["dni"]?></option>
                   }
 
                 } else {
