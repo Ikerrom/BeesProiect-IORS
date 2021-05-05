@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AJAX test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function change(ids, table) {
+                var inner = "";
+                for (x in ids) {
+                    window.alert(x);
+                    inner += '<select value="' + ids[x].id + '">' + ids[x].id + "</select>";
+                }
+                document.getElementById(table).innerHTML = inner;
+            }
+
+            var xmlhttp, myObj, x, txt = "";
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    myObj = JSON.parse(this.responseText);
+                    for (table in myObj) {
+                        change(myObj[table], table);
+                    }
+                }
+            };
+            xmlhttp.open("GET", "json_demo_db.php?x=" + dbParam, true);
+            xmlhttp.send();
+        </script>
+    </head>
+    <body>
+        <form>
+            <select id="Personas">
+
+            </select>
+            <select id="Latas">
+
+            </select>
+        </form>
+    </body>
+</html>
