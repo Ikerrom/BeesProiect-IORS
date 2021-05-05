@@ -11,11 +11,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "
-SELECT dni, dia_reservado, lata_id, dia_dereserva 
-FROM Reservas 
-INNER (JOIN Personas ON Reservas.dni = Personas.dni) 
-INNER JOIN Latas ON Reservas.lata_id = Latas.lata_id";
+$sql = "SELECT dni FROM Personas";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
