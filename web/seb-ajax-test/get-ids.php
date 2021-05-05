@@ -13,8 +13,8 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT dni AS id FROM Personas;--Test";
-    $sql2 = "SELECT lata_id AS id FROM Latas;";
+    $sql = "SELECT dni AS id FROM Personas";
+    $sql2 = "SELECT lata_id AS id FROM Latas";
 
     function select($conn, $sql) {
         $stmt = $conn->prepare($sql);
