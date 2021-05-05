@@ -18,7 +18,7 @@
                   die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT * FROM Latas,Personas";
+                $sql = "SELECT dni FROM Personas";
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
