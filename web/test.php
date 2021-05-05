@@ -2,7 +2,7 @@
 <html>
     <body>
         <form>
-                <label>Choose a car:</label>
+                <label>Choose a DNI:</label>
                 <select>
                   
                 <?php
