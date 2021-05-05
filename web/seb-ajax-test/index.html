@@ -23,9 +23,9 @@
             var xmlhttp, myObj, x, txt = "";
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
-                window.alert("Hi!");
                 if (this.readyState === 4 && this.status === 200) {
                     myObj = JSON.parse(this.responseText);
+                    window.alert(myObj);
                     for (table in myObj) {
                         change(myObj[table], table);
                     }
