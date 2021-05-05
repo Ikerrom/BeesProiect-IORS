@@ -11,7 +11,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM Reservas INNER JOIN Persona ON Reservas.dni = Persona.dni";
+$sql = "SELECT * FROM Reservas INNER JOIN Latas ON Reservas.lata_id = Latas.lata_id)";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
