@@ -3,7 +3,7 @@
     <body>
         <form>
                 <label>Choose a car:</label>
-                <select name="test">
+                <select>
                   
                 <?php
                 $servername = "localhost";
@@ -18,7 +18,7 @@
                   die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT dni FROM Personas";
+                $sql = "SELECT dni FROM Persona";
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
