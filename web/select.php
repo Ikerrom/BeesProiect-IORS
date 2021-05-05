@@ -20,7 +20,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-     echo "DNI: " . "<b>" . $row["dni"] . "</b>". " Dia reservado: " . $row["dia_reservado"] . " Id lata: " . $row["lata_id"] . " Dia de reserva: " . $row["dia_dereserva"] . "<br>";
+     echo "DNI: " . "<b>" . $row["dni"] . "</b>". "Dia reservado: " . $row["dia_reservado"] . "Id lata: " . $row["lata_id"] . "Dia de reserva: " . $row["dia_dereserva"] . "<br>";
   }
 
 } else {
