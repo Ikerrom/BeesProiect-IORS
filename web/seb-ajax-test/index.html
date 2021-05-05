@@ -30,10 +30,13 @@
                 }
             };
             
-            const interval = setInterval(function() {
+            function get() {
                 xmlhttp.open("GET", "get-ids.php", true);
                 xmlhttp.send();
-            }, 2000); 
+                setTimeout(get, 2000);
+            }
+            
+            get();
         </script>
         <form>
             <select id="Personas">
