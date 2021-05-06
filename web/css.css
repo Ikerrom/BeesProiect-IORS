@@ -9,9 +9,7 @@
 				top:0;
 				position: sticky;
 				border-bottom:1vh solid #ffbb00;
-
 			}
-
 			.title{
 				text-align: center;
 				padding-top:1%; 
@@ -41,4 +39,13 @@
 
 			.buttonP:hover{
 				background-color: #ffa200;
+			}
+
+			.logindiv{
+				margin:10% 40%;
+				width: 15%; 
+				height: 15%; 
+				text-align:center; 
+				border:0.6vh solid #ffbb00; 
+				background-color:#ffd000; 
 			}
