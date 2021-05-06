@@ -8,9 +8,10 @@
 	<body>
 		<div class="title">ERLETE</div>
 		<div class="topbar">
-			<form action="Phptest.php">
+			<form action="login.php">
 			    <input class="buttonP" type="submit" value="Sing In"/>
 			</form>
+			<button class="buttonP">About Us</button>
 		</div>
 	</body>
 </html>
