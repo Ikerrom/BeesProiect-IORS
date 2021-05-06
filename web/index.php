@@ -10,15 +10,19 @@
 		<div class="title">ERLETE</div>
 		<div class="topbar">
 			<form action="login.php">
-			    <input class="buttonP" type="submit" value="Sing In"/>
+			    
 			    <?php
 			    include(testlogin.php);
 			    session_start();
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 								{
 				?>
-									 <input class="buttonP" type="submit" value="Logged POG"/>
+									 <input class="buttonP" type="submit" value="Log Off"/>
 				<?php
+								} else{
+									?>
+									<input class="buttonP" type="submit" value="Sing In"/>
+									<?php
 								}
 				?>
 			</form>
