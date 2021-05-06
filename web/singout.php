@@ -2,5 +2,5 @@
 	session_start();
 	unset($_SESSION['erablitzailea_a_g']);
 	session_write_close();
-	header("Location:Phptest.php")
+	header("Location:login.php")
 ?>
