@@ -14,6 +14,6 @@
 	}else{
 		session_start();
 		$_SESSION['erablitzailea_a_g'] = $user;
-		header("Location:login.php");
+		header("Location:index.php");
 	}
 ?>
