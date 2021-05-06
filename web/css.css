@@ -29,8 +29,16 @@
 				  text-decoration: none;
 				  display: inline-block;
 				  font-size: 16px;
-				  margin: 4px 2px;
-				  transition-duration: 0.4s;
 				  cursor: pointer;
 				  float:right;
+			}
+
+			.buttonP:hover{
+				background-color: #ffd000;
+			}
+
+			.linkP{
+				color: white;
+				text-decoration: none;
+
 			}
