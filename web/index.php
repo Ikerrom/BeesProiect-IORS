@@ -8,7 +8,7 @@
 	<body>
 		<div class="title">ERLETE</div>
 		<div class="topbar">
-			<button><a href="login.php">Sing In</a></button>
+			<button class ="buttonP"><a href="login.php">Sing In</a></button>
 		</div>
 	</body>
 </html>
