@@ -8,7 +8,9 @@
 	<body>
 		<div class="title">ERLETE</div>
 		<div class="topbar">
-			<button class ="buttonP"><a class="linkP" href="login.php">Sing In</a></button>
+			<form action="login.php">
+			    <input class="buttonP" type="submit"><a class="linkP" href="">Sing In</a></input>
+			</form>
 		</div>
 	</body>
 </html>
