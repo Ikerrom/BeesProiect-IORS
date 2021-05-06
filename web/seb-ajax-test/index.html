@@ -9,9 +9,14 @@
                 var inner = "";
                 
                 for (x in ids) {
-                    var optionselect = document.getElementById(ids[x][0]).selected
-                    inner += '<option id="' + ids[x] + '">' + ids[x] + 
-                            "</option>";
+                    if (document.getElementById(ids[x][0]).selected) {
+                        inner += '<option selected id="' + ids[x] + '">' + ids[x] + 
+                        "</option>";
+                    } else {
+                        inner += '<option id="' + ids[x] + '">' + ids[x] + 
+                        "</option>";
+                    }
+
                 }
                 document.getElementById(table).innerHTML = inner;
             }
