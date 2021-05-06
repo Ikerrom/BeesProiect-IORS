@@ -7,12 +7,14 @@
         <script>
             function change(ids, table) {
                 var inner = "";
+                var tbl = 
                 
                 for (x in ids) {
                     if (document.getElementById(ids[x][0]).selected) {
                         inner += '<option selected id="' + ids[x] + '">' + ids[x] + 
                         "</option>";
                     } else {
+                        alert("on else");
                         inner += '<option id="' + ids[x] + '">' + ids[x] + 
                         "</option>";
                     }
