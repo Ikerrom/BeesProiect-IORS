@@ -20,7 +20,7 @@
 						if (isset($_SESSION['erablitzailea_a_g'])) 
 						{
 							$user = $_SESSION['erablitzailea_a_g'];
-							echo "Ongi Etorri: $user"
+							echo "Ongi Etorri: $user";
 						}
 					?>
 		</div>
