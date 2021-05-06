@@ -9,7 +9,7 @@
 		<div class="title">ERLETE</div>
 		<div class="topbar">
 			<form action="login.php">
-			    <input class="buttonP" type="submit"><a class="linkP" href="">Sing In</a></input>
+			    <input class="buttonP" type="submit" value="Sing In"/>
 			</form>
 		</div>
 	</body>
