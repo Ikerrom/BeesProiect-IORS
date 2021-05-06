@@ -21,7 +21,7 @@
 				<?php
 								} else{
 									?>
-									<input class="buttonP" type="submit" value="Sing In"/>
+									<input class="buttonP" type="submit" value="Log In"/>
 									<?php
 								}
 				?>
