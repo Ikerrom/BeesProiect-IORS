@@ -9,11 +9,11 @@
 	if (mysqli_num_rows($result) == 0)
 	{
 
-		header("Location:index.php?incorrecto=si");
+		header("Location:login.php?incorrecto=si");
 
 	}else{
 		session_start();
 		$_SESSION['erablitzailea_a_g'] = $user;
-		header("Location:login.php");
+		header("Location:index.php");
 	}
 ?>
