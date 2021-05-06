@@ -8,7 +8,7 @@
 	<body>
 		<div class="title">ERLETE</div>
 		<div class="topbar">
-			<form action="login.php">
+			<form action="Phptest.php">
 			    <input class="buttonP" type="submit" value="Sing In"/>
 			</form>
 		</div>
