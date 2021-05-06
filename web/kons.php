@@ -1,7 +1,9 @@
 <?php
-
+echo "0";
 include("test_password.php");
+echo "1";
 $dni = $_POST["dni"];
+echo "2";
 $password = $_POST["password"];
 echo $dni;
 if (testPassword($dni, $password)) {
@@ -10,5 +12,5 @@ if (testPassword($dni, $password)) {
     $_SESSION['dni'] = $dni;
     header("Location:login.php");
 }
-echo "The End."
+echo "The End.";
 header("Location:login.php?incorrecto=si");
