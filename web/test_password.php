@@ -14,5 +14,5 @@ function testPassword($dni, $password) {
     $stmt = $lotura->prepare($sql);
     $stmt->bind_param('ss', $dni, $password);
     $stmt->execute();
-    return $stmt->num_rows() > 0;
+    return (($stmt->num_rows()) > 0);
 }
