@@ -5,20 +5,20 @@
 	
 	<h2>Hasi Sesioa</h2>
 
-<form action="kons.php" method="POST">
+<form action="kontsultatu_erabiltzaileak.php" method="POST">
 	<label for="fname">First name:</label><br>
-	<input type="text" name="dni"><br>
+	<input type="text" name="Usuario"><br>
 	<label for="lname">Password:</label><br>
-	<input type="password" name="password"><br><br>
+	<input type="password" name="Password"><br><br>
 	<input type="submit" value="Submit">
 </form> 
 		<br>
 			<?php
 			session_start();
 				
-				if (isset($_SESSION['dni'])) 
+				if (isset($_SESSION['erablitzailea_a_g'])) 
 				{
-					$user = $_SESSION['dni'];
+					$user = $_SESSION['erablitzailea_a_g'];
 					echo "Ongi Etorri: $user"
 		?>
 				<form action="irten.php">
@@ -32,4 +32,3 @@
 </body>
 
 </html>
-
