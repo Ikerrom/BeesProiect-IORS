@@ -39,7 +39,7 @@
 					}
 				?>
 			
-			<button class="buttonP">About Us</button>
+			<button class="buttonR">About Us</button>
 		</div>
 
 	</body>
