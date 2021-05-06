@@ -7,8 +7,10 @@
         <script>
             function change(ids, table) {
                 var inner = "";
+                
                 for (x in ids) {
-                    inner += '<option value="' + ids[x] + '">' + ids[x] + 
+                    var optionselect = document.getElementById(ids[x][0]).selected
+                    inner += '<option id="' + ids[x] + '">' + ids[x] + 
                             "</option>";
                 }
                 document.getElementById(table).innerHTML = inner;
