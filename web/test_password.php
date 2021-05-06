@@ -10,9 +10,10 @@ function testPassword($dni, $password) {
         return false;
     }
 
-    $sql = "SELECT * FROM Personas WHERE dni=? AND password=?";
+    $sql = "SELECT * FROM Personas WHERE dni=? AND contraseña=?";
     $stmt = $lotura->prepare($sql);
     $stmt->bind_param('ss', $dni, $password);
     $stmt->execute();
+	echo $stmt->num_rows();
     return (($stmt->num_rows()) > 0);
 }
