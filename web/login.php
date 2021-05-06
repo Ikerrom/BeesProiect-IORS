@@ -5,7 +5,7 @@
 	
 	<h2>Hasi Sesioa</h2>
 
-<form action="kontsultatu_erabiltzaileak.php" method="POST">
+<form action="testlogin.php" method="POST">
 	<label for="fname">First name:</label><br>
 	<input type="text" name="Usuario"><br>
 	<label for="lname">Password:</label><br>
