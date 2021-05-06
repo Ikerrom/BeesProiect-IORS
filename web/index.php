@@ -18,7 +18,7 @@
 					{
 				?>			
 				<form action="singout.php">
-				<input class="buttonP" type="submit" value="Sesioa itxi"/>
+				<input class="buttonP" type="submit" value="Log Out"/>
 				</form>
 				<?php
 					} else{

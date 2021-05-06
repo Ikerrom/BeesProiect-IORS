@@ -9,7 +9,7 @@
 	if (mysqli_num_rows($result) == 0)
 	{
 
-		header("Location:login.php?incorrecto=si");
+		header("Location:index.php?incorrecto=si");
 
 	}else{
 		session_start();

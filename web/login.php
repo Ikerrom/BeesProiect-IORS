@@ -21,17 +21,8 @@
 						{
 							$user = $_SESSION['erablitzailea_a_g'];
 							echo "Ongi Etorri: $user"
-						?>
-
-						<?php
-						}else{
-						?>
-						<form action="singout.php">
-							<input type="submit" value="Sesioa itxi"/>
-						</form>
-						<?php
 						}
-				?>
+					?>
 		</div>
 
 	</body>
