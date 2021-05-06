@@ -18,11 +18,13 @@
 					{
 				?>			
 				<form action="singout.php">
-				<input class="buttonR" type="submit" value="Log Out"/>
+					<input class="buttonR" type="submit" value="Log Out"/>
 				</form>
+
 				<form action="account.php">
 					<input class="buttonL" type="submit" value="Your Account"/>
 				</form>
+
 				<form action="booking.php">
 					<input class="buttonL" type="submit" value="Booking"/>
 				</form>
