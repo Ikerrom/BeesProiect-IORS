@@ -7,7 +7,10 @@
 	<body>
 
 		<div class="title">
-			<div class="perfil">Iker</div>
+			<div class="perfil">
+				<img>
+				<p></p>
+			</div>
 			    <?php
 			    include(testlogin.php);
 			    session_start();
