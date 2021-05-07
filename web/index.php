@@ -17,7 +17,7 @@
 
 				$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'");
 
-				if (isset($_SESSION['erablitzailea_a_g'])) 
+				if (isset($_SESSION['erablitzailea_a_g']))
 					{
 					?>
 						<p><?php echo $result;?></p>
@@ -31,6 +31,7 @@
 		<div class="topbar">
 			
 			    <?php
+			    include(testlogin.php)
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
 				?>			
