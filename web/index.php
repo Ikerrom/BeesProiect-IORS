@@ -8,8 +8,6 @@
 
 		<div class="title">
 			<div class="perfil">
-				
-
 			</div>	
 
 		<p class="titletext">ERLETE</p></div>
@@ -17,6 +15,8 @@
 		<div class="topbar">
 			
 			    <?php
+			    session_start();
+			    include(testlogin.php);
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
 				?>			
