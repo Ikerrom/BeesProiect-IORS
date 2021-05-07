@@ -44,6 +44,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jButton1.setText("Reserve");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +58,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jButton4.setText("Buys");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +72,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jButton5.setText("Members");
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
