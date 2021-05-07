@@ -9,60 +9,69 @@
 				top:0;
 				position: sticky;
 				border-bottom:1vh solid #ffbb00;
+				padding-top: 1vh;
 			}
 			.title{
-				text-align: center;
-				padding-top:1%; 
-				font-size: 400%;
+				text-align: center; 
 				background-color:#ffd000;
-				font-weight: bold;
-				color: #ff9900;
-				text-decoration: none;
+				height: 12vh;
+				margin:0px;
+				padding:0px;
 			}
 
-			.buttonR {
+			.titletext{
+				font-size: 400%;
+				text-decoration: none;
+				font-weight: bold;
+				color: #ff9900;
+				margin:0px;
+				padding:0px;
+			}
+
+			.buttonT {
 				  background-color: #ffbb00;
 				  border:0.4vh solid #ffbb00;
 				  color: white;
 				  margin-right:1%;
 				  margin-bottom: 1%;
-				  margin-top: 1%;
 				  padding: 0.8vh;
 				  text-align: center;
 				  text-decoration: none;
-				  display: inline-block;
 				  font-size: 100%;
 				  font-weight: bold;
 				  cursor: pointer;
 				  float:right;
 			}
 
-			.buttonL {
-				  background-color: #ffbb00;
-				  border:0.4vh solid #ffbb00;
-				  color: white;
-				  margin-left:1%;
-				  margin-bottom: 1%;
-				  margin-top: 1%;
-				  padding: 0.8vh;
-				  text-align: center;
-				  text-decoration: none;
-				  display: inline-block;
-				  font-size: 100%;
-				  font-weight: bold;
-				  cursor: pointer;
-				  float:left;
-			}
-
-			.buttonP:hover{
+			.buttonT:hover{
 				background-color: #ffa200;
 			}
 
 			.logindiv{
 				margin:10% 40%;
-				width: 15%; 
+				width: 12%; 
 				height: 15%; 
 				text-align:center; 
 				border:0.6vh solid #ffbb00; 
 				background-color:#ffd000; 
+			}
+
+			.perfil{
+				float:left;
+				width: 14%;
+				background-color: #ffbb00;
+				height: 10vh;
+				margin: 1% 1%;
+				text-align: left;
+				border-radius:10px;
+			}
+
+			form{
+				    margin-block-end:0;
+			}
+
+			.textstyle{
+				color: white;
+				font-size: 100%;
+				font-weight: bold;
 			}

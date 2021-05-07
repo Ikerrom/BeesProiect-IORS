@@ -1,7 +1,7 @@
 <?php
 		function ConnectDataBase()
 		{
-			if (!($lotura=mysqli_connect("localhost","root","dam1")))
+			if (!($lotura=mysqli_connect("localhost","root","")))
 			{
 			echo "There is an error connecting the server.";
 			exit();
