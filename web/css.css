@@ -41,7 +41,7 @@
 				  font-weight: bold;
 				  cursor: pointer;
 				  float:right;
-				  position: absolute;
+
 			}
 
 			.buttonL {
@@ -58,7 +58,6 @@
 				  font-weight: bold;
 				  cursor: pointer;
 				  float:left;
-				  position: absolute;
 			}
 
 			.buttonP:hover{

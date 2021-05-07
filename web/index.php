@@ -41,16 +41,20 @@
 					<input class="buttonL" type="submit" value="Booking"/>
 				</form>
 
-				<button class="buttonR">About Us</button>
+				<form action="about.php">
+					<input class="buttonL" type="submit" value="About Us"/>
+				</form>
 
 				<?php
 					}else{
 					?>
 					<form action="login.php">
-					<input class="buttonR" type="submit" value="Log In"/>
+						<input class="buttonR" type="submit" value="Log In"/>
 					</form>
 
-					<button class="buttonR">About Us</button>
+					<form action="about.php">
+						<input class="buttonL" type="submit" value="About Us"/>
+					</form>
 					<?php
 					}
 				?>
