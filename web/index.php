@@ -7,7 +7,7 @@
 	<body>
 
 		<div class="title">
-
+			<div class="perfil">Iker</div>
 			    <?php
 			    include(testlogin.php);
 			    session_start();
@@ -16,11 +16,10 @@
 
 					}
 				?>		
-		ERLETE</div>
-		<div class="perfil">Iker</div>
+		<p class="titletext">ERLETE</p></div>
+		
 		<div class="topbar">
 			
-			    
 			    <?php
 			    include(testlogin.php);
 			    session_start();

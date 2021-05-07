@@ -13,11 +13,18 @@
 			.title{
 				text-align: center;
 				padding-top:1%; 
-				font-size: 400%;
 				background-color:#ffd000;
+				
+				
+				
+
+			}
+
+			.titletext{
+				font-size: 400%;
+				text-decoration: none;
 				font-weight: bold;
 				color: #ff9900;
-				text-decoration: none;
 			}
 
 			.buttonR {
@@ -72,5 +79,4 @@
 				width: 10%;
 				background-color: grey; 
 				height: 10vh;
-				position: relative;
 			}
