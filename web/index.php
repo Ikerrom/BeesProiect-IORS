@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="css.css">
@@ -7,7 +6,20 @@
 	</head>
 	<body>
 
-		<div class="title">ERLETE</div>
+		<div class="title">
+			<div class="perfil">
+				Iker
+			</div>
+
+			    <?php
+			    include(testlogin.php);
+			    session_start();
+					if (isset($_SESSION['erablitzailea_a_g'])) 
+					{
+
+					}
+				?>		
+		ERLETE</div>
 		<div class="topbar">
 			
 			    

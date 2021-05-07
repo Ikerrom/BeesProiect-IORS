@@ -66,3 +66,11 @@
 				border:0.6vh solid #ffbb00; 
 				background-color:#ffd000; 
 			}
+
+			.perfil{
+				float:left;
+				width: 10%;
+				height:100%;
+				background-color: grey; 
+
+			}
