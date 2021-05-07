@@ -9,13 +9,13 @@
 				top:0;
 				position: sticky;
 				border-bottom:1vh solid #ffbb00;
-				padding-top:1%;
 			}
 			.title{
 				text-align: center;
 				padding-top:1%; 
 				background-color:#ffd000;
-				
+				margin:0px;
+				padding:0px;
 			}
 
 			.titletext{
@@ -76,9 +76,9 @@
 
 			.perfil{
 				float:left;
-				width: 10%;
+				width: 20%;
 				background-color: grey; 
-				height: 8vh;
+				height: 10vh;
 				padding: 0px;
 				margin: 0px;	
 			}
