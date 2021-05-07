@@ -37,11 +37,11 @@
 				  padding: 0.8vh;
 				  text-align: center;
 				  text-decoration: none;
-				  display: inline-block;
 				  font-size: 100%;
 				  font-weight: bold;
 				  cursor: pointer;
 				  float:right;
+				  position: absolute;
 			}
 
 			.buttonL {
@@ -58,6 +58,7 @@
 				  font-weight: bold;
 				  cursor: pointer;
 				  float:left;
+				  position: absolute;
 			}
 
 			.buttonP:hover{
