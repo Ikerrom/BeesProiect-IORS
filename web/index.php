@@ -2,15 +2,14 @@
 	<head>
 		<link rel="stylesheet" href="css.css">
 		<title>ERLETE</title>
-
 	</head>
 	<body>
 
 		<div class="title">
 			<div class="perfil">
 			    <?php
-			    include("test_connect_db.php");
 			    session_start();
+			    include("test_connect_db.php");
 				$dni = $_SESSION['erablitzailea_a_g'];
 				$user = $_POST["Usuario"];
 				$link =  ConnectDataBase();
@@ -20,7 +19,7 @@
 				if (isset($_SESSION['erablitzailea_a_g']))
 					{
 					?>
-						<p><?php echo $result;?></p>
+						<p><?php echo "$result";?></p>
 					<?php
 					}
 				?>
