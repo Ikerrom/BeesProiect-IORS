@@ -70,7 +70,8 @@
 			.perfil{
 				float:left;
 				width: 10%;
-				height:100%;
 				background-color: grey; 
+				padding-top:1%; 
+				height: 10vh;
 
 			}
