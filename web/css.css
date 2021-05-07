@@ -15,9 +15,6 @@
 				padding-top:1%; 
 				background-color:#ffd000;
 				
-				
-				
-
 			}
 
 			.titletext{
@@ -79,4 +76,5 @@
 				width: 10%;
 				background-color: grey; 
 				height: 10vh;
+				position: absolute;
 			}
