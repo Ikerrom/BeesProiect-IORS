@@ -22,6 +22,8 @@
 				text-decoration: none;
 				font-weight: bold;
 				color: #ff9900;
+				margin:0px;
+				padding:0px;
 			}
 
 			.buttonR {
@@ -76,5 +78,4 @@
 				width: 10%;
 				background-color: grey; 
 				height: 10vh;
-				position: absolute;
 			}
