@@ -9,12 +9,12 @@
 				top:0;
 				position: sticky;
 				border-bottom:1vh solid #ffbb00;
-				padding-top:1%;
+				padding-top: 1vh;
 			}
 			.title{
-				text-align: center;
-				padding-top:1%; 
+				text-align: center; 
 				background-color:#ffd000;
+				height: 12vh;
 				margin:0px;
 				padding:0px;
 			}
@@ -40,11 +40,10 @@
 				  font-size: 100%;
 				  font-weight: bold;
 				  cursor: pointer;
-				  width: 40%;
-				  margin:auto;
+				  float:right;
 			}
 
-			.buttonP:hover{
+			.buttonT:hover{
 				background-color: #ffa200;
 			}
 
@@ -59,9 +58,13 @@
 
 			.perfil{
 				float:left;
-				width: 20%;
-				background-color: grey; 
-				height: 10vh;
+				width: 30%;
+				background-color: grey;
+				height: 12vh;
 				padding: 0px;
 				margin: 0px;	
+			}
+
+			form{
+				    margin-block-end:0;
 			}

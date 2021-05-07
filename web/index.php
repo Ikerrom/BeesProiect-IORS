@@ -8,17 +8,22 @@
 
 		<div class="title">
 			<div class="perfil">
-				<img>
-				<p></p>
-			</div>
+				
+			
 			    <?php
-			    include(testlogin.php);
+			    session_start();
+			    include("test_connect_db.php");
+				$user = $_POST["Usuario"];
+
 			    session_start();
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
-
+					?>
+						<p><?php echo $user;?></p>
+					<?php
 					}
-				?>		
+				?>	
+			</div>	
 		<p class="titletext">ERLETE</p></div>
 		
 		<div class="topbar">
