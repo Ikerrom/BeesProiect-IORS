@@ -1,4 +1,8 @@
-<html>
+<?php 
+//or die(mysqli_error($link));
+//error_reporting(0);
+ ?>
+<html>					
 	<head>
 		<link rel="stylesheet" href="css.css">
 		<title>ERLETE</title>
@@ -6,29 +10,32 @@
 	<body>
 
 		<div class="title">
-			<div class="perfil">
+			
 			    <?php
 			    session_start();
+			    if (isset($_SESSION['erablitzailea_a_g'])) {
 			    include("test_connect_db.php");
 				$dni = $_SESSION['erablitzailea_a_g'];
 				$link =  ConnectDataBase();
 
-				$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'") or die(mysqli_error($link));
+				$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'"); 
 
-				if (isset($_SESSION['erablitzailea_a_g'])) {
-					?>
-						<p><?php echo "$result";?></p>
+				$imprimir = mysqli_fetch_array($result);
+					?>	
+					<div class="perfil">
+						<img src="perfil.png" style="width:10vh;height: 10vh;float:left;">
+						<p class="textstyle">User: <?php echo $imprimir['nombre'];?></p>
+						<p class="textstyle">DNI: <?php echo $dni;?></p>
+					</div>
 					<?php
 					}
-				?>
-			</div>	
-
+					?>
+			
 		<p class="titletext">ERLETE</p></div>
 		
 		<div class="topbar">
 			
 			    <?php
-			    include(testlogin.php)
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
 				?>			
