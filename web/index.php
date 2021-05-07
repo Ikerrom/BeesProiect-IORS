@@ -33,8 +33,6 @@
 		<div class="topbar">
 			
 			    <?php
-			    include(testlogin.php);
-			    session_start();
 					if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
 				?>			
