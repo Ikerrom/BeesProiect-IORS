@@ -40,7 +40,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reserva.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reserva.png"))); // NOI18N
         jButton1.setText("Reserve");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -53,7 +53,7 @@ public class AdminMenu extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 0));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/carro.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
         jButton4.setText("Buys");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
@@ -66,7 +66,7 @@ public class AdminMenu extends javax.swing.JFrame {
         });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
         jButton5.setText("Members");
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
@@ -83,7 +83,7 @@ public class AdminMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(34, 34, 34)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -114,7 +114,7 @@ public class AdminMenu extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(620, 313));
+        setSize(new java.awt.Dimension(604, 313));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
