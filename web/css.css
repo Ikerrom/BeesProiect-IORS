@@ -71,6 +71,6 @@
 				float:left;
 				width: 10%;
 				background-color: grey; 
-				padding-top:1%; 
 				height: 8vh;
+				position: absolute;
 			}

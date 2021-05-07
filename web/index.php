@@ -7,9 +7,6 @@
 	<body>
 
 		<div class="title">
-			<div class="perfil">
-				Iker
-			</div>
 
 			    <?php
 			    include(testlogin.php);
@@ -20,6 +17,7 @@
 					}
 				?>		
 		ERLETE</div>
+		<div class="perfil">Iker</div>
 		<div class="topbar">
 			
 			    
