@@ -28,7 +28,7 @@
 				padding:0px;
 			}
 
-			.buttonR {
+			.buttonT {
 				  background-color: #ffbb00;
 				  border:0.4vh solid #ffbb00;
 				  color: white;
@@ -40,24 +40,8 @@
 				  font-size: 100%;
 				  font-weight: bold;
 				  cursor: pointer;
-				  float:right;
-
-			}
-
-			.buttonL {
-				  background-color: #ffbb00;
-				  border:0.4vh solid #ffbb00;
-				  color: white;
-				  margin-left:1%;
-				  margin-bottom: 1%;
-				  padding: 0.8vh;
-				  text-align: center;
-				  text-decoration: none;
-				  display: inline-block;
-				  font-size: 100%;
-				  font-weight: bold;
-				  cursor: pointer;
-				  float:left;
+				  width: 40%;
+				  margin:auto;
 			}
 
 			.buttonP:hover{

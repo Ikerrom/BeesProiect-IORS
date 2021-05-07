@@ -30,35 +30,29 @@
 					{
 				?>			
 				<form action="singout.php">
-					<input class="buttonR" type="submit" value="Log Out"/>
+					<input class="buttonT" type="submit" value="Log Out"/>
 				</form>
 
 				<form action="account.php">
-					<input class="buttonL" type="submit" value="Your Account"/>
+					<input class="buttonT" type="submit" value="Your Account"/>
 				</form>
 
 				<form action="booking.php">
-					<input class="buttonL" type="submit" value="Booking"/>
-				</form>
-
-				<form action="about.php">
-					<input class="buttonL" type="submit" value="About Us"/>
+					<input class="buttonT" type="submit" value="Booking"/>
 				</form>
 
 				<?php
 					}else{
 					?>
 					<form action="login.php">
-						<input class="buttonR" type="submit" value="Log In"/>
-					</form>
-
-					<form action="about.php">
-						<input class="buttonL" type="submit" value="About Us"/>
+						<input class="buttonT" type="submit" value="Log In"/>
 					</form>
 					<?php
 					}
 				?>
-			
+			<form action="about.php">
+						<input class="buttonT" type="submit" value="About Us"/>
+					</form>
 			
 		</div>
 
