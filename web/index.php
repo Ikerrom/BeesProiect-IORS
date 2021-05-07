@@ -13,17 +13,21 @@
 			    <?php
 			    session_start();
 			    include("test_connect_db.php");
+				$dni = $_SESSION['erablitzailea_a_g'];
 				$user = $_POST["Usuario"];
+				$link =  ConnectDataBase();
 
-			    session_start();
-					if (isset($_SESSION['erablitzailea_a_g'])) 
+				$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'");
+
+				if (isset($_SESSION['erablitzailea_a_g'])) 
 					{
 					?>
-						<p><?php echo $user;?></p>
+						<p><?php echo $result;?></p>
 					<?php
 					}
-				?>	
+				?>
 			</div>	
+
 		<p class="titletext">ERLETE</p></div>
 		
 		<div class="topbar">
