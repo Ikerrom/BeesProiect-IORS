@@ -71,6 +71,13 @@
 			
 		</div>
 
+		<div class="textstyle">
+			<p>We are the Erlete association, our goal is to help beekeepers with the extraction of honey, through our extractor which is located in our place, you can find us in Axpe and ask us any kind of doubts you have about this.
+			The association was created by a group of young entrepreneurs with the desire of  not to let the bees die.
+			With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
+			</p>	
+			
+		</div>
 
 	</body>
 </html>

@@ -101,10 +101,15 @@
 
 			.textstyle{
 				color: white;
-				font-size: 100%;
-				font-weight: bold;
+				font-size: 140%;
+				margin-top:5%;
+				width: 40%;
+				text-align: justify;
+				margin-left:2%;
 			}
 			.arrow{
 				margin:auto;
+				background-color: pink;
+				
 			}
 
