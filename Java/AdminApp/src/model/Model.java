@@ -5,6 +5,7 @@
  */
 package model;
 
+import ejecutes.AdminMenu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static model.Model.connect;
 
 /**
  *Taulak eta eremuak errepasatu
@@ -27,16 +29,29 @@ public class Model {
             String url = "jdbc:mariadb://localhost/bees_project";
             String user="root"; 
             String password="";
-            conn = DriverManager.getConnection(url,user,password);
-            
-            JOptionPane.showMessageDialog(null, "Konektatu zara");
-            
+            conn = DriverManager.getConnection(url,user,password); 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } 
         
         return conn;
     }
+    public static void login(String user, String pass){
+        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+"'";
+        try (Connection conn = connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                user = rs.getString("dni");
+                pass=rs.getString("contraseña");
+                AdminMenu a1=new AdminMenu();
+                a1.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Data wrong");            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }  
     public static ArrayList<Member> read() {
         ArrayList<Member> members = new ArrayList<>();
         String taula = "personas";
@@ -46,7 +61,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Member m= new Member(rs.getString("dni"),rs.getString("name"),rs.getString("surname"),rs.getString("gmail"),rs.getString("password"),rs.getBoolean("admin"),rs.getString("moneyToPay"),rs.getString("moneyInAccount"));
+                Member m= new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"));
                 members.add(m);
             }
         } catch (Exception ex) {
@@ -55,7 +70,7 @@ public class Model {
         return members;
     }
     public static int addMember(Member m){
-        String sql = "INSERT INTO personas(dni,name,surname,gmail,password,admin,moneyToPay,moneyInAccount) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO personas(dni,nombre,apellido,gmail,contraseña,admin,dinero_pagar,dinero_cuenta) VALUES(?,?,?,?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setString(1,m.getDni());
@@ -85,13 +100,13 @@ public class Model {
         }
     }
     public static  void updateMember(Member m) {
-        String sql = "UPDATE Personas SET name = ? ,"
-                + "surname = ? ,"
+        String sql = "UPDATE personas SET nombre = ? ,"
+                + "apellido = ? ,"
                 + "gmail = ?,"
-                + "password= ?,"
+                + "contraseña= ? ,"
                 + "admin= ?,"
-                + "moneyToPay= ?,"
-                + "moneyInAccount= ?"
+                + "dinero_pagar = ? ,"
+                + "dinero_cuenta = ?"
                 + "WHERE dni = ? ";
 
         try (Connection conn = connect();
@@ -110,7 +125,7 @@ public class Model {
     }
     public static ArrayList<Reserve> readReserve() {
         ArrayList<Reserve> reserves = new ArrayList<>();
-        String taula = "Reservas";
+        String taula = "reservas";
         String sql = "SELECT * FROM " + taula;
 
         try (Connection conn = connect();
@@ -130,8 +145,8 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setObject(1,r.getM1());
-            ptmt.setInt(2,r.getIdLata());
-//            ptmt.setString(3,LocalDate.parse(r.getReserveDate()));
+            ptmt.setInt(3,r.getIdLata());
+//            ptmt.setString(2,LocalDate.parse(r.getReserveDate()));
 //            ptmt.setString(4,r.getReserveDate2());
    
             return ptmt.executeUpdate();
@@ -141,7 +156,7 @@ public class Model {
         }
     }
     public static void deleteReserve(Reserve r) {
-        String sql = "DELETE FROM Reserve WHERE dni = ?";
+        String sql = "DELETE FROM reserves WHERE dni = ?";
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -171,14 +186,14 @@ public class Model {
     }
     public static ArrayList<Buys> readBuys() {
         ArrayList<Buys> buys = new ArrayList<>();
-        String taula = "Compras";
+        String taula = "compras";
         String sql = "SELECT * FROM " + taula;
 
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Buys b= new Buys(rs.getInt("numberBuy"),rs.getInt("id_product"),rs.getString("price"),rs.getInt("account"));
+                Buys b= new Buys(rs.getInt("numero compra"),rs.getInt("id_producto"),rs.getString("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -187,7 +202,7 @@ public class Model {
         return buys;
     }
     public static int addBuys(Buys b){
-        String sql = "INSERT INTO Compras(numberBuy,id_product,price,account) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO compras(numero compra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,b.getNumberBuy());
@@ -202,7 +217,7 @@ public class Model {
         }
     }
     public static void deleteBuys(Buys b) {
-        String sql = "DELETE FROM Compras WHERE numberBuy = ?";
+        String sql = "DELETE FROM compras WHERE numero compra = ?";
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -214,10 +229,10 @@ public class Model {
         }
     }
     public static  void updateBuys(Buys b) {
-        String sql = "UPDATE Persona SET id_product = ? ,"
-                + "price = ? ,"
-                + "account = ?"
-                + "WHERE numberBuy = ? ";
+        String sql = "UPDATE Persona SET id_producto = ? ,"
+                + "precio = ? ,"
+                + "cantidad = ?"
+                + "WHERE numero compra = ? ";
 
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -231,5 +246,5 @@ public class Model {
         }
     }
     
-    
+   
 }
