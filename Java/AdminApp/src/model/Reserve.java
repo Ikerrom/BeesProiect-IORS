@@ -13,15 +13,15 @@ import java.time.LocalDate;
  */
 public class Reserve {
     private Member m1;
-    private LocalDate reserveDate;
+    private LocalDate dia_reservado;
     private int idLata;
-    private String reserveHour;
+    private LocalDate dia_dereserva;
 
-    public Reserve(Member m1, String reserveDate, int idLata, String reserveHour) {
+    public Reserve(Member m1,int idLata, String dia_reservado,  String dia_dereserva) {
         this.m1 = m1;
-        this.reserveDate = LocalDate.parse(reserveDate);
+        this.dia_reservado = LocalDate.parse(dia_reservado);
         this.idLata = idLata;
-        this.reserveHour = reserveHour;
+        this.dia_dereserva = LocalDate.parse(dia_dereserva);
     }
 
     public Member getM1() {
@@ -32,14 +32,6 @@ public class Reserve {
         this.m1 = m1;
     }
 
-    public LocalDate getReserveDate() {
-        return reserveDate;
-    }
-
-    public void setReserveDate(LocalDate reserveDate) {
-        this.reserveDate = reserveDate;
-    }
-
     public int getIdLata() {
         return idLata;
     }
@@ -48,18 +40,29 @@ public class Reserve {
         this.idLata = idLata;
     }
 
-    public String getReserveHour() {
-        return reserveHour;
+    public LocalDate getDia_reservado() {
+        return dia_reservado;
     }
 
-    public void setReserveHour(String reserveHour) {
-        this.reserveHour = reserveHour;
+    public void setDia_reservado(LocalDate dia_reservado) {
+        this.dia_reservado = dia_reservado;
+    }
+
+    public LocalDate getDia_dereserva() {
+        return dia_dereserva;
+    }
+
+    public void setDia_dereserva(LocalDate dia_dereserva) {
+        this.dia_dereserva = dia_dereserva;
     }
 
     @Override
     public String toString() {
-        return "Reserve{" + "m1=" + m1 + ", reserveDate=" + reserveDate + ", idLata=" + idLata + ", reserveHour=" + reserveHour + '}';
+        return "Reserve{" + "m1=" + m1 + ", dia_reservado=" + dia_reservado + ", idLata=" + idLata + ", dia_dereserva=" + dia_dereserva + '}';
     }
+
+    
+
     
     
     
