@@ -1,5 +1,7 @@
 package ejecutes;
 
+import static model.Model.connect;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -79,7 +81,7 @@ public class Login extends javax.swing.JFrame {
         jButtonSingIn.setBackground(new java.awt.Color(255, 255, 0));
         jButtonSingIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonSingIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha.png"))); // NOI18N
-        jButtonSingIn.setText("Sing in");
+        jButtonSingIn.setText("Sign in");
         jButtonSingIn.setBorder(null);
         jButtonSingIn.setBorderPainted(false);
         jButtonSingIn.setContentAreaFilled(false);
@@ -168,6 +170,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
         // TODO add your handling code here:
+        connect();
     }//GEN-LAST:event_jButtonSingInActionPerformed
 
     /**
