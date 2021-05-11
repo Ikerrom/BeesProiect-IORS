@@ -139,23 +139,31 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        ViewReserves m=new ViewReserves();
+        m.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+        Model mode11 = new Model();
+        BuysController controller = new BuysController (mode11, view1);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        ViewMembers m=new ViewMembers();
-        m.setVisible(true);
+        ViewMembers view = ViewMembers.viewaSortuBistaratu();
+        Model model = new Model();
+        MemberController controller = new MemberController (model, view);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

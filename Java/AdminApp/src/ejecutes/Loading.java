@@ -1,6 +1,7 @@
 package ejecutes;
 
 import java.awt.Component;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -126,6 +127,7 @@ public class Loading extends javax.swing.JFrame {
             Login login=new Login();
             login.setVisible(true);
         }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Something wrong");
             
         }
     }

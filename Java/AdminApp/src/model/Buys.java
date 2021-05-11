@@ -12,10 +12,10 @@ package model;
 public class Buys {
     private int numberBuy;
     private int id_product;
-    private String price;
+    private int price;
     private int amount;
 
-    public Buys(int numberBuy, int id_product, String price, int amount) {
+    public Buys(int numberBuy, int id_product, int price, int amount) {
         this.numberBuy = numberBuy;
         this.id_product = id_product;
         this.price = price;
@@ -38,11 +38,11 @@ public class Buys {
         this.id_product = id_product;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
