@@ -1,40 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <form>
-                <label>Choose a DNI:</label>
-                <select>
-                  
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "dam1";
-                $dbname = "bees_project";
+  <!DOCTYPE html>
+  <html>
+      <body>
+          <form>
+                  <label>Choose a DNI:</label>
+                  <select>
+                    
+                  <?php
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "dam1";
+                  $dbname = "bees_project";
 
 
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                  $conn = new mysqli($servername, $username, $password, $dbname);
 
-                if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-                }
-
-                $sql = "SELECT dni FROM Persona";
-
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                  while($row = $result->fetch_assoc()) {
-                    ?>
-                       <option value="<?php echo $row["dni"];?>"><?php echo $row["dni"];?></option>
-                   <?php
+                  if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
                   }
 
-                } else {
-                  echo "0 results";
-                }
-                $conn->close();
-                ?>
+                  $sql = "SELECT dni FROM Persona";
 
-                </select>
-         </form>
-    </body>
-</html>
+                  $result = $conn->query($sql);
+                  if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                      ?>
+                         <option value="<?php echo $row["dni"];?>"><?php echo $row["dni"];?></option>
+                     <?php
+                    }
+
+                  } else {
+                    echo "0 results";
+                  }
+                  $conn->close();
+                  ?>
+
+                  </select>
+           </form>
+      </body>
+  </html>
