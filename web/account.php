@@ -1,8 +1,35 @@
   <!DOCTYPE html>
   <html>
   <head>
-  			<link rel="stylesheet" href="css.css">
+  <link rel="stylesheet" href="css.css">
   	<title>Account</title>
+
+  	<style type="text/css">
+  			.campoacc{
+				width: 20vw;
+				height: 15vh;
+				color: #595959;
+				font-weight: bold;
+				text-align: center;
+				float: right;
+
+			}
+
+			.textstyleacc{
+				font-size: 150%;
+
+			}
+			.bgacc{
+				display:flex;
+				flex-direction:row;
+				justify-content: flex-end;
+				background-color: #FAD002;
+				width: 55%;
+				margin:auto;
+
+			}
+
+  	</style>
   </head>
   <body>
     <?php
@@ -15,42 +42,53 @@
 				$imprimir = mysqli_fetch_array($result);
 
 				?>
-					<div class="perfil">
-							<p class="textstyle">DNI:</p>
+				<div class="bgacc">
+					<div class="photoacc">
+						<img src="resources/Images/perfil.png">
+					</div>
+					<div class="campoacc">
+							<p class="textstyleacc">DNI:</p>
 						<?php  
 							echo $dni;
 						?>	
 					</div>
-					<div class="perfil">
-							<p class="textstyle">Name:</p>
+					<div class="campoacc">
+							<p class="textstyleacc">Name:</p>
 						<?php  
 							echo $imprimir['nombre'];
 						?>	
 					</div>
-					<div class="perfil">
-							<p class="textstyle">Surname:</p>
+
+				</div>
+				<div class="bgacc">
+					<div class="campoacc">
+							<p class="textstyleacc">Surname:</p>
 						<?php  
 							echo $imprimir['apellido'];
 						?>	
 					</div>
-					<div class="perfil">
-							<p class="textstyle">Gmail:</p>
+					<div class="campoacc">
+							<p class="textstyleacc">Gmail:</p>
 						<?php  
 							echo $imprimir['gmail'];
 						?>	
 					</div>
-					<div class="perfil">
-							<p class="textstyle">To pay:</p>
+				</div>
+				<div class="bgacc">
+					<div class="campoacc">
+							<p class="textstyleacc">To pay:</p>
 						<?php  
-							echo  $imprimir['dinero_pagar'];
+							echo  $imprimir['dinero_pagar'] . "$";
 						?>	
 					</div>
-					<div class="perfil">
-							<p class="textstyle">Money in account:</p>
+					<div class="campoacc">
+							<p class="textstyleacc">Acc Money:</p>
 						<?php  
-							echo $imprimir['dinero_cuenta'];
+							echo $imprimir['dinero_cuenta']. "$";
 						?>	
 					</div>
+				</div>
+					
 				<?php
 
 				} else{
