@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/AdminApp/src/model/ReserveController.java</file>
+            <file>file:/E:/AdminApp/src/model/MemberController.java</file>
             <file>file:/E:/AdminApp/src/ejecutes/Login.java</file>
             <file>file:/E:/AdminApp/src/model/Model.java</file>
             <file>file:/E:/AdminApp/src/ejecutes/Loading.java</file>
+            <file>file:/E:/AdminApp/src/ejecutes/ViewReserves.java</file>
             <file>file:/E:/AdminApp/src/ejecutes/AdminMenu.java</file>
+            <file>file:/E:/AdminApp/src/ejecutes/ViewBuys.java</file>
             <file>file:/E:/AdminApp/src/ejecutes/ViewMembers.java</file>
         </group>
     </open-files>
