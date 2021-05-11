@@ -79,7 +79,7 @@
 			With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
 			</p>	
 			
-			<img src="imagenes/erlete1.jpg" width=70% height6=60%>
+			<img src="images/erlete1.jpg" width=70% height6=60%>
 
 		
 
@@ -113,11 +113,11 @@
 				
 			Bees are said to pollinate 80% of plants. Therefore, they do a very important job. The bee demands care; there are diseases that, if not treated, kill the bee. In recent years, the vespa velutine wasp, coming or brought from Asia, has also appeared and hurts.
 			<br><br>
-			<img src="imagenes/erlete2.jpg" width=100% height=15% >
+			<img src="images/erlete2.jpg" width=100% height=15% >
 			<br><br><br>
 			In addition, globalization has only been harm to the bee: insecticides, pesticides, mud disease, vespa velutin... When I was young there was no professional beekeeping, but the bees were in the forest because they had a much more suitable environment. Today, the only way to resist is to unite the little beekeepers. In addition, the Administration is interested in having ten beekeepers, each with lots of bees, to keep revenue under control.
 			<br><br><br>
-			<img src="imagenes/erlete3.jpg" width=100% height=20% >
+			<img src="images/erlete3.jpg" width=100% height=20% >
 			<br><br><br>
 
 			<iframe width="700" height="350" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
