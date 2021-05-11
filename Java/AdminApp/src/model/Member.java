@@ -29,6 +29,10 @@ public class Member {
         this.moneyToPay = moneyToPay;
         this.moneyInAccount = moneyInAccount;
     }
+    public Member(String dni,String password){
+        this.dni = dni;
+        this.password = password;
+    }
 
     public String getDni() {
         return dni;

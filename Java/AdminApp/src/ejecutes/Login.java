@@ -1,5 +1,7 @@
 package ejecutes;
 
+import model.Member;
+import model.Model;
 import static model.Model.connect;
 
 /*
@@ -52,11 +54,6 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordFieldPass.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jPasswordFieldPass.setBorder(null);
-        jPasswordFieldPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordFieldPassActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -164,13 +161,9 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordFieldPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldPassActionPerformed
-
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
-        // TODO add your handling code here:
-        connect();
+
+        Model.login(jTextFieldUser.getText(),jPasswordFieldPass.getText());
     }//GEN-LAST:event_jButtonSingInActionPerformed
 
     /**

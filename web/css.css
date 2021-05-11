@@ -98,14 +98,26 @@
 			form{
 				    margin-block-end:0;
 			}
+			.texttotal{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
 
+			}
 			.textstyle{
 				color: white;
 				font-size: 140%;
 				margin-top:5%;
 				width: 40%;
 				text-align: justify;
-				margin-left:2%;
+			}
+
+			.textstyle2{
+				color: white;
+				font-size: 140%;
+				margin-top:5%;
+				width: 40%;
+				text-align: justify;
 			}
 			.arrow{
 				margin:auto;
