@@ -125,3 +125,72 @@
 				
 			}
 
+			.campoacc{
+				width: 20vw;
+				height: 15vh;
+				color: #595959;
+				font-weight: bold;
+				text-align: center;
+
+			}
+			.textstyleacc{
+				font-size: 150%;
+
+			}
+			.bgacc{
+				display:flex;
+				flex-direction:row;
+				justify-content: flex-end;
+				background-color: #FAD002;
+				width: 55%;
+				margin:auto;
+			}
+
+			table.tableacc {
+				background-color: #595959;
+				width: 100%;
+				height: 200%;
+				text-align: center;
+				border-collapse: collapse;
+			}
+
+			table.tableacc td, table.tableacc th {
+				border: 0px solid #000000;
+				padding: 5px 4px;
+				}
+			table.tableacc tbody td {
+				font-size: 13px;
+				color: #FFFFFF;
+			}
+
+			table.tableacc thead {
+				background: #FAD002;
+			}
+
+			table.tableacc thead th {
+				font-size: 15px;
+				font-weight: bold;
+				color: #000000;
+				text-align: center;
+			}
+
+			table.tableacc tfoot td {
+				font-size: 14px;
+			}
+
+			.tableaccdiv{
+				width: 80%;
+				margin:10%;
+				margin-top: 5%;
+			}
+
+			.texttitle{
+				color: white;
+				font-size: 160%;
+				margin-left:2%;
+				text-align: center;
+			}
+			
+			.bgdiv{
+				margin-top: 5%;
+			}
