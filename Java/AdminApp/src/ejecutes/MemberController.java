@@ -30,7 +30,6 @@ public class MemberController implements ActionListener {
         viewMembers.jButton2.addActionListener(listener);
         viewMembers.jButton3.addActionListener(listener);
         viewMembers.jButton4.addActionListener(listener);
-        viewMembers.jButton5.addActionListener(listener);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -40,6 +39,7 @@ public class MemberController implements ActionListener {
             case "Add":
                 Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),viewMembers.jTextField6.getText(),viewMembers.jTextField7.getText());
                 model.addMember(m);
+                this.viewMembers.setVisible(false);
                 ViewMembers view2 = ViewMembers.viewaSortuBistaratu();
                 Model model2 = new Model();
                 MemberController controller = new MemberController (model2, view2);
@@ -48,10 +48,11 @@ public class MemberController implements ActionListener {
                 if(viewMembers.jTable1.getSelectedRow()!=-1){
                     Member me=new Member((String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 0),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 1),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 2),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 3),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 4),(boolean)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 5),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 6),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 7));
                     model.deleteMember(me);
-                    
+                    this.viewMembers.setVisible(false);
                     ViewMembers view1 = ViewMembers.viewaSortuBistaratu();
                     Model model1 = new Model();
                     MemberController controller1 = new MemberController (model1, view1);
+                    
                     
                 }else{
                     JOptionPane.showMessageDialog(null,"You have to seelct row");
@@ -78,11 +79,13 @@ public class MemberController implements ActionListener {
                     viewMembers.jTable1.setValueAt(moneyAccount, viewMembers.jTable1.getSelectedRow(), 7);
                     Member memb=new Member(dni,name,surname,gmail,password,admin,moneyPay,moneyAccount);
                     model.updateMember(memb);
-                    ViewMembers view3 = ViewMembers.viewaSortuBistaratu();
-                    Model model3 = new Model();
-                    MemberController controller3 = new MemberController (model3, view3);
+                    JOptionPane.showMessageDialog(null, "Is change");
+                    this.viewMembers.setVisible(false);
+                    ViewMembers view1 = ViewMembers.viewaSortuBistaratu();
+                    Model model1 = new Model();
+                    MemberController controller1 = new MemberController (model1, view1);
+                    break;
 
-                    JOptionPane.showMessageDialog(null, "Ongi aldatu duzu");
                 } else {
                     if (viewMembers.jTable1.getRowCount() == 0) {
                         JOptionPane.showMessageDialog(null, "Table is empty");
@@ -95,16 +98,6 @@ public class MemberController implements ActionListener {
                 AdminMenu a1=new AdminMenu();
                 a1.setVisible(true);
                 this.viewMembers.setVisible(false);
-                break;
-            case "Reserve":
-                ViewMembers view1 = ViewMembers.viewaSortuBistaratu();
-                Model model1 = new Model();
-                MemberController controller1 = new MemberController (model1, view1);
-                break;
-            case "Buys":
-                ViewBuys view = ViewBuys.viewaSortuBistaratu();
-                Model model = new Model();
-                BuysController controller5 = new BuysController (model, view);
                 break;
         }
     }

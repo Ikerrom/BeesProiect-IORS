@@ -30,7 +30,6 @@ public class BuysController implements ActionListener {
         viewBuys.jButton1.addActionListener(listener);
         viewBuys.jButton2.addActionListener(listener);
         viewBuys.jButton3.addActionListener(listener);
-        viewBuys.jButton4.addActionListener(listener);
         viewBuys.jButton5.addActionListener(listener);
     }
     @Override
@@ -44,13 +43,21 @@ public class BuysController implements ActionListener {
                 int price = Integer.valueOf(viewBuys.jTextField3.getText());
                 int account = Integer.valueOf(viewBuys.jTextField4.getText());
                 Buys b=new Buys(numberBuy,id_product,price,account);
-                ViewBuys b1=new ViewBuys();
-                b1.setVisible(true);
+                model.addBuys(b);
+                this.viewBuys.setVisible(false);
+                ViewBuys view2 = ViewBuys.viewaSortuBistaratu();
+                Model model2 = new Model();
+                BuysController controller = new BuysController (model2, view2);
                 break;
             case "Delete":
                 if(viewBuys.jTable1.getSelectedRow()!=-1){
-                    Member me=new Member((String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 0),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 1),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 2),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 3),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 4),(boolean)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 5),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 6),(String)viewBuys.jTable1.getModel().getValueAt(viewBuys.jTable1.getSelectedRow(), 7));
-                    model.deleteMember(me); 
+                    Buys b1=new Buys(Integer.parseInt(viewBuys.jTextField1.getText()),Integer.parseInt(viewBuys.jTextField2.getText()),Integer.parseInt(viewBuys.jTextField3.getText()),Integer.parseInt(viewBuys.jTextField4.getText()));
+                    model.deleteBuys(b1);
+                    this.viewBuys.setVisible(false);
+                    ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+                    Model model1 = new Model();
+                    BuysController controller1 = new BuysController (model1, view1);
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(null,"You have to seelct row");
                 }
@@ -61,17 +68,20 @@ public class BuysController implements ActionListener {
                     int idproduct = Integer.valueOf(viewBuys.jTextField2.getText());
                     int pric = Integer.valueOf(viewBuys.jTextField3.getText());
                     int acco = Integer.valueOf(viewBuys.jTextField4.getText());
- 
-
-
                     viewBuys.jTable1.setValueAt(nb, viewBuys.jTable1.getSelectedRow(), 0);
                     viewBuys.jTable1.setValueAt(idproduct, viewBuys.jTable1.getSelectedRow(), 1);
                     viewBuys.jTable1.setValueAt(pric, viewBuys.jTable1.getSelectedRow(), 2);
                     viewBuys.jTable1.setValueAt(acco, viewBuys.jTable1.getSelectedRow(), 3);
                     Buys b2=new Buys(nb,idproduct,pric,acco);
                     model.updateBuys(b2);
-
                     JOptionPane.showMessageDialog(null, "Is change ");
+                    this.viewBuys.setVisible(false);
+                    ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+                    Model model1 = new Model();
+                    BuysController controller1 = new BuysController (model1, view1);
+                    break;
+
+                    
                 } else {
                     if (viewBuys.jTable1.getRowCount() == 0) {
                         JOptionPane.showMessageDialog(null, "Table is empty");
@@ -84,16 +94,7 @@ public class BuysController implements ActionListener {
                 AdminMenu a1=new AdminMenu();
                 a1.setVisible(true);
                 this.viewBuys.setVisible(false);
-                break;
-            case "Members":
-                ViewMembers m=new ViewMembers();
-                m.setVisible(true);
-                break;
-            case "Reserves":
-                ViewReserves r=new ViewReserves();
-                r.setVisible(true);
-                break;
-                
+                break;       
         }
     }
  }

@@ -193,7 +193,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Buys b= new Buys(rs.getInt("numero compra"),rs.getInt("id_producto"),rs.getString("precio"),rs.getInt("cantidad"));
+                Buys b= new Buys(rs.getInt("numero compra"),rs.getInt("id_producto"),rs.getInt("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -207,7 +207,7 @@ public class Model {
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,b.getNumberBuy());
             ptmt.setInt(2,b.getId_product());
-            ptmt.setString(3,b.getPrice());
+            ptmt.setInt(3,b.getPrice());
             ptmt.setInt(4,b.getAmount());
    
             return ptmt.executeUpdate();
@@ -238,7 +238,7 @@ public class Model {
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1,b.getNumberBuy());
             pstmt.setInt(2,b.getId_product());
-            pstmt.setString(3,b.getPrice());
+            pstmt.setInt(3,b.getPrice());
             pstmt.setInt(4,b.getAmount());
             pstmt.executeUpdate();
         } catch (SQLException e) {

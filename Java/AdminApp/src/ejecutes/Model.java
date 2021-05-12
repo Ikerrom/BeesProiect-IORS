@@ -201,7 +201,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Buys b= new Buys(rs.getInt("numero compra"),rs.getInt("id_producto"),rs.getInt("precio"),rs.getInt("cantidad"));
+                Buys b= new Buys(rs.getInt("numero_compra"),rs.getInt("id_producto"),rs.getInt("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -210,7 +210,7 @@ public class Model {
         return buys;
     }
     public static int addBuys(Buys b){
-        String sql = "INSERT INTO compras(numero compra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO compras(numero_compra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,b.getNumberBuy());
@@ -225,7 +225,7 @@ public class Model {
         }
     }
     public static void deleteBuys(Buys b) {
-        String sql = "DELETE FROM compras WHERE numero compra = ?";
+        String sql = "DELETE FROM compras WHERE numero_compra = ?";
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -237,17 +237,17 @@ public class Model {
         }
     }
     public static  void updateBuys(Buys b) {
-        String sql = "UPDATE Persona SET id_producto = ? ,"
+        String sql = "UPDATE compras SET id_producto = ? ,"
                 + "precio = ? ,"
-                + "cantidad = ?"
-                + "WHERE numero compra = ? ";
+                + "cantidad = ?,"
+                + "WHERE numero_compra = ? ";
 
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,b.getNumberBuy());
-            pstmt.setInt(2,b.getId_product());
-            pstmt.setInt(3,b.getPrice());
-            pstmt.setInt(4,b.getAmount());
+            pstmt.setInt(1,b.getId_product());
+            pstmt.setInt(2,b.getPrice());
+            pstmt.setInt(3,b.getAmount());
+            pstmt.setInt(4,b.getNumberBuy());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
