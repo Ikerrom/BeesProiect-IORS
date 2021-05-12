@@ -3,7 +3,11 @@
 	$user = $_POST["Usuario"];
 	$password = $_POST["Password"];
 	$link =  ConnectDataBase();
-	$result=mysqli_query($link, "select dni,contraseña from Personas where dni = '$user' and contraseña = '$password'");
+	$stmt = $link->prepare('SELECT dni,contraseña FROM Personas WHERE dni = ? and contraseña = ?');
+	$stmt->bind_param('ss', $user,$password);
+	$stmt->execute();
+	$result = $stmt->get_result();
+
 	if (mysqli_num_rows($result) == 0)
 	{
 		header("Location:login.php?incorrecto=si");
