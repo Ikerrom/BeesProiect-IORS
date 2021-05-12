@@ -51,13 +51,22 @@
 	   			<div class="bgdiv">
 	   				<div class="bgacc">
 						<div class="photoacc">
-							<img src="resources/Images/perfil.png">
-							<form>
-								<label for="files" class="btn" >Select Image</label>
-								<input class="buttonT" type="file" style="visibility:hidden;">
-								      
+							<form action="account.php" method="POST" enctype="multipart/form-data">
+								<input class="buttonT" type="file" name="foto"> 
+								<input type="submit">
 							</form>
+
+							<?php if (isset($_POST['foto'])) {
+								$dir = "resources/Images/Perfiles";
+								$imagetmp = $_FILES['foto']['name'];
+								$file = $_FILES['foto']['tmp_name'];
+								$dir = $dir . "/" . $imagetmp;
+								move_uploaded_file($file, $dir);
+							}  ?>
+
 						</div>
+
+
 						<div class="campoacc">
 								<p class="textstyleacc">DNI:</p>
 							<?php  
