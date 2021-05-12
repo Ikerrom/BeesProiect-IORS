@@ -52,16 +52,18 @@
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
-						<form action="singout.php">
-							<input class="buttonT" type="submit" value="LOG OUT"/>
-						</form>
-
 						<form action="account.php">
-							<input class="buttonT" type="submit" value="YOUR ACCOUNT"/>
+							<input class="buttonT" type="submit" value="ACCOUNT"/>
 						</form>
 
 						<form action="booking.php">
 							<input class="buttonT" type="submit" value="BOOKING"/>
+						</form>
+						<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+						</form>
+						<form action="singout.php">
+							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
 
 						<?php
@@ -70,12 +72,13 @@
 							<form action="login.php">
 								<input class="buttonT" type="submit" value="LOG IN"/>
 							</form>
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
 							<?php
 							}
 						?>
-					<form action="about.php">
-								<input class="buttonT" type="submit" value="ABOUT US"/>
-							</form>
+
 					
 				</div>
 

@@ -32,34 +32,19 @@
 						<p class="titletext">ERLETE</p>
 					</div>
 						<div class="topbar">
-							    <?php
-									if (isset($_SESSION['erablitzailea_a_g'])) 
-									{
-								?>
+
 								<form action="index.php">
-									<input class="buttonT" type="submit" value="INDEX"/>
+									<input class="buttonT" type="submit" value="HOME"/>
 								</form>
-
-								<form action="account.php">
-									<input class="buttonT" type="submit" value="ACCOUNT"/>
-								</form>
-
 								<form action="booking.php">
 									<input class="buttonT" type="submit" value="BOOKING"/>
 								</form>
-
-								<?php
-									}else{
-									?>
-									<form action="login.php">
-										<input class="buttonT" type="submit" value="LOG IN"/>
-									</form>
-									<?php
-									}
-								?>
-							<form action="about.php">
-										<input class="buttonT" type="submit" value="ABOUT US"/>
-									</form>
+								<form action="about.php">
+									<input class="buttonT" type="submit" value="ABOUT US"/>
+								</form>
+								<form action="singout.php">
+									<input class="buttonT" type="submit" value="LOG OUT"/>
+								</form>
 							
 						</div>
 
@@ -67,6 +52,11 @@
 	   				<div class="bgacc">
 						<div class="photoacc">
 							<img src="resources/Images/perfil.png">
+							<form>
+								<label for="files" class="btn" >Select Image</label>
+								<input class="buttonT" type="file" style="visibility:hidden;">
+								      
+							</form>
 						</div>
 						<div class="campoacc">
 								<p class="textstyleacc">DNI:</p>
