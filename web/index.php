@@ -3,12 +3,20 @@
 		//error_reporting(0);
 		 ?>
 		<html>					
-			<head>
+			<head>  
+				<meta charset="utf-8">
+ 				<meta name="viewport" content="width=device-width, initial-scale=1">
+  				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 				<link rel="stylesheet" href="css.css">
 				<title>ERLETE</title>
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+
+
 			</head>
 			<body>
 				<div class="title">
@@ -82,8 +90,6 @@
 					<img src="resources/Images/erlete1.jpg" width=70% height6=60%>
 
 				
-
-				
 					<p>
 						<h2>Here's where our idea comes from:</h2>
 					</p>	
@@ -104,6 +110,8 @@
 
 					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 					</iframe>
+						<br>
+
 				</div>
 
 				<div class="textstyle2">
@@ -113,18 +121,52 @@
 						
 					Bees are said to pollinate 80% of plants. Therefore, they do a very important job. The bee demands care; there are diseases that, if not treated, kill the bee. In recent years, the vespa velutine wasp, coming or brought from Asia, has also appeared and hurts.
 					<br><br>
-					<img src="resources/Images/erlete2.jpg" width=100% height=15% >
+
+					
+
+						  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+						    <!-- Indicators -->
+						    <ol class="carousel-indicators">
+						      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						      <li data-target="#myCarousel" data-slide-to="1"></li>
+						      <li data-target="#myCarousel" data-slide-to="2"></li>
+						    </ol>
+
+						    <!-- Wrapper for slides -->
+						    <div class="carousel-inner">
+						      <div class="item active">
+						        <img src="resources/Images/erlete3.jpg" alt="Los Angeles" style= "height: 25% width:60%">
+						      </div>
+
+						      <div class="item">
+						        <img src="resources/Images/erlete5.jpg" alt="Chicago" style="height: 25% width:100%;">
+						      </div>
+						    
+						      <div class="item">
+						        <img src="resources/Images/erlete4.jpg" alt="New york" style=" height: 25% width:40%;">
+						      </div>
+						    </div>
+
+						    <!-- Left and right controls -->
+						    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						      <span class="glyphicon glyphicon-chevron-left"></span>
+						      <span class="sr-only">Previous</span>
+						    </a>
+						    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+						      <span class="glyphicon glyphicon-chevron-right"></span>
+						      <span class="sr-only">Next</span>
+						    </a>
+						  </div>
+
 					<br><br><br>
 					In addition, globalization has only been harm to the bee: insecticides, pesticides, mud disease, vespa velutin... When I was young there was no professional beekeeping, but the bees were in the forest because they had a much more suitable environment. Today, the only way to resist is to unite the little beekeepers. In addition, the Administration is interested in having ten beekeepers, each with lots of bees, to keep revenue under control.
-					<br><br><br>
-					<img src="resources/Images/erlete3.jpg" width=100% height=20% >
-					<br><br><br>
 
+					<br><br><br>
+					
 					<iframe width="700" height="350" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 				</div>
 			</div>
-
 
 
 
