@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>book the extractor</title>
+        <script>
+
+            var selectInnerText = '<option selected="selected" value="ez">Please select</option><option>Your own</option>'
+
+            function checkEnable(attr, obj) {
+                if (attr in obj && obj[attr] === true) {
+                    document.querySelector('#' + attr).style.display = '';
+                } else {
+                    document.querySelector('#' + attr).style.display = 'none';
+                }
+            }
+
+            function parseinfo(obj) {
+                var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata'];
+                for (var i = 0; i < attrs.length; ++i) {
+                    checkEnable(attrs[i], obj);
+                }
+                if ('lataid' in obj) {
+                    const sele = document.querySelector('#lataid');
+                    sele.innerHTML = selectInnerText;
+                    for (var i = 0; i < obj.lataid.length; ++i) {
+                        sele.insertAdjacentHTML('beforeend',
+                                '<option value="' + obj.lataid[i] + '">' + obj.lataid[i] + '</option>');
+                    }
+                }
+            }
+
+            function getinfo() {
+                this.date = document.querySelector('#date').value;
+                this.lataid = parseInt(document.querySelector('#lataid').value);
+                this.random = Math.random();
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    parseinfo(JSON.parse(this.responseText));
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h3 id="ezbete" style="display: none;">
+            Please fill all blanks.
+        </h3>
+        <h3 id="ezlata" style="display: none;">
+            Sorry, the bin was already booked.
+        </h3>
+        <h3 id="ezinda" style="display: none;">
+            Cannot book that day.
+        </h3>
+        <h3 id="ezinduzu" style="display: none;">
+            You are not signed in.
+        </h3>
+        <h3 id="eginda" style="display: none;">
+            Booked successfully.
+        </h3>
+        <p>Enter the bin id</p>
+        <select name="latai" id="lataid">
+            <option selected="selected" value="ez">Please select</option>
+            <option>Your own</option>
+        </select>
+        <br>
+        <p>Enter the date</p>
+        <input id="date" type="date" name="diar">
+        <br>
+        <button id="submit">Submit</button>
+        <script>
+            xhttp.open("GET", "book.php", true);
+            xhttp.send();
+
+            document.querySelector('#submit').onclick = function () {
+                if (document.querySelector('#lataid').value === 'ez') {
+                    document.querySelector('#ezbete').style.display = '';
+                    return;
+                }
+                document.querySelector('#ezbete').style.display = 'none';
+                alert(JSON.stringify(new getinfo()));
+                xhttp.open("GET", "book.php?x=" + JSON.stringify(new getinfo()), true);
+                xhttp.send();
+            };
+        </script>
+    </body>
+</html>
