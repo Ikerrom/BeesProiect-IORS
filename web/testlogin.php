@@ -1,10 +1,13 @@
 <?php
 	include("test_connect_db.php");
+	include("test_input.php");
 	$user = $_POST["Usuario"];
 	$password = $_POST["Password"];
+	$safe_user = test_input($user);
+	$safe_password = test_input($password);
 	$link =  ConnectDataBase();
 	$stmt = $link->prepare('SELECT dni,contraseña FROM Personas WHERE dni = ? and contraseña = ?');
-	$stmt->bind_param('ss', $user,$password);
+	$stmt->bind_param('ss', $safe_user,$safe_password);
 	$stmt->execute();
 	$result = $stmt->get_result();
 
@@ -13,7 +16,7 @@
 		header("Location:login.php?incorrecto=si");
 	}else{
 		session_start();
-		$_SESSION['erablitzailea_a_g'] = $user;
+		$_SESSION['erablitzailea_a_g'] = $safe_user;
 		header("Location:index.php");
 	}
 ?>
