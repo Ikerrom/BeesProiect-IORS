@@ -6,6 +6,8 @@
 package model;
 
 import ejecutes.AdminMenu;
+import ejecutes.AdminMenu;
+import ejecutes.AdminMenu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +18,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Buys;
+import model.Buys;
+import model.Member;
+import model.Member;
+import model.Reserve;
+import model.Reserve;
 import static model.Model.connect;
 
 /**
@@ -70,17 +78,17 @@ public class Model {
         return members;
     }
     public static int addMember(Member m){
-        String sql = "INSERT INTO personas(dni,nombre,apellido,gmail,contraseña,admin,dinero_pagar,dinero_cuenta) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO personas(dni,nombre,apellido,gmail,contraseña,admin,dinero_pagar,dinero_cuenta) VALUES(?,?,?,?,?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setString(1,m.getDni());
             ptmt.setString(2,m.getName());
             ptmt.setString(3,m.getSurname());
-            ptmt.setString(3,m.getGmail());
-            ptmt.setString(4,m.getPassword());
-            ptmt.setBoolean(5,m.isAdmin());
-            ptmt.setString(6,m.getMoneyToPay());
-            ptmt.setString(7,m.getMoneyInAccount());
+            ptmt.setString(4,m.getGmail());
+            ptmt.setString(5,m.getPassword());
+            ptmt.setBoolean(6,m.isAdmin());
+            ptmt.setString(7,m.getMoneyToPay());
+            ptmt.setString(8,m.getMoneyInAccount());
             return ptmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -93,7 +101,7 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, m.getDni());
-            pstmt.executeUpdate();
+            pstmt.executeUpdate(); 
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -118,6 +126,7 @@ public class Model {
             pstmt.setBoolean(5, m.isAdmin());
             pstmt.setString(6, m.getMoneyToPay());
             pstmt.setString(7, m.getMoneyInAccount());
+            pstmt.setString(8, m.getDni());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -193,7 +202,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Buys b= new Buys(rs.getInt("numero compra"),rs.getInt("id_producto"),rs.getInt("precio"),rs.getInt("cantidad"));
+                Buys b= new Buys(rs.getInt("numeroCompra"),rs.getInt("id_producto"),rs.getInt("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -202,7 +211,7 @@ public class Model {
         return buys;
     }
     public static int addBuys(Buys b){
-        String sql = "INSERT INTO compras(numero compra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO compras(numeroCompra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,b.getNumberBuy());
@@ -217,7 +226,7 @@ public class Model {
         }
     }
     public static void deleteBuys(Buys b) {
-        String sql = "DELETE FROM compras WHERE numero compra = ?";
+        String sql = "DELETE FROM compras WHERE numeroCompra = ?";
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -228,23 +237,20 @@ public class Model {
             System.out.println(e.getMessage());
         }
     }
-    public static  void updateBuys(Buys b) {
-        String sql = "UPDATE Persona SET id_producto = ? ,"
-                + "precio = ? ,"
-                + "cantidad = ?"
-                + "WHERE numero compra = ? ";
+    public static void updateBuys(Buys b) {
+        String sql = "UPDATE compras SET id_producto= ?, cantidad=? ,precio=? WHERE numeroCompra=?";
 
         try (Connection conn = connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,b.getNumberBuy());
-            pstmt.setInt(2,b.getId_product());
-            pstmt.setInt(3,b.getPrice());
-            pstmt.setInt(4,b.getAmount());
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, b.getId_product());
+            pstmt.setInt(2, b.getPrice());
+            pstmt.setInt(3, b.getAmount());
+            pstmt.setInt(4, b.getNumberBuy());
+            
             pstmt.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    
-   
 }

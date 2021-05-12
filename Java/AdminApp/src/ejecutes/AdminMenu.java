@@ -5,6 +5,7 @@
  */
 package ejecutes;
 
+import model.Model;
 import javax.swing.JOptionPane;
 
 /**

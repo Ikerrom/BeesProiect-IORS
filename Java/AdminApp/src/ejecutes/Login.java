@@ -1,7 +1,8 @@
 package ejecutes;
 
+import model.Model;
 import model.Member;
-import static ejecutes.Model.connect;
+import static model.Model.connect;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
