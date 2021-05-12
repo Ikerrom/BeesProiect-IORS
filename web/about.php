@@ -49,7 +49,7 @@
 						?>
 
 						<form action="index.php">
-								<input class="buttonT" type="submit" value="INDEX"/>
+								<input class="buttonT" type="submit" value="HOME"/>
 						</form>
 
 						<form action="account.php">
