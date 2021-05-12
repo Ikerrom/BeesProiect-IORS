@@ -52,18 +52,16 @@
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
+						<form action="singout.php">
+							<input class="buttonT" type="submit" value="LOG OUT"/>
+						</form>
+
 						<form action="account.php">
-							<input class="buttonT" type="submit" value="ACCOUNT"/>
+							<input class="buttonT" type="submit" value="YOUR ACCOUNT"/>
 						</form>
 
 						<form action="booking.php">
 							<input class="buttonT" type="submit" value="BOOKING"/>
-						</form>
-						<form action="about.php">
-								<input class="buttonT" type="submit" value="ABOUT US"/>
-						</form>
-						<form action="singout.php">
-							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
 
 						<?php
@@ -72,25 +70,24 @@
 							<form action="login.php">
 								<input class="buttonT" type="submit" value="LOG IN"/>
 							</form>
-							<form action="about.php">
-								<input class="buttonT" type="submit" value="ABOUT US"/>
-							</form>
 							<?php
 							}
 						?>
-
+					<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
 					
 				</div>
 
-				<div class="texttotal">
+			<div class="texttotal">
 
 				<div class="textstyle">
-					<p>We are the Erlete association, our goal is to help beekeepers with the extraction of honey, through our extractor which is located in our place, you can find us in Axpe and ask us any kind of doubts you have about this.
+					<p>We are the Erlete association, our goal is to help beekeepers with the extraction of honey, through our extractor which is located in our premises, you can find us in Axpe and ask us any kind of doubts you have about this.
 					The association was created by a group of young entrepreneurs with the desire of  not to let the bees die.
 					With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
 					</p>	
 					
-					<img src="resources/Images/erlete1.jpg" width=70% height6=60%>
+					<img src="resources/Images/erlete1.jpg" width=70% height=16%>
 
 				
 					<p>
@@ -117,7 +114,7 @@
 
 				</div>
 
-				<div class="textstyle2">
+				<div class="textstyle">
 
 					
 					<p>
