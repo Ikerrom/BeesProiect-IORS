@@ -108,9 +108,9 @@
 
 						<br><br>
 
-					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
+					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 					</iframe>
-						<br>
+						<br><br><br>
 
 				</div>
 
