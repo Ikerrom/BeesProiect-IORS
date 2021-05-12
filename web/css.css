@@ -119,6 +119,16 @@
 				width: 40%;
 				text-align: justify;
 			}
+
+			.textstyle3{
+				color: white;
+				font-size: 140%
+				margin-top:5%;
+				width: 40%;
+				text-align: justify;
+
+
+			}
 			.arrow{
 				margin:auto;
 				background-color: pink;
