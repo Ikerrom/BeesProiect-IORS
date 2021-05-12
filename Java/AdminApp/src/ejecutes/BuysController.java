@@ -64,7 +64,7 @@ public class BuysController implements ActionListener {
                 break;
             case "Update":
                 if (viewBuys.jTable1.getSelectedRow()!=-1) {
-                    int nb = Integer.valueOf(viewBuys.jTextField1.getText());
+                    int nb = Integer.parseInt(viewBuys.jTextField1.getText());
                     int idproduct = Integer.valueOf(viewBuys.jTextField2.getText());
                     int pric = Integer.valueOf(viewBuys.jTextField3.getText());
                     int acco = Integer.valueOf(viewBuys.jTextField4.getText());
