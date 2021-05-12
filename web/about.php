@@ -115,11 +115,20 @@
 						<br><br>
 
 						<img src="resources/Images/asociacion.jpg" width="500" height="300">
-						
+
+					<br><br> 
+					<p>Take a look if you would like to join our team! </p>
+					<br>
+			<form action="formpost.php" method="post"> <font color ="black">
+   				 	<font color ="white">Name: </font><input type="text" name="nombre"><br>
+   					<font color ="white">Email: </font><input type="text" name="email"><br>
+    				<input type="submit" value="Enviar">
+			</form>
+
 					
 				</div>
 			</div>
-			<br><br><br>
+			<br><br><br>	
 			<div class="texttotal">
 						<img src="resources/Images/telefono.png" style=" width:9%; height:1%;"> <p><font color ="white">Call us at <br>  94 751 34 12</font></p>
 						<br>
@@ -129,6 +138,9 @@
 						<br>
 						<img src="resources/Images/ubicacion.png" style="width:9%; height:1%;"><p><font color ="white"> We are in axpe <br>  San Juan Plaza, 1, 48291 Axpe, Bizkaia </font> </p>
 			</div>
+
+
+
 
 	</body>
 
