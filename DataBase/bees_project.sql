@@ -31,7 +31,7 @@ USE `bees_project`;
 --
 
 CREATE TABLE `compras` (
-  `numero compra` int(25) NOT NULL,
+  `numeroCompra` int(25) NOT NULL,
   `id_producto` int(5) NOT NULL,
   `precio` varchar(25) NOT NULL,
   `cantidad` int(25) NOT NULL
