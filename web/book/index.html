@@ -80,7 +80,6 @@
                     return;
                 }
                 document.querySelector('#ezbete').style.display = 'none';
-                alert(JSON.stringify(new getinfo()));
                 xhttp.open("GET", "book.php?x=" + JSON.stringify(new getinfo()), true);
                 xhttp.send();
             };

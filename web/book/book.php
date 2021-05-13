@@ -5,12 +5,12 @@ include_once '../test_input.php';
 include_once '../test_connect_db.php';
 include_once 'get_booked.php';
 session_start();
-$dni = '12345678G';
-//if (!isset($_SESSION['erablitzailea_a_g'])) {
-//    echo json_encode(['ezinduzu' => true]);
-//    exit();
-//}
-//$dni = $_SESSION['erablitzailea_a_g'];
+//$dni = '12345678G';
+if (!isset($_SESSION['erablitzailea_a_g'])) {
+    echo json_encode(['ezinduzu' => true]);
+    exit();
+}
+$dni = $_SESSION['erablitzailea_a_g'];
 
 $ret = new stdClass();
 $conn = ConnectDataBase();
