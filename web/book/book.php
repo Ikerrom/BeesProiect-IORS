@@ -16,44 +16,57 @@ $ret = new stdClass();
 $conn = ConnectDataBase();
 $conn->autocommit(false);
 $conn->begin_transaction();
-$rb = false;
 if (!isset($_GET['x'])) {
     $arr = new stdClass();
 } else {
     $arr = json_decode($_GET['x']);
 }
 if (isset($arr->date) && property_exists($arr, 'lataid')) {
-    if ($arr->lataid === null) {
-        $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-                . " dia_dereserva) VALUES (?, ?, NULL, NOW())");
-        $stmt->bind_param("ss", $dni, $arr->date);
-    } else {
-        $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-                . " dia_dereserva) VALUES (?, ?, ?, NOW())");
-        $stmt->bind_param("ssi", $dni, $arr->date, $arr->lataid);
-    }
-    if (!$stmt->execute()) {
+    $dt = (new DateTime())->format('Y-m-d H:i:s');
+    try {
+        if ($arr->lataid === null) {
+            $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
+                    . " dia_dereserva) VALUES (?, ?, NULL, ?)");
+            $stmt->bind_param("sss", $dni, $arr->date, $dt);
+        } else {
+            $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
+                    . " dia_dereserva) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssis", $dni, $arr->date, $arr->lataid, $dt);
+        }
+
+        $stmt->execute();
         $stmt->close();
-        $ret->date = "INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-                . " dia_dereserva) VALUES ('$dni', '$arr->date', $arr->lataid, NOW())";
+        if ($arr->lataid === null) {
+            $ret->eginda = true;
+        } else {
+            $stmt2 = $conn->prepare("SELECT dni, dia_dereserva FROM Reservas "
+                    . "WHERE lata_id = ? AND dia_reservado BETWEEN ? AND ? "
+                    . "ORDER BY dia_dereserva ASC, dni");
+            $booking = get_booked($arr);
+            $stmt2->bind_param('iss', $arr->lataid, $booking['from'], $booking['until']);
+            $ret->sql2 = "SELECT dni, dia_dereserva FROM Reservas "
+                    . "WHERE lata_id = $arr->lataid AND dia_reservado "
+                    . "BETWEEN " . $booking['from'] . " AND " . $booking['until']
+                    . " ORDER BY dia_dereserva ASC, dni";
+            $stmt2->execute();
+            $stmt2->bind_result($firstdni, $firsttime);
+            if ($stmt2->fetch() && $firstdni === $dni && $firsttime === $dt) {
+                $ret->eginda = true;
+                $stmt2->close();
+            } else {
+                $ret->aaa = [$firstdni, $dni, $firsttime, $dt];
+                $stmt2->close();
+                $conn->rollback();
+                $ret->ezlata = true;
+            }
+        }
+    } catch (mysqli_sql_exception $e) {
+        $stmt->close();
+        $ret->sql1 = "INSERT INTO Reservas (dni, dia_reservado, lata_id,"
+                . " dia_dereserva) VALUES ('$dni', '$arr->date', $arr->lataid, $dt";
 
         $conn->rollback();
         $ret->ezinda = true;
-    } else {
-        $stmt->close();
-        $stmt2 = $conn->prepare("SELECT * FROM Reservas "
-                . "WHERE lata_id = ? AND dia_reservado BETWEEN ? AND ? "
-                . "ORDER BY dia_dereserva ASC, dni");
-        $booking = get_booked($arr);
-        $stmt2->bind_param('iss', $arr->lataid, $booking['from'], $booking['until']);
-        $stmt2->execute();
-        if ($stmt2->num_rows > 0) {
-            $rb = true;
-            $ret->ezlata = true;
-        } else {
-            $ret->eginda = true;
-        }
-        $stmt2->close();
     }
 }
 
@@ -65,9 +78,6 @@ while ($stmt3->fetch()) {
     $ret->lataid[] = $lataid;
 }
 $stmt3->close();
-if ($rb) {
-    $conn->rollback();
-}
 $conn->autocommit(true);
 $conn->commit();
 $conn->close();
