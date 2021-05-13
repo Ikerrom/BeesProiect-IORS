@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2021 a las 10:43:48
+-- Tiempo de generación: 13-05-2021 a las 10:47:14
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bees_project`
 --
+DROP DATABASE IF EXISTS `bees_project`;
+CREATE DATABASE IF NOT EXISTS `bees_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bees_project`;
 
 -- --------------------------------------------------------
 
