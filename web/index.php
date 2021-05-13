@@ -27,14 +27,11 @@
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-
-						$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'"); 
-
+						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
-
 								<div class="perfil">
-								<img class="perfilimage" src="resources/Images/perfil.png">
+								<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
 								<p>User: <?php echo $imprimir['nombre'];?></p>
 								<p>DNI: <?php echo $dni;?></p>
 
