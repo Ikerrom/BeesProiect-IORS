@@ -44,17 +44,12 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
                     . "ORDER BY dia_dereserva ASC, dni");
             $booking = get_booked($arr);
             $stmt2->bind_param('iss', $arr->lataid, $booking['from'], $booking['until']);
-            $ret->sql2 = "SELECT dni, dia_dereserva FROM Reservas "
-                    . "WHERE lata_id = $arr->lataid AND dia_reservado "
-                    . "BETWEEN " . $booking['from'] . " AND " . $booking['until']
-                    . " ORDER BY dia_dereserva ASC, dni";
             $stmt2->execute();
             $stmt2->bind_result($firstdni, $firsttime);
             if ($stmt2->fetch() && $firstdni === $dni && $firsttime === $dt) {
                 $ret->eginda = true;
                 $stmt2->close();
             } else {
-                $ret->aaa = [$firstdni, $dni, $firsttime, $dt];
                 $stmt2->close();
                 $conn->rollback();
                 $ret->ezlata = true;
@@ -62,9 +57,6 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
         }
     } catch (mysqli_sql_exception $e) {
         $stmt->close();
-        $ret->sql1 = "INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-                . " dia_dereserva) VALUES ('$dni', '$arr->date', $arr->lataid, $dt";
-
         $conn->rollback();
         $ret->ezinda = true;
     }
