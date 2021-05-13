@@ -41,7 +41,7 @@ CREATE TABLE `compras` (
 -- Volcado de datos para la tabla `compras`
 --
 
-INSERT INTO `compras` (`numero compra`, `id_producto`, `precio`, `cantidad`) VALUES
+INSERT INTO `compras` (`numeroCompra`, `id_producto`, `precio`, `cantidad`) VALUES
 (23, 1, '2€', 20),
 (51, 2, '1€', 7),
 (61, 3, '5€', 6),
