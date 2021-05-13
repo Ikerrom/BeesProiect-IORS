@@ -17,16 +17,7 @@
 			</head>
 	  <body>
 
-	  	 <?php
-				    session_start();
-				    if (isset($_SESSION['erablitzailea_a_g'])) {
-				    include("test_connect_db.php");
-					$dni = $_SESSION['erablitzailea_a_g'];
-					$link =  ConnectDataBase();
-					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas where dni = '$dni'"); 
-					$imprimir = mysqli_fetch_array($result);
 
-					?>
 
 					<div class="title">
 						<p class="titletext">ERLETE</p>
@@ -51,22 +42,28 @@
 	   			<div class="bgdiv">
 	   				<div class="bgacc">
 						<div class="photoacc">
-							<form action="account.php" method="POST" enctype="multipart/form-data">
-								<input class="buttonT" type="file" name="foto"> 
-								<input type="submit">
-							</form>
+								<?php
+								session_start();
+				    			if (isset($_SESSION['erablitzailea_a_g'])) {
+					    			include("test_connect_db.php");
+					    			$dni = $_SESSION['erablitzailea_a_g'];
+									$link =  ConnectDataBase();
+									$result3=mysqli_query($link, "select Foto from Personas where dni = '$dni'");
+									$imprimir=mysqli_fetch_array($result3);
+									?>
 
-							<?php if (isset($_POST['foto'])) {
-								$dir = "resources/Images/Perfiles";
-								$imagetmp = $_FILES['foto']['name'];
-								$file = $_FILES['foto']['tmp_name'];
-								$dir = $dir . "/" . $imagetmp;
-								move_uploaded_file($file, $dir);
-							}  ?>
+								<img src="<?php echo $imprimir['Foto']; ?>">
+								<form action="upload.php" method="POST" enctype="multipart/form-data">
+									<input type='file' name="imagen">
+									<input type="submit">
+								</form>
+
+	  	 			<?php	
+					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas where dni = '$dni'"); 
+					$imprimir = mysqli_fetch_array($result);
+					?>
 
 						</div>
-
-
 						<div class="campoacc">
 								<p class="textstyleacc">DNI:</p>
 							<?php  
@@ -123,7 +120,7 @@
 									</tr>
 							</thead>
 					<?php
-						$result2 =mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas"); 
+						$result2 =mysqli_query($link, "select dni,nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas"); 
 						while($imprimir2 = mysqli_fetch_array($result2)){
 							if ($result2->num_rows > 0) {
 							  	?>
@@ -131,7 +128,7 @@
 											<tr>
 												<td>
 													<?php  
-														echo $dni;
+														echo $imprimir2['dni'];
 													?>	
 												</td>
 												<td>
