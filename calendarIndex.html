@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		span{float:left;}
+		button{
+			float:left;
+			width: 4vw;
+			height: 4vh;
+		}
+		.spacer{
+			float: left;
+			width: 4vw;
+			height: 4vh;
+		}
+		#content{
+			display:flex;
+			flex-direction:column;
+		}
+
+
+	</style>
+	<script>
+		    var xhttpcalendar = new XMLHttpRequest();
+            xhttpcalendar.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    parseinfocalendar(JSON.parse(this.responseText));
+                }
+            };
+
+            function getinfocalendar(){
+            	this.year = document.querySelector('#year').value;
+            	this.month = document.querySelector('#month').value - 1;
+            }
+
+             function parseinfocalendar(obj) {
+             	var month = document.querySelector('#month').value;
+             	var year = document.querySelector('#year').value;
+             	var i = obj.diainicio;
+             	var diacounter = 1;
+             	var done = false;
+             	var ret = "";
+
+             	ret += "<div>";
+		             for (var j = 0; j < i; ++j) {
+		             	ret += '<div class="spacer"></div>';
+		             }
+             	while (!done) {
+             			if (!(diacounter === 1)) {
+             				ret += "<div>";
+             			}
+             		
+             		for (; i < 7 && !done; i++) {
+             		  	ret += '<button value="' + year + "-" + month + "-" + diacounter +'">' + diacounter + '</button>';
+             		  	diacounter += 1;
+             		  	if (diacounter > obj.dias) {done = true;}
+
+             		}
+             		i = 0;
+             		ret += "</div>";      	
+             	}
+             	document.querySelector('#content').innerHTML = ret;
+             }
+	</script>
+</head>
+	<body>
+		<form action="">
+			<div id="content">	
+			</div>
+		</form>
+		<input type="number" id="year">
+		<input type="number" id="month">
+		<button id="submit">Submit</button>
+        <script>
+            xhttpcalendar.open("GET", "book.php", true);
+            xhttpcalendar.send();
+
+            document.querySelector('#submit').onclick = function () {
+           	alert(JSON.stringify(new getinfocalendar()));
+            xhttpcalendar.open("GET", "test2.php?x=" + JSON.stringify(new getinfocalendar()), true);
+            xhttpcalendar.send();
+            };
+        </script>
+</html>
