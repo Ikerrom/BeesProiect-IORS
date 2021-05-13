@@ -46,16 +46,16 @@ public class Reserve {
         return dia_reservado;
     }
 
-    public void setDia_reservado(LocalDate dia_reservado) {
-        this.dia_reservado = dia_reservado;
+    public void setDia_reservado(String dia_reservado) {
+        this.dia_reservado = LocalDate.parse(dia_reservado);
     }
 
     public LocalDate getDia_dereserva() {
         return dia_dereserva;
     }
 
-    public void setDia_dereserva(LocalDate dia_dereserva) {
-        this.dia_dereserva = dia_dereserva;
+    public void setDia_dereserva(String dia_dereserva) {
+        this.dia_dereserva = LocalDate.parse(dia_dereserva);
     }
 
     @Override

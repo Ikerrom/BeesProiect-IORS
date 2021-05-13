@@ -139,7 +139,10 @@ public class AdminMenu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(895, 338));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Open viewReserves
+     * @param evt  the old-style event
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ViewReserves view1 = ViewReserves.viewaSortuBistaratu();
@@ -148,7 +151,10 @@ public class AdminMenu extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Open ViewBuys
+     * @param evt  the old-style event
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
@@ -156,7 +162,10 @@ public class AdminMenu extends javax.swing.JFrame {
         BuysController controller = new BuysController (mode11, view1);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    /**
+     * Open ViewMembers
+     * @param evt  the old-style event
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         ViewMembers view = ViewMembers.viewaSortuBistaratu();
@@ -164,7 +173,10 @@ public class AdminMenu extends javax.swing.JFrame {
         MemberController controller = new MemberController (model, view);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    /**
+     * Sign off 
+     * @param evt  the old-style event
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "See you soon");

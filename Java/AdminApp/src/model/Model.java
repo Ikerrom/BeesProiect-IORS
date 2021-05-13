@@ -28,6 +28,10 @@ import static model.Model.connect;
  * @author arambarri.oihana
  */
 public class Model {
+    /**
+     * 
+     * @return connection to dataBase
+     */
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -41,6 +45,12 @@ public class Model {
         
         return conn;
     }
+    /**
+     * Validate login 
+     * Check the user and pass are in dataBase
+     * @param user dni of member
+     * @param pass password of member
+     */
     public static void login(String user, String pass){
         String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+"'";
         try (Connection conn = connect();
@@ -56,7 +66,11 @@ public class Model {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-    }  
+    }
+    /***
+     * 
+     * @return Members of data base
+     */
     public static ArrayList<Member> read() {
         ArrayList<Member> members = new ArrayList<>();
         String taula = "personas";
@@ -74,6 +88,11 @@ public class Model {
         }
         return members;
     }
+    /**
+     * Add Member to DataBase
+     * @param m object member
+     * @return 
+     */
     public static int addMember(Member m){
         String sql = "INSERT INTO personas(dni,nombre,apellido,gmail,contraseña,admin,dinero_pagar,dinero_cuenta,foto) VALUES(?,?,?,?,?,?,?,?,?)";
         try (Connection conn = connect();
@@ -93,6 +112,10 @@ public class Model {
             return 0;
         }
     }
+    /**
+     * DeleteMember of DataBase
+     * @param m object member
+     */
     public static void deleteMember(Member m) {
         String sql = "DELETE FROM personas WHERE dni = ?";
 
@@ -105,6 +128,10 @@ public class Model {
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * Update data of member
+     * @param m object member
+     */
     public static  void updateMember(Member m) {
         String sql = "UPDATE personas SET nombre = ? ,"
                 + "apellido = ? ,"
@@ -133,15 +160,30 @@ public class Model {
         }
     }
     public static ArrayList<Reserve> readReserve() {
+//        ArrayList<Reserve> reserves = new ArrayList<>();
+//
+//        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM ((reservas INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
+//
+//        try (Connection conn = connect();
+//                Statement stmt = conn.createStatement();
+//                ResultSet rs = stmt.executeQuery(sql)) {
+//            while (rs.next()) {
+//                Reserve r= new Reserve(rs.getString("dni"),rs.getString("dia_reservado"),rs.getInt("id_lata"),rs.getString("dia_dereserva"));
+//                reserves.add(r);
+//            }
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return reserves;
         ArrayList<Reserve> reserves = new ArrayList<>();
 
-        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM ((reservas INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
+        String sql = "SELECT * FROM reservas";
 
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-//                Reserve r= new Reserve(rs.getString("dni"),rs.getString("dia_reservado"),rs.getInt("id_lata"),rs.getString("dia_dereserva"));
+//                Reserve r=new Reserve(rs.getNString("dni"),rs.getNString("dia_reservado"),rs.getInt("lata_id"),rs.getNString("dia_dereserva"));
 //                reserves.add(r);
             }
         } catch (Exception ex) {
@@ -154,9 +196,9 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setObject(1,r.getDni());
+            ptmt.setString(4,String.valueOf(r.getDia_reservado()));
             ptmt.setInt(3,r.getIdLata());
-//            ptmt.setString(2,LocalDate.parse(r.getReserveDate()));
-//            ptmt.setString(4,r.getReserveDate2());
+            ptmt.setString(4,String.valueOf(r.getDia_dereserva()));
    
             return ptmt.executeUpdate();
         } catch (SQLException e) {
@@ -184,15 +226,19 @@ public class Model {
 
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,r.getIdLata());
-//            pstmt.setString(2,r.getReserveDate());
-//            pstmt.setString(3, r.getReserveDate2());
-            pstmt.setObject(4, r.getDni());
+            pstmt.setObject(1,r.getDni());
+            pstmt.setString(4,String.valueOf(r.getDia_reservado()));
+            pstmt.setInt(3,r.getIdLata());
+            pstmt.setString(4,String.valueOf(r.getDia_dereserva()));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * 
+     * @return Buys of DataBase
+     */
     public static ArrayList<Buys> readBuys() {
         ArrayList<Buys> buys = new ArrayList<>();
         String taula = "compras";
@@ -210,6 +256,11 @@ public class Model {
         }
         return buys;
     }
+    /**
+     * add Buys to DataBase
+     * @param b object buys
+     * @return 
+     */
     public static int addBuys(Buys b){
         String sql = "INSERT INTO compras(numeroCompra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
@@ -217,7 +268,7 @@ public class Model {
             ptmt.setInt(1,b.getNumberBuy());
             ptmt.setInt(2,b.getId_product());
             ptmt.setString(3,b.getPrice());
-            ptmt.setInt(4,b.getAmount());
+            ptmt.setInt(4,b.getAccount());
    
             return ptmt.executeUpdate();
         } catch (SQLException e) {
@@ -225,6 +276,10 @@ public class Model {
             return 0;
         }
     }
+    /**
+     * Delete Buys of dataBase
+     * @param b object buys
+     */
     public static void deleteBuys(Buys b) {
         String sql = "DELETE FROM compras WHERE numeroCompra = ?";
 
@@ -237,6 +292,10 @@ public class Model {
             System.out.println(e.getMessage());
         }
     }
+    /**
+     * Update data of buys 
+     * @param b object buys
+     */
     public static void updateBuys(Buys b) {
         String sql = "UPDATE compras SET id_producto= ?, precio=?, cantidad=? WHERE numeroCompra=?";
 
@@ -244,7 +303,7 @@ public class Model {
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, b.getId_product());
             pstmt.setString(2, b.getPrice());
-            pstmt.setInt(3, b.getAmount());
+            pstmt.setInt(3, b.getAccount());
             pstmt.setInt(4, b.getNumberBuy());
             
             pstmt.executeUpdate();

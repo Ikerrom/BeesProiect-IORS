@@ -196,7 +196,10 @@ public class ViewReserves extends javax.swing.JFrame {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here      
     }//GEN-LAST:event_jComboBox1ItemStateChanged
-
+/**
+ * Invoked when the mouse button has been clicked (pressed and released) on a component.
+ * @param evt 
+ */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
 //        int nb =(int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);

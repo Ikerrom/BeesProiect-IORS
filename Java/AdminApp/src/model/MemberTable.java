@@ -13,27 +13,41 @@ import javax.swing.table.AbstractTableModel;
  * @author arambarri.oihana
  */
 public class MemberTable extends AbstractTableModel {
+    /**
+     * Private atributes
+     */
     private ArrayList<Member> members = new ArrayList<>();
     private String[] columns = {"Dni","Name","Surname","Gmail","Password","Admin","MoneyToPay","MoneyInAccount","Photo url"};
-    
+    /**
+     * Constructor
+     */
     public MemberTable(){
       members=Model.read();
     }
+    /**
+     * Returns the number of rows in the model.
+     */
     @Override
     public int getRowCount() {
         return members.size();
     }
-    
+    /**
+     * Returns the number of columns in the model.
+     */
     @Override
     public int getColumnCount() {
         return columns.length;
     }
-   
+   /**
+     * Returns the name of the column at columnIndex.
+     */  
     @Override
     public String getColumnName(int column){
         return columns[column];
     }
-    
+    /**
+     * Returns the value for the cell at columnIndex and rowIndex.
+     */
     @Override
     public Object getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){

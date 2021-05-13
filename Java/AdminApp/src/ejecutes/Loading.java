@@ -88,6 +88,7 @@ public class Loading extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * Loading...
      * @param args the command line arguments
      */
     public static void main(String args[]) {

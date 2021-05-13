@@ -17,21 +17,36 @@ import model.Member;
  * @author oihan
  */
 public class MemberController implements ActionListener {
+    /**
+     * Private atributes
+     */
     private Model model;
     private ViewMembers viewMembers;
+    /**
+     * Constructor
+     * @param model Model
+     * @param viewMembers  viewMembers
+     */
     public MemberController(Model model, ViewMembers viewMembers) {
         this.model = model;
         this.viewMembers = viewMembers;
         anadirActionListener(this);
         
-    }    
+    }
+    /**
+     * Called just after the user performs an action.
+     * @param listener 
+     */
     private void anadirActionListener(ActionListener listener) {
-        //GUIaren konponente guztiei gehitu listenerra
         viewMembers.jButton1.addActionListener(listener);
         viewMembers.jButton2.addActionListener(listener);
         viewMembers.jButton3.addActionListener(listener);
         viewMembers.jButton4.addActionListener(listener);
     }
+    /**
+     * Invoked when an action occurs.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();

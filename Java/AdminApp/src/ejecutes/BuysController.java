@@ -18,14 +18,26 @@ import model.Member;
  * @author oihan
  */
 public class BuysController implements ActionListener {
+    /**
+     * Private atributes
+     */
     private Model model;
     private ViewBuys viewBuys;
+    /**
+     * Constructor
+     * @param model Model
+     * @param viewBuys ViewBuys
+     */
     public BuysController(Model model, ViewBuys viewBuys) {
         this.model = model;
         this.viewBuys = viewBuys;
         anadirActionListener(this);
         
-    }    
+    }
+    /**
+     * Called just after the user performs an action.
+     * @param listener 
+     */
     private void anadirActionListener(ActionListener listener) {
         //GUIaren konponente guztiei gehitu listenerra
         viewBuys.jButton1.addActionListener(listener);
@@ -33,6 +45,10 @@ public class BuysController implements ActionListener {
         viewBuys.jButton3.addActionListener(listener);
         viewBuys.jButton5.addActionListener(listener);
     }
+    /**
+     * Invoked when an action occurs.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();

@@ -242,7 +242,10 @@ public class ViewMembers extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Invoked when the mouse button has been clicked (pressed and released) on a component.
+     * @param evt 
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         String dni =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 0);

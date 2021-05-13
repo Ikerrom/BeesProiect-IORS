@@ -15,14 +15,26 @@ import model.Model;
  * @author inazi
  */
 public class ReservesController implements ActionListener {
+    /**
+     * Private atributes
+     */
     private Model model;
     private ViewReserves viewReserves;
+    /**
+     * Constructor
+     * @param model Model
+     * @param viewReserves  ViewReserves
+     */
     public ReservesController(Model model, ViewReserves viewReserves) {
         this.model = model;
         this.viewReserves = viewReserves;
         anadirActionListener(this);
         
     }    
+    /**
+     * Called just after the user performs an action.
+     * @param listener 
+     */
     private void anadirActionListener(ActionListener listener) {
         //GUIaren konponente guztiei gehitu listenerra
         viewReserves.jButton1.addActionListener(listener);
@@ -30,6 +42,10 @@ public class ReservesController implements ActionListener {
         viewReserves.jButton3.addActionListener(listener);
         viewReserves.jButton4.addActionListener(listener);
     }
+    /**
+     * Invoked when an action occurs.
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();

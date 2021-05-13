@@ -10,53 +10,86 @@ package model;
  * @author arambarri.oihana
  */
 public class Buys {
+    /**
+    * Private atributes
+    */
     private int numberBuy;
     private int id_product;
     private String price;
-    private int amount;
-
-    public Buys(int numberBuy, int id_product, String price, int amount) {
+    private int account;
+    /**
+     * Constructor
+     * @param numberBuy number of buy
+     * @param id_product id of product
+     * @param price price of buy
+     * @param account  how many buy
+     */
+    public Buys(int numberBuy, int id_product, String price, int account) {
         this.numberBuy = numberBuy;
         this.id_product = id_product;
         this.price = price;
-        this.amount = amount;
+        this.account = account;
     }
-
+    /**
+     * 
+     * @return number of this buy
+     */
     public int getNumberBuy() {
         return numberBuy;
     }
-
+    /**
+     * 
+     * @param numberBuy Sets the number of buy  to the given value
+     */
     public void setNumberBuy(int numberBuy) {
         this.numberBuy = numberBuy;
     }
-
+    /**
+     * 
+     * @return id of product
+     */
     public int getId_product() {
         return id_product;
     }
-
+    /**
+     * 
+     * @param id_product Sets the id_product to the given value
+     */
     public void setId_product(int id_product) {
         this.id_product = id_product;
     }
-
+    /**
+     * 
+     * @return price of this buy
+     */
     public String getPrice() {
         return price;
     }
-
+    /**
+     * 
+     * @param price Sets the price to the given value
+     */
     public void setPrice(String price) {
         this.price = price;
     }
-
-    public int getAmount() {
-        return amount;
+    /**
+     * 
+     * @return account of this buy
+     */
+    public int getAccount() {
+        return account;
     }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
+    /**
+     * 
+     * @param account Sets the account to the given value 
+     */
+    public void setAccount(int account) {
+        this.account = account;
     }
 
     @Override
     public String toString() {
-        return "Buys{" + "numberBuy=" + numberBuy + ", id_product=" + id_product + ", price=" + price + ", amount=" + amount + '}';
+        return "Buys{" + "numberBuy=" + numberBuy + ", id_product=" + id_product + ", price=" + price + ", account=" + account + '}';
     }
     
     
