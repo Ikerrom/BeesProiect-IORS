@@ -58,6 +58,8 @@ public class ViewMembers extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -115,6 +117,8 @@ public class ViewMembers extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setContentAreaFilled(false);
 
+        jLabel10.setText("Photo url: ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -133,7 +137,11 @@ public class ViewMembers extends javax.swing.JFrame {
                                 .addGap(66, 66, 66)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(66, 66, 66)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -170,9 +178,7 @@ public class ViewMembers extends javax.swing.JFrame {
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                            .addComponent(jButton2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -207,7 +213,9 @@ public class ViewMembers extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
@@ -245,6 +253,8 @@ public class ViewMembers extends javax.swing.JFrame {
         boolean admin = (boolean) jTable1.getValueAt(jTable1.getSelectedRow(), 5);
         String moneyPay =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 6);
         String moneyAccount =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 7);
+        String photo =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 8);
+        
         jTextField1.setText(dni);
         jTextField2.setText(name);
         jTextField3.setText(surname);
@@ -253,6 +263,7 @@ public class ViewMembers extends javax.swing.JFrame {
         jCheckBox1.setSelected(admin);
         jTextField6.setText(moneyPay);
         jTextField7.setText(moneyAccount);
+        jTextField8.setText(photo);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
@@ -275,6 +286,7 @@ public class ViewMembers extends javax.swing.JFrame {
     javax.swing.JButton jButton4;
     javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
@@ -293,6 +305,7 @@ public class ViewMembers extends javax.swing.JFrame {
     javax.swing.JTextField jTextField5;
     javax.swing.JTextField jTextField6;
     javax.swing.JTextField jTextField7;
+    javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
 }

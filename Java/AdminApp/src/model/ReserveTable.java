@@ -38,7 +38,7 @@ public class ReserveTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
-            case 0: return reserves.get(rowIndex).getM1();
+            case 0: return reserves.get(rowIndex).getDni();
             case 1: return reserves.get(rowIndex).getIdLata();
             case 2: return reserves.get(rowIndex).getDia_reservado();
             case 3: return reserves.get(rowIndex).getDia_dereserva();

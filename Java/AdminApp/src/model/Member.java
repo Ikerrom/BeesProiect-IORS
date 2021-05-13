@@ -18,8 +18,9 @@ public class Member {
     private boolean admin;
     private String moneyToPay;
     private String moneyInAccount;
+    private String photo;
 
-    public Member(String dni, String name, String surname, String gmail, String password, boolean admin, String moneyToPay, String moneyInAccount) {
+    public Member(String dni, String name, String surname, String gmail, String password, boolean admin, String moneyToPay, String moneyInAccount,String photo) {
         this.dni = dni;
         this.name = name;
         this.surname = surname;
@@ -28,6 +29,7 @@ public class Member {
         this.admin = admin;
         this.moneyToPay = moneyToPay;
         this.moneyInAccount = moneyInAccount;
+        this.photo=photo;
     }
     public Member(String dni,String password){
         this.dni = dni;
@@ -98,10 +100,20 @@ public class Member {
         this.moneyInAccount = moneyInAccount;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
-        return "Member{" + "dni=" + dni + ", name=" + name + ", surname=" + surname + ", gmail=" + gmail + ", password=" + password + ", admin=" + admin + ", moneyToPay=" + moneyToPay + ", moneyInAccount=" + moneyInAccount + '}';
+        return "Member{" + "dni=" + dni + ", name=" + name + ", surname=" + surname + ", gmail=" + gmail + ", password=" + password + ", admin=" + admin + ", moneyToPay=" + moneyToPay + ", moneyInAccount=" + moneyInAccount + ", photo=" + photo + '}';
     }
+
+    
     
     
 }

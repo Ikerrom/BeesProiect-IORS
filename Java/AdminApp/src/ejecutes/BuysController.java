@@ -41,7 +41,7 @@ public class BuysController implements ActionListener {
             case "Add":
                 int numberBuy = Integer.valueOf(viewBuys.jTextField1.getText());
                 int id_product = Integer.valueOf(viewBuys.jTextField2.getText());
-                int price = Integer.valueOf(viewBuys.jTextField3.getText());
+                String price = (String)(viewBuys.jTextField3.getText());
                 int account = Integer.valueOf(viewBuys.jTextField4.getText());
                 Buys b=new Buys(numberBuy,id_product,price,account);
                 model.addBuys(b);
@@ -52,7 +52,7 @@ public class BuysController implements ActionListener {
                 break;
             case "Delete":
                 if(viewBuys.jTable1.getSelectedRow()!=-1){
-                    Buys b1=new Buys(Integer.parseInt(viewBuys.jTextField1.getText()),Integer.parseInt(viewBuys.jTextField2.getText()),Integer.parseInt(viewBuys.jTextField3.getText()),Integer.parseInt(viewBuys.jTextField4.getText()));
+                    Buys b1=new Buys(Integer.parseInt(viewBuys.jTextField1.getText()),Integer.parseInt(viewBuys.jTextField2.getText()),(String)(viewBuys.jTextField3.getText()),Integer.parseInt(viewBuys.jTextField4.getText()));
                     model.deleteBuys(b1);
                     this.viewBuys.setVisible(false);
                     ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
@@ -67,7 +67,7 @@ public class BuysController implements ActionListener {
                 if (viewBuys.jTable1.getSelectedRow()!=-1) {
                     int nb = Integer.parseInt(viewBuys.jTextField1.getText());
                     int idproduct = Integer.valueOf(viewBuys.jTextField2.getText());
-                    int pric = Integer.valueOf(viewBuys.jTextField3.getText());
+                    String pric = (String)(viewBuys.jTextField3.getText());
                     int acco = Integer.valueOf(viewBuys.jTextField4.getText());
                     viewBuys.jTable1.setValueAt(nb, viewBuys.jTable1.getSelectedRow(), 0);
                     viewBuys.jTable1.setValueAt(idproduct, viewBuys.jTable1.getSelectedRow(), 1);

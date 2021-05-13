@@ -38,7 +38,7 @@ public class MemberController implements ActionListener {
         //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
-                Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),viewMembers.jTextField6.getText(),viewMembers.jTextField7.getText());
+                Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),viewMembers.jTextField6.getText(),viewMembers.jTextField7.getText(),viewMembers.jTextField8.getText());
                 model.addMember(m);
                 this.viewMembers.setVisible(false);
                 ViewMembers view2 = ViewMembers.viewaSortuBistaratu();
@@ -47,7 +47,7 @@ public class MemberController implements ActionListener {
                 break;
             case "Delete":
                 if(viewMembers.jTable1.getSelectedRow()!=-1){
-                    Member me=new Member((String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 0),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 1),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 2),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 3),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 4),(boolean)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 5),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 6),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 7));
+                    Member me=new Member((String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 0),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 1),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 2),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 3),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 4),(boolean)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 5),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 6),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 7),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 8));
                     model.deleteMember(me);
                     this.viewMembers.setVisible(false);
                     ViewMembers view1 = ViewMembers.viewaSortuBistaratu();
@@ -69,7 +69,8 @@ public class MemberController implements ActionListener {
                     boolean admin=(boolean) viewMembers.jCheckBox1.isSelected();
                     String moneyPay = (String)viewMembers.jTextField6.getText();
                     String moneyAccount=(String) viewMembers.jTextField7.getText();
-
+                    String photo=(String) viewMembers.jTextField8.getText();
+                    
                     viewMembers.jTable1.setValueAt(dni, viewMembers.jTable1.getSelectedRow(), 0);
                     viewMembers.jTable1.setValueAt(name, viewMembers.jTable1.getSelectedRow(), 1);
                     viewMembers.jTable1.setValueAt(surname, viewMembers.jTable1.getSelectedRow(), 2);
@@ -78,7 +79,9 @@ public class MemberController implements ActionListener {
                     viewMembers.jTable1.setValueAt(admin, viewMembers.jTable1.getSelectedRow(), 5);
                     viewMembers.jTable1.setValueAt(moneyPay, viewMembers.jTable1.getSelectedRow(), 6);
                     viewMembers.jTable1.setValueAt(moneyAccount, viewMembers.jTable1.getSelectedRow(), 7);
-                    Member memb=new Member(dni,name,surname,gmail,password,admin,moneyPay,moneyAccount);
+                    viewMembers.jTable1.setValueAt(moneyAccount, viewMembers.jTable1.getSelectedRow(), 8);
+                    
+                    Member memb=new Member(dni,name,surname,gmail,password,admin,moneyPay,moneyAccount,photo);
                     model.updateMember(memb);
                     JOptionPane.showMessageDialog(null, "Is change");
                     this.viewMembers.setVisible(false);

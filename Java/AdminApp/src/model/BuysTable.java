@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class BuysTable extends AbstractTableModel {
     private ArrayList<Buys> buys = new ArrayList<>();
-    private String[] columns = {"NumberBuys","id_product","Price","amount"};
+    private String[] columns = {"NumberBuys","id_product","Price","Account"};
     
     public BuysTable(){
         buys=Model.readBuys();

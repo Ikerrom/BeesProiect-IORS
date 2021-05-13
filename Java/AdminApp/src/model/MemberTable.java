@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class MemberTable extends AbstractTableModel {
     private ArrayList<Member> members = new ArrayList<>();
-    private String[] columns = {"Dni","Name","Surname","Gmail","Password","Admin","MoneyToPay","MoneyInAccount"};
+    private String[] columns = {"Dni","Name","Surname","Gmail","Password","Admin","MoneyToPay","MoneyInAccount","Photo url"};
     
     public MemberTable(){
       members=Model.read();
@@ -45,6 +45,7 @@ public class MemberTable extends AbstractTableModel {
             case 5: return members.get(rowIndex).isAdmin();
             case 6: return members.get(rowIndex).getMoneyToPay();
             case 7: return members.get(rowIndex).getMoneyInAccount();
+            case 8: return members.get(rowIndex).getPhoto();
             default: return null;
         }
     }

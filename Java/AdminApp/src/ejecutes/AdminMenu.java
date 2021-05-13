@@ -142,8 +142,9 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ViewReserves m=new ViewReserves();
-        m.setVisible(true);
+        ViewReserves view1 = ViewReserves.viewaSortuBistaratu();
+        Model mode11 = new Model();
+        ReservesController controller = new ReservesController (mode11, view1);
         this.dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
