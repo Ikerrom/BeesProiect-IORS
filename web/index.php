@@ -84,7 +84,7 @@
 					With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
 					</p>	
 					
-					<img src="resources/Images/erlete1.jpg" width=70% height=16%>
+					<img src="resources/images/web_imges/erlete1.jpg" width=70% height=16%>
 
 				
 					<p>
@@ -132,15 +132,15 @@
 						    <!-- Wrapper for slides -->
 						    <div class="carousel-inner">
 						      <div class="item active">
-						        <img src="resources/Images/erlete3.jpg" alt="Los Angeles" style= "height: 25% width:60%">
+						        <img src="resources/images/web_imges/erlete3.jpg" alt="Los Angeles" style= "height: 25% width:60%">
 						      </div>
 
 						      <div class="item">
-						        <img src="resources/Images/erlete5.jpg" alt="Chicago" style="height: 25% width:100%;">
+						        <img src="resources/images/web_imges/erlete5.jpg" alt="Chicago" style="height: 25% width:100%;">
 						      </div>
 						    
 						      <div class="item">
-						        <img src="resources/Images/erlete4.jpg" alt="New york" style=" height: 25% width:40%;">
+						        <img src="resources/images/web_imges/erlete4.jpg" alt="New york" style=" height: 25% width:40%;">
 						      </div>
 						    </div>
 

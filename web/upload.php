@@ -1,6 +1,6 @@
 <?php
 
-	$dir = "resources/Images/Perfiles";
+	$dir = "resources/images/perfiles";
 	$imagen =$_FILES['imagen']['name'];
 	$archivo = $_FILES['imagen']['tmp_name'];
 	$dir = $dir."/".$imagen;
