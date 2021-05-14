@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		button{
+			float:left;
+			width: 4vw;
+			height: 4vh;
+		}
+		.spacer{
+			float: left;
+			width: 4vw;
+			height: 4vh;
+		}
+		#content{
+			display:flex;
+			flex-direction:column;
+		}
+
+
+	</style>
+	<script>
+		    var xhttpcalendar = new XMLHttpRequest();
+            xhttpcalendar.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    parseinfocalendar(JSON.parse(this.responseText));
+                }
+            };
+
+            function getinfocalendar(){
+            	this.year = document.querySelector('#year').value;
+            	this.month = document.querySelector('#month').value - 1;
+                this.random = Math.random();
+            }
+
+             function parseinfocalendar(obj) {
+                alert(JSON.stringify(obj));
+             	var month = obj.month;
+             	var year = obj.year;
+             	var i = obj.diainicio;
+             	var diacounter = 1;
+             	var done = false;
+             	var ret = "";
+
+             	ret += "<div>";
+		             for (var j = 0; j < i; ++j) {
+		             	ret += '<div class="spacer"></div>';
+		             }
+             	while (!done) {
+             			if (!(diacounter === 1)) {
+             				ret += "<div>";
+             			}
+             		
+             		for (; i < 7 && !done; i++) {
+             		  	ret += '<button id="' + year + "-" + String(month).padStart(2,'0') + "-" + diacounter +'">' + diacounter + '</button>';
+             		  	diacounter += 1;
+             		  	if (diacounter > obj.dias) {
+                            done = true;
+                        }
+
+             		}
+             		i = 0;
+             		ret += "</div>";      	
+             	}
+
+             	document.querySelector('#content').innerHTML = ret;
+                attr = "day";
+                if (attr in obj) {
+                    alert("I'm here.");
+                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "green";
+                }
+
+                for (var i = obj.booked.length - 1 ; i >= 0; i--) {
+                    alert(obj.booked[i]);
+                    document.getElementById(obj.booked[i]).style.color = "red";
+                    document.getElementById(obj.booked[i]).disabled = "true";
+                }
+             }
+	</script>
+</head>
+	<body>
+			<div id="content">
+			</div>
+        <form>
+            <input type="number" id="year">
+            <input type="number" id="month">
+		</form>
+            <button id="submit">Submit</button>
+        <script>
+
+            xhttpcalendar.open("GET", "calendarsend.php", true);
+            xhttpcalendar.send();
+
+            document.querySelector('#submit').onclick = function () {
+                const sentinfo = JSON.stringify(new getinfocalendar());
+                alert(sentinfo);
+                xhttpcalendar.open("GET", "calendarsend.php?x=" + sentinfo, true);
+                xhttpcalendar.send();
+            };
+        </script>
+</html>
