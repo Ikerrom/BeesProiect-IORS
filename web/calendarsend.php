@@ -10,7 +10,7 @@ include_once 'test_connect_db.php';
 include_once 'book/get_booked.php';
 $dni = $_SESSION['erablitzailea_a_g'];
 $conn = ConnectDataBase();
-$conn->autocommit(false);
+$ret = new stdClass();
 
 if (isset($_GET['x'])) {
 	$arr = json_decode($_GET['x']);
@@ -27,9 +27,8 @@ if (isset($_GET['x'])) {
 	$fecha_inicio = 2018;
 	header('Content-Type: application/json');
 	$dia1 = firstdaymonth($arr -> year, $arr -> month);
-	$ret = new stdClass();
 	$ret-> diainicio = $dia1[0];
-	if ($arr-> month === (int)date("m")-1 && $arr -> year === date("Y")) {
+	if (($arr-> month == (int)date("m")-1) && ($arr -> year == date("Y"))) {
 		$ret-> day = (int)date("d");
 	}
 
@@ -44,56 +43,21 @@ if (isset($_GET['x'])) {
 
 	$conn->begin_transaction();
 
-	if (isset($arr->date) && property_exists($arr, 'lataid')) {
-	    $dt = (new DateTime())->format('Y-m-d H:i:s');
-	    try {
-	        if ($arr->lataid === null) {
-	            $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-	                    . " dia_dereserva) VALUES (?, ?, NULL, ?)");
-	            $stmt->bind_param("sss", $dni, $arr->date, $dt);
-	        } else {
-	            $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
-	                    . " dia_dereserva) VALUES (?, ?, ?, ?)");
-	            $stmt->bind_param("ssis", $dni, $arr->date, $arr->lataid, $dt);
-	        }
-
-	        $stmt->execute();
-	        $stmt->close();
-	        if ($arr->lataid === null) {
-	            $ret->eginda = true;
-	        } else {
-	            $stmt2 = $conn->prepare("SELECT dni, dia_dereserva FROM Reservas "
-	                    . "WHERE lata_id = ? AND dia_reservado BETWEEN ? AND ? "
-	                    . "ORDER BY dia_dereserva ASC, dni");
-	            $booking = get_booked($arr);
-	            $stmt2->bind_param('iss', $arr->lataid, $booking['from'], $booking['until']);
-	            $stmt2->execute();
-	            $stmt2->bind_result($firstdni, $firsttime);
-	            if ($stmt2->fetch() && $firstdni === $dni && $firsttime === $dt) {
-	                $ret->eginda = true;
-	                $stmt2->close();
-	            } else {
-	                $stmt2->close();
-	                $conn->rollback();
-	                $ret->ezlata = true;
-	            }
-	        }
-	    } catch (mysqli_sql_exception $e) {
-	        $stmt->close();
-	        $conn->rollback();
-	        $ret->ezinda = true;
-	    }
-	}
 
 
-$ret->lataid = array();
-$stmt3 = $conn->prepare("SELECT lata_id FROM Latas");
-$stmt3->execute();
-$stmt3->bind_result($lataid);
-while ($stmt3->fetch()) {
-    $ret->lataid[] = $lataid;
+$ret->booked = array();
+$stmt4 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dia_reservado BETWEEN ? and ?");
+$from = $ret->year . "-" . $ret->month . "-1";
+$until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
+$stmt4->bind_param('ss', $from, $until);
+$stmt4->execute();
+$stmt4->bind_result($book_day);
+while ($stmt4->fetch()) {
+    $ret->booked[] = $book_day;
 }
-$stmt3->close();
+$stmt4->close();
+$conn->close();
+$ret->booked = array_values($ret->booked);
 
 echo json_encode($ret);
 
