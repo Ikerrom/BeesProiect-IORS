@@ -13,7 +13,7 @@ $fecha_inicio = 2018;
 	}
 
 
-	if (($year % 400) || (($year % 4) && !($year % 100))) {
+	if (($year % 400  === 0) || (($year % 4  === 0) && !($year % 100  === 0))) {
 		for ($i=0; $i < $month ; $i++) {
 			$count = $count + $bisiesto[$i];
 		}
