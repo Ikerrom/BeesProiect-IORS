@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2021 a las 10:47:14
+-- Tiempo de generación: 14-05-2021 a las 09:41:54
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bees_project`
 --
-DROP DATABASE IF EXISTS `bees_project`;
-CREATE DATABASE IF NOT EXISTS `bees_project` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bees_project`;
 
 -- --------------------------------------------------------
 
@@ -42,30 +39,10 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`numeroCompra`, `id_producto`, `precio`, `cantidad`) VALUES
-(23, 1, '2€', 20),
 (51, 2, '1€', 7),
 (61, 3, '5€', 6),
-(14151241, 6, '5€', 8);
-
---
--- Disparadores `compras`
---
-DELIMITER $$
-CREATE TRIGGER `añadir_inventario` AFTER INSERT ON `compras` FOR EACH ROW BEGIN
-    UPDATE inventario 
-    SET inventario.cantidad = inventario.cantidad + new.cantidad 
-    WHERE new.id_producto = id_producto;
-    
-    END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `elkarte_dinero` AFTER INSERT ON `compras` FOR EACH ROW BEGIN
-UPDATE elkarte 
-SET dinero = dinero - (new.precio * new.cantidad);
-END
-$$
-DELIMITER ;
+(14151241, 6, '5€', 8),
+(6754, 2, '1€', 7);
 
 -- --------------------------------------------------------
 
@@ -171,7 +148,8 @@ CREATE TABLE `personas` (
 INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`) VALUES
 ('12345678A', 'oscar', 'garcia', 'o.garcia@gmail.com', '1234', 1, 200, 20, ''),
 ('12345678G', 'Julio Sebastian', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, 52, 1000, ''),
-('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '7654321', 1, 0, 1000000, '');
+('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '7654321', 1, 0, 1000000, ''),
+('456456a', 'Oihana', 'Arambarri', 'werewf@gmail.com', '1234', 1, 200, 20, 'aramba.png');
 
 -- --------------------------------------------------------
 
