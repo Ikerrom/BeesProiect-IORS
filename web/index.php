@@ -4,6 +4,7 @@
 		 ?>
 		<html>					
 			<head>  
+								<!-- todos los scripts, link etc que usamos en todas las paginas  -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,7 +21,9 @@
 			</head>
 			<body>
 				<div class="title">
-					
+
+				<!-- PHP -->	
+				<!-- para hacer el login -->
 					    <?php
 					    session_start();
 					    if (isset($_SESSION['erablitzailea_a_g'])) {
@@ -30,9 +33,10 @@
 						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
+							<!-- Printea en la parte derecha el nombre, dni y la foto de la persona logeada  -->
 								<div class="perfil">
 								<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
-								<p>User: <?php echo $imprimir['nombre'];?></p>
+								<p>User: <?php echo $imprimir['nombre'];?></p> 
 								<p>DNI: <?php echo $dni;?></p>
 
 							</div>
@@ -43,12 +47,18 @@
 
 						<p class="titletext">ERLETE</p>
 				</div>
-				
+				<!-- los botones para ir de pagina en pagina  -->
 				<div class="topbar">
+
+					<!-- PHP -->
+
 					    <?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
+
+						<!-- HTML -->
+
 						<form action="singout.php">
 							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
@@ -61,6 +71,8 @@
 							<input class="buttonT" type="submit" value="BOOKING"/>
 						</form>
 
+								<!-- PHP -->
+
 						<?php
 							}else{
 							?>
@@ -70,14 +82,18 @@
 							<?php
 							}
 						?>
+
+						<!-- HTML -->
+
+
 					<form action="about.php">
 								<input class="buttonT" type="submit" value="ABOUT US"/>
 							</form>
 					
 				</div>
-
+						<!-- Parte de informacion -->
 			<div class="texttotal">
-
+											<!-- Lado izquierdo de la pagina -->
 				<div class="textstyle">
 					<p>We are the Erlete association, our goal is to help beekeepers with the extraction of honey, through our extractor which is located in our premises, you can find us in Axpe and ask us any kind of doubts you have about this.
 					The association was created by a group of young entrepreneurs with the desire of  not to let the bees die.
@@ -104,13 +120,13 @@
 						<br>Given the atmosphere and interest that was created, we registered the association to be for the region, extended forward to the beekeepers of the Duranguesado.
 
 						<br><br>
-
+								<!-- El mapa de la localizacion -->
 					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 					</iframe>
 						<br><br><br>
 
 				</div>
-
+											<!-- Lado derecho de la pagina -->
 				<div class="textstyle">
 
 					
@@ -120,7 +136,7 @@
 					<br><br>
 
 					
-
+										<!-- Parte de carousel -->
 						  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 						    <!-- Indicators -->
 						    <ol class="carousel-indicators">
@@ -129,7 +145,7 @@
 						      <li data-target="#myCarousel" data-slide-to="2"></li>
 						    </ol>
 
-						    <!-- Wrapper for slides -->
+						    			<!-- Imagenes del carousel -->
 						    <div class="carousel-inner">
 						      <div class="item active">
 						        <img src="resources/images/web_imges/erlete3.jpg" alt="Los Angeles" style= "height: 25% width:60%">
@@ -144,7 +160,7 @@
 						      </div>
 						    </div>
 
-						    <!-- Left and right controls -->
+						    <!-- Botones para ir a la derecha y la izquierda -->
 						    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 						      <span class="glyphicon glyphicon-chevron-left"></span>
 						      <span class="sr-only">Previous</span>
@@ -159,7 +175,7 @@
 					In addition, globalization has only been harm to the bee: insecticides, pesticides, mud disease, vespa velutin... When I was young there was no professional beekeeping, but the bees were in the forest because they had a much more suitable environment. Today, the only way to resist is to unite the little beekeepers. In addition, the Administration is interested in having ten beekeepers, each with lots of bees, to keep revenue under control.
 
 					<br><br><br>
-					
+							<!--link del video  -->
 					<iframe width="700" height="350" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 				</div>
