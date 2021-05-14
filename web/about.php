@@ -1,6 +1,5 @@
 		<html>					
 			<head>  
-											<!-- todos los scripts, link etc que usamos en todas las paginas  -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -43,17 +42,11 @@
 						<p class="titletext">ERLETE</p>
 				</div>
 				
-							<!-- los botones para ir de pagina en pagina  -->
-
 				<div class="topbar">
-
-					<!-- PHP -->
 					    <?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
-						?>	
-
-						<!-- HTML -->
+						?>
 
 						<form action="index.php">
 								<input class="buttonT" type="submit" value="HOME"/>
@@ -66,7 +59,7 @@
 						<form action="booking.php">
 							<input class="buttonT" type="submit" value="BOOKING"/>
 						</form>
-									<!-- PHP -->
+
 						<?php
 							}else{
 							?>
@@ -77,7 +70,6 @@
 							}
 						?>
 
-								<!-- HTML -->
 					
 						<form action="singout.php">
 							<input class="buttonT" type="submit" value="LOG OUT"/>
@@ -86,7 +78,7 @@
 
 
 			<div class="texttotal">
-									<!-- Informacion del about Us(parte izquierda)  -->
+
 				<div class="textstyle">
 					<p><h2>Why did we start working in beekeeping? Where do we sell honey?</h2></p>
 							<br>
@@ -111,7 +103,7 @@
 						<br>
 
 
-									<!--Informacion del about Us(parte derecha)  -->
+
 
 						<br><br>
 						<p>						
@@ -128,7 +120,6 @@
 				</div>
 			</div>
 			<br><br><br>	
-											<!-- Imagenes y Contactos  -->
 			<div class="texttotal">
 						<img src="resources/images/web_imges/telefono.png" style=" width:9%; height:1%;"> <p><font color ="white">Call us at <br>  94 751 34 12</font></p>
 						<br>

@@ -2,7 +2,7 @@
 <html>
 	<link rel="stylesheet" href="css.css">
 	<body style="margin:auto;">
-										<!-- Compara los datos con la base de datos para ver si son correctos a tarves del metodo POST  -->
+		
 		<div class="logindiv">
 			<h2>Hasi Sesioa</h2>
 		<form action="testlogin.php" method="POST">
@@ -13,7 +13,6 @@
 			<input type="submit" value="Submit">
 		</form> 
 				<br>
-				<!-- PHP -->
 					<?php
 					session_start();
 						

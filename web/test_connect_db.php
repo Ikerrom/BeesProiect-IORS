@@ -1,7 +1,4 @@
-				<!-- PHP -->
 <?php
-
-											//Conexion a la base de datos//
 		function ConnectDataBase()
 		{
 			if (!($lotura=mysqli_connect("localhost","root","")))
