@@ -28,11 +28,10 @@ import static model.Model.connect;
  * @author arambarri.oihana
  */
 public class Model {
-    /**
-     * 
-     * @return connection to dataBase
-     */
     public static Connection connect() {
+        /**
+         * Connection to DataBase
+         */
         Connection conn = null;
         try {
             String url = "jdbc:mariadb://localhost/bees_project";
