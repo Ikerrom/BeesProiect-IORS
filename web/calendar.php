@@ -1,8 +1,6 @@
-<?php 
-
-
+<?php
 function firstdaymonth($year,$month){
-	$no_bisiesto = array(31,28,31,30,31,30,31,31,30,31,30,31);
+$no_bisiesto = array(31,28,31,30,31,30,31,31,30,31,30,31);
 $bisiesto = array(31,29,31,30,31,30,31,31,30,31,30,31);
 $fecha_inicio = 2018;
 	$count = 0;

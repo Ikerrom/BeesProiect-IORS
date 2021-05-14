@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<style type="text/css">
-		span{float:left;}
+	<style>
 		button{
 			float:left;
 			width: 4vw;
@@ -73,12 +71,8 @@
 		<input type="number" id="month">
 		<button id="submit">Submit</button>
         <script>
-            xhttpcalendar.open("GET", "book.php", true);
-            xhttpcalendar.send();
-
             document.querySelector('#submit').onclick = function () {
-           	alert(JSON.stringify(new getinfocalendar()));
-            xhttpcalendar.open("GET", "test2.php?x=" + JSON.stringify(new getinfocalendar()), true);
+            xhttpcalendar.open("GET", "calendarsend.php?x=" + JSON.stringify(new getinfocalendar()), true);
             xhttpcalendar.send();
             };
         </script>
