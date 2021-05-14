@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json');
 include_once '../test_input.php';
-include_once '../test_connect_db.php';
+include_once 'connect_db_2.php';
 include_once 'get_booked.php';
 session_start();
 //$dni = '12345678G';
