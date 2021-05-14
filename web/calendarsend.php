@@ -46,17 +46,30 @@ if (isset($_GET['x'])) {
 
 
 $ret->booked = array();
-$stmt4 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dia_reservado BETWEEN ? and ?");
+$stmt4 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni != ? AND dia_reservado BETWEEN ? and ?");
 $from = $ret->year . "-" . $ret->month . "-1";
 $until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
-$stmt4->bind_param('ss', $from, $until);
+$stmt4->bind_param('sss',$dni, $from, $until);
 $stmt4->execute();
 $stmt4->bind_result($book_day);
 while ($stmt4->fetch()) {
     $ret->booked[] = $book_day;
 }
 $stmt4->close();
+
+$ret->bookedMe = array();
+$stmt5 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni = ? AND dia_reservado BETWEEN ? and ?");
+$from = $ret->year . "-" . $ret->month . "-1";
+$until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
+$stmt5->bind_param('sss',$dni, $from, $until);
+$stmt5->execute();
+$stmt5->bind_result($book_day);
+while ($stmt5->fetch()) {
+    $ret->bookedMe[] = $book_day;
+}
+$stmt5->close();
 $conn->close();
+$ret->bookedMe = array_values($ret->bookedMe);
 $ret->booked = array_values($ret->booked);
 
 echo json_encode($ret);

@@ -61,7 +61,11 @@
             };
 
             function setdate(date){
+                try {
+                    document.getElementById(selecteddate).style.background = "";
+}               catch (error) {}
                 selecteddate = date;
+                document.getElementById(date).style.background = "darkgrey";
             }
 
 
@@ -117,6 +121,10 @@
                 for (var i = obj.booked.length - 1 ; i >= 0; i--) {
                     document.getElementById(obj.booked[i]).style.color = "red";
                     document.getElementById(obj.booked[i]).disabled = "true";
+                }
+
+                for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
+                    document.getElementById(obj.bookedMe[i]).style.color = "blue";
                 }
              }
 	</script>
