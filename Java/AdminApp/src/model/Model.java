@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import model.Buys;
 import model.Member;
@@ -24,14 +25,15 @@ import model.Reserve;
 import static model.Model.connect;
 
 /**
- *Taulak eta eremuak errepasatu
+ *
  * @author arambarri.oihana
  */
 public class Model {
+    /**
+     * 
+     * @return Connection to database
+     */
     public static Connection connect() {
-        /**
-         * Connection to DataBase
-         */
         Connection conn = null;
         try {
             String url = "jdbc:mariadb://localhost/bees_project";
@@ -39,7 +41,7 @@ public class Model {
             String password="";
             conn = DriverManager.getConnection(url,user,password); 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         } 
         
         return conn;
@@ -63,7 +65,7 @@ public class Model {
             }else{
                 JOptionPane.showMessageDialog(null, "Data wrong");            }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
     }
     /***
@@ -83,14 +85,14 @@ public class Model {
                 members.add(m);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
         return members;
     }
     /**
      * Add Member to DataBase
      * @param m object member
-     * @return 
+     * @return returns 1 if a member is added otherwise it returns 0
      */
     public static int addMember(Member m){
         String sql = "INSERT INTO personas(dni,nombre,apellido,gmail,contraseña,admin,dinero_pagar,dinero_cuenta,foto) VALUES(?,?,?,?,?,?,?,?,?)";
@@ -107,7 +109,7 @@ public class Model {
             ptmt.setString(9,m.getPhoto());
             return ptmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
         }
     }
@@ -124,7 +126,7 @@ public class Model {
             pstmt.executeUpdate(); 
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
     /**
@@ -155,9 +157,26 @@ public class Model {
             pstmt.setString(9, m.getDni());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    public static void comboBoxMember(JComboBox<Member> comboMember) {
+        String sql="SELECT * FROM personas";
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                comboMember.addItem(new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"),rs.getString("foto")));
+
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+    }
+    /**
+     * 
+     * @return reserve list
+     */
     public static ArrayList<Reserve> readReserve() {
 //        ArrayList<Reserve> reserves = new ArrayList<>();
 //
@@ -186,10 +205,15 @@ public class Model {
 //                reserves.add(r);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
         return reserves;
     }
+    /**
+     * Add reserve to database
+     * @param r Reserve object
+     * @return 1 if a reservation is added otherwise it returns 0
+     */
     public static int addReserve(Reserve r){
         String sql = "INSERT INTO reservas(dni,dia_reservado,id_lata,dia_dereserva) VALUES(?,?,?,?)";
         try (Connection conn = connect();
@@ -201,10 +225,14 @@ public class Model {
    
             return ptmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
         }
     }
+    /**
+     * Delete reserve
+     * @param r Reserve object
+     */
     public static void deleteReserve(Reserve r) {
         String sql = "DELETE FROM reserves WHERE dia_reservado = ?";
 
@@ -214,9 +242,13 @@ public class Model {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    /**
+     * Update reserve
+     * @param r Reserve object
+     */
     public static  void updateReserve(Reserve r) {
         String sql = "UPDATE reservas SET lata_id = ? ,"
                 + "dia_reservado = ? ,"
@@ -235,7 +267,7 @@ public class Model {
         }
     }
     /**
-     * 
+     * See buy list
      * @return Buys of DataBase
      */
     public static ArrayList<Buys> readBuys() {
@@ -251,14 +283,14 @@ public class Model {
                 buys.add(b);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
         }
         return buys;
     }
     /**
-     * add Buys to DataBase
-     * @param b object buys
-     * @return 
+     * Add buys to database
+     * @param b buys object
+     * @return returns 1 if a buys is added otherwise it returns 0
      */
     public static int addBuys(Buys b){
         String sql = "INSERT INTO compras(numeroCompra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
@@ -271,7 +303,7 @@ public class Model {
    
             return ptmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
         }
     }
@@ -288,7 +320,7 @@ public class Model {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
     /**
@@ -308,7 +340,7 @@ public class Model {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
 }

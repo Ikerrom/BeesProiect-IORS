@@ -23,8 +23,8 @@ public class Reserve {
      * 
      * @param dni dni of member
      * @param idLata id of lata
-     * @param dia_reservado 
-     * @param dia_dereserva 
+     * @param dia_reservado date reserved
+     * @param dia_dereserva reservation day
      */
     public Reserve(String dni,int idLata, String dia_reservado,  String dia_dereserva) {
         this.dni=dni;
@@ -76,14 +76,14 @@ public class Reserve {
     }
     /**
      * 
-     * @return Day_dereserve
+     * @return Reservation day
      */
     public LocalDate getDia_dereserva() {
         return dia_dereserva;
     }
     /**
      * 
-     * @param dia_dereserva Sets the Day_dereserve to the given valu
+     * @param dia_dereserva Sets the reservation day to the given valu
      */
     public void setDia_dereserva(String dia_dereserva) {
         this.dia_dereserva = LocalDate.parse(dia_dereserva);

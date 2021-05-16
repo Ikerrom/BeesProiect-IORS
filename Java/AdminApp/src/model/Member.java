@@ -54,6 +54,10 @@ public class Member {
         this.dni = dni;
         this.password = password;
     }
+
+    public Member() {
+    }
+    
     /**
      * 
      * @return dni of member
@@ -183,6 +187,9 @@ public class Member {
 
     @Override
     public String toString() {
+        return  dni;
+    }
+    public String toString1() {
         return "Member{" + "dni=" + dni + ", name=" + name + ", surname=" + surname + ", gmail=" + gmail + ", password=" + password + ", admin=" + admin + ", moneyToPay=" + moneyToPay + ", moneyInAccount=" + moneyInAccount + ", photo=" + photo + '}';
     }
 

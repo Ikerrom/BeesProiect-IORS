@@ -270,7 +270,8 @@ public class ViewMembers extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
-     * @param args the command line arguments
+     * 
+     * @return ViewMembers JFrame
      */
     public static ViewMembers viewaSortuBistaratu() {
         ViewMembers v = new ViewMembers();

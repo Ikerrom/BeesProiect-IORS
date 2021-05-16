@@ -214,9 +214,9 @@ public class ViewBuys extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTable1MouseClicked
-
     /**
-     * @param args the command line arguments
+     * 
+     * @return ViewBuys JFrame
      */
    public static ViewBuys viewaSortuBistaratu() {
         ViewBuys v = new ViewBuys();

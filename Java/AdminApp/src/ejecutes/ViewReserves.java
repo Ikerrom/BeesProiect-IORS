@@ -6,6 +6,7 @@
 package ejecutes;
 
 import java.util.ArrayList;
+import model.Member;
 import model.Model;
 import model.ReserveTable;
 
@@ -22,6 +23,8 @@ public class ViewReserves extends javax.swing.JFrame {
      */
     public ViewReserves() {
         initComponents();
+        Member m1=new Member();
+        Model.comboBoxMember(jComboBox1);
     }
 
     /**
@@ -218,7 +221,8 @@ public class ViewReserves extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
-     * @param args the command line arguments
+     * 
+     * @return ViewReserves JFrame
      */
    public static ViewReserves viewaSortuBistaratu() {
         ViewReserves v = new ViewReserves();
@@ -235,7 +239,7 @@ public class ViewReserves extends javax.swing.JFrame {
     javax.swing.JButton jButton2;
     javax.swing.JButton jButton3;
     javax.swing.JButton jButton4;
-    javax.swing.JComboBox<Object> jComboBox1;
+    javax.swing.JComboBox<Member> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
