@@ -22,7 +22,7 @@ session_start();
 				  width: 6vw;
 				  height: 6vh;
 				  text-decoration: none;
-				  font-size: 200%;
+				  font-size: 1.6vh;
 				  font-weight: bold;
 				  margin:0px;
 				}

@@ -40,8 +40,7 @@
 						</div>
 
 	   			<div class="bgdiv">
-	   				<div class="bgacc">
-						<div class="photoacc">
+	   						<div class="photodiv">
 								<?php
 								session_start();
 				    			if (isset($_SESSION['erablitzailea_a_g'])) {
@@ -52,7 +51,7 @@
 									$imprimir=mysqli_fetch_array($result3);
 									?>
 
-								<img src="<?php echo $imprimir['Foto']; ?>">
+								<img  class="photoacc" src="<?php echo $imprimir['Foto']; ?>">
 								<form action="upload.php" method="POST" enctype="multipart/form-data">
 									<input type='file' name="imagen">
 									<input type="submit">
@@ -63,7 +62,10 @@
 					$imprimir = mysqli_fetch_array($result);
 					?>
 
-						</div>
+					</div>
+
+						<div class="bgacc">
+
 						<div class="campoacc">
 								<p class="textstyleacc">DNI:</p>
 							<?php  
@@ -106,6 +108,8 @@
 							?>	
 						</div>
 					</div>
+					
+
 	   			</div>
 					
 					<div class="tableaccdiv">
