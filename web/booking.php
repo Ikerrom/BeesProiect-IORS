@@ -26,37 +26,10 @@ session_start();
 				  font-weight: bold;
 				  margin:0px;
 				}
-			.spacer{
-				float: left;
-				width: 6vw;
-				height: 6vh;
-				background-color:#ffbb00;
-				}
-			#yearmonth{
-				display:flex;
-				flex-direction:row;
-			}
-			#content{
-				display:flex;
-				flex-direction:column;
-				}
-			.weeknames{
-				display:flex;
-				flex-direction:row;
-			}
-			.totalcalendar{
-				width:43%;
-				margin:auto;
-				margin-top: 10%;
-
-			}
+			
 		</style>
 
 	<script>
-
-
-		            
-
             var selectInnerText = '<option selected="selected" value="ez">Please select</option><option>Your own</option>';
             var selecteddate = "2021-05-20";
             let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -195,12 +168,12 @@ session_start();
 						$imprimir = mysqli_fetch_array($result);
 							?>
 								<div class="perfil">
-								<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
-								<p>User: <?php echo $imprimir['nombre'];?></p>
-								<p>DNI: <?php echo $dni;?></p>
-
-							</div>
-
+									<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
+									<div class="perfiltext">
+											<p>User: <?php echo $imprimir['nombre'];?></p>
+											<p>DNI: <?php echo $dni;?></p>
+									</div>
+								</div>
 							<?php
 							}
 							?>

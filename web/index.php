@@ -27,11 +27,12 @@
 						$imprimir = mysqli_fetch_array($result);
 							?>
 								<div class="perfil">
-								<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
-								<p>User: <?php echo $imprimir['nombre'];?></p>
-								<p>DNI: <?php echo $dni;?></p>
-
-							</div>
+									<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
+									<div class="perfiltext">
+											<p>User: <?php echo $imprimir['nombre'];?></p>
+											<p>DNI: <?php echo $dni;?></p>
+									</div>
+								</div>
 
 							<?php
 							}
