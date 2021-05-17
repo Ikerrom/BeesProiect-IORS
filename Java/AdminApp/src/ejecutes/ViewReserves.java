@@ -212,9 +212,9 @@ public class ViewReserves extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         String dni= (String) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-        String day_reserved=(String)  jTable1.getValueAt(jTable1.getSelectedRow(), 1);
+        LocalDate day_reserved=(LocalDate)  jTable1.getValueAt(jTable1.getSelectedRow(), 1);
         int lata=(int) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
-        String day_reservation= (String)jTable1.getValueAt(jTable1.getSelectedRow(), 3);
+        LocalDate day_reservation= (LocalDate)jTable1.getValueAt(jTable1.getSelectedRow(), 3);
         
         jComboBox1.setSelectedItem(dni);
         jTextField4.setText(String.valueOf(day_reserved));

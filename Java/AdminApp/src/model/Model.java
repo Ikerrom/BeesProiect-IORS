@@ -252,11 +252,11 @@ public class Model {
      * @param r Reserve object
      */
     public static void deleteReserve(Reserve r) {
-        String sql = "DELETE FROM reserves WHERE dia_reservado = ?";
+        String sql = "DELETE FROM reservas WHERE dia_reservado = ?";
 
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setObject(1, r.getDia_reservado());
+            pstmt.setString(1, String.valueOf(r.getDia_reservado()));
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -288,7 +288,7 @@ public class Model {
      * See buy list
      * @return Purchase of DataBase
      */
-    public static ArrayList<Purchase> readBuys() {
+    public static ArrayList<Purchase> readPurchase() {
         ArrayList<Purchase> buys = new ArrayList<>();
         String taula = "compras";
         String sql = "SELECT * FROM " + taula;
@@ -310,7 +310,7 @@ public class Model {
      * @param b buys object
      * @return returns 1 if a buys is added otherwise it returns 0
      */
-    public static int addBuys(Purchase b){
+    public static int addPurchase(Purchase b){
         String sql = "INSERT INTO compras(numeroCompra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
@@ -329,7 +329,7 @@ public class Model {
      * Delete Purchase of dataBase
      * @param b object buys
      */
-    public static void deleteBuys(Purchase b) {
+    public static void deletePurchase(Purchase b) {
         String sql = "DELETE FROM compras WHERE numeroCompra = ?";
 
         try (Connection conn = connect();
@@ -345,7 +345,7 @@ public class Model {
      * Update data of buys 
      * @param b object buys
      */
-    public static void updateBuys(Purchase b) {
+    public static void updatePurchase(Purchase b) {
         String sql = "UPDATE compras SET id_producto= ?, precio=?, cantidad=? WHERE numeroCompra=?";
 
         try (Connection conn = connect();

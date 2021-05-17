@@ -22,7 +22,7 @@ public class PurchaseTable extends AbstractTableModel {
      * Constructor
      */
     public PurchaseTable(){
-        buys=Model.readBuys();
+        buys=Model.readPurchase();
       
     }
      /**

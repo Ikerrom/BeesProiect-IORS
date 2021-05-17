@@ -63,4 +63,7 @@ public class MemberTable extends AbstractTableModel {
             default: return null;
         }
     }
+    public Class getColumnClass(int c){
+        return getValueAt(0, c).getClass();
+    }
 }

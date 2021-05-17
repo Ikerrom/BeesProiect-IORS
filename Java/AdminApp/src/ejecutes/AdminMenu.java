@@ -5,8 +5,12 @@
  */
 package ejecutes;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Model;
 import javax.swing.JOptionPane;
+import static model.Model.connect;
 
 /**
  *
@@ -159,7 +163,7 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
         Model mode11 = new Model();
-        PurchaseController controller = new PurchaseController (mode11, view1);
+        PurchasesController controller = new PurchasesController (mode11, view1);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
     /**
@@ -178,9 +182,14 @@ public class AdminMenu extends javax.swing.JFrame {
      * @param evt  the old-style event
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "See you soon");
-        System.exit(0);
+        try {
+            // TODO add your handling code here:
+            JOptionPane.showMessageDialog(null, "See you soon");
+            connect().close();
+            System.exit(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
         
     }//GEN-LAST:event_jButton2ActionPerformed
