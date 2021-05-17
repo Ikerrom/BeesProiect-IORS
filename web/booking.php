@@ -22,7 +22,7 @@ session_start();
 				  width: 6vw;
 				  height: 6vh;
 				  text-decoration: none;
-				  font-size: 1.6vh;
+				  font-size: 2vh;
 				  font-weight: bold;
 				  margin:0px;
 				}
@@ -230,7 +230,9 @@ session_start();
 					</div>
 				<div id="content">
 				</div>
-					        <h3 id="ezbete" style="display: none;">
+
+					<div class="textstyle">
+							 <h3 id="ezbete" style="display: none;">
 					            Please fill all blanks.
 					        </h3>
 					        <h3 id="ezlata" style="display: none;">
@@ -246,12 +248,16 @@ session_start();
 					            Booked successfully.
 					        </h3>
 					        <p>Enter the bin id</p>
-					        <select name="latai" id="lataid">
-					            <option selected="selected" value="ez">Please select</option>
-					            <option>Your own</option>
-					        </select>
-					        <br>
-					        <button id="submit">Submit</button>
+					</div>
+
+					       <div class="submitdiv">
+					    		<select class="calendaroption" name="latai" id="lataid">
+						            <option selected="selected" value="ez">Please select</option>
+						            <option>Your own</option>
+					        	</select>
+					        	<button id="submit">Submit</button>
+					       </div>
+
 			</div>
 			        <script>
 			            xhttp.open("GET", "book/book.php", true);

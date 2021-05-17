@@ -12,9 +12,6 @@
 		$dni = $_SESSION['erablitzailea_a_g'];
 		$link =  ConnectDataBase();
 		$result=mysqli_query($link, "UPDATE Personas SET Foto = '$dir' WHERE dni = '$dni'"); 
-		if ($link->query($result) === TRUE) {
-			  echo "Record updated successfully";
-			}
 		header("Location:account.php");
 		}
 ?>

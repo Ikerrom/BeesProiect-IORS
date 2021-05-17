@@ -49,7 +49,7 @@ body::-webkit-scrollbar {
 .totalcalendar{
 	width:43%;
 	margin:auto;
-	margin-top: 10%;
+	margin-top: 5%;
 }
 
 .title{
@@ -256,4 +256,22 @@ table.tableacc tfoot td {
 	width: 25vh;
 	height: 25vh;
 
+}
+
+.calendaroption{
+	background-color: #ffbb00;
+	color:#595959; 
+	padding-top: 1vh;
+	padding-bottom:1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	text-align: center;
+	text-decoration: none;
+	font-size: 2vh;
+
+}
+
+.submitdiv{
+	display: flex;
+	flex-direction:row;
 }
