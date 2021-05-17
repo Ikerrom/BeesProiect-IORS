@@ -2,13 +2,13 @@
 			<head>  
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
-  				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-				<link rel="stylesheet" href="css.css">
+				<link rel="stylesheet" href="css.css"/>
 				<title>ERLETE</title>
-				<link rel="preconnect" href="https://fonts.gstatic.com">
-				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+				<link rel="preconnect" href="https://fonts.gstatic.com"/>
+				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
 
 
 
@@ -22,14 +22,11 @@
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-
-						$result=mysqli_query($link, "select nombre from Personas where dni = '$dni'"); 
-
+						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
-
 								<div class="perfil">
-								<img class="perfilimage" src="resources/images/web_imges/perfil.png">
+								<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
 								<p>User: <?php echo $imprimir['nombre'];?></p>
 								<p>DNI: <?php echo $dni;?></p>
 
@@ -38,7 +35,6 @@
 							<?php
 							}
 							?>
-
 						<p class="titletext">ERLETE</p>
 				</div>
 				

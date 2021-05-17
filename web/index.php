@@ -1,7 +1,4 @@
-			<?php 
-		//or die(mysqli_error($link));
-		//error_reporting(0);
-		 ?>
+
 		<html>					
 			<head>  
 				<meta charset="utf-8">
@@ -9,7 +6,6 @@
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 				<link rel="stylesheet" href="css.css">
 				<title>ERLETE</title>
 				<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -132,15 +128,15 @@
 						    <!-- Wrapper for slides -->
 						    <div class="carousel-inner">
 						      <div class="item active">
-						        <img src="resources/images/web_imges/erlete3.jpg" alt="Los Angeles" style= "height: 25% width:60%">
+						        <img src="resources/images/web_imges/erlete3.jpg" style= "height: 25% width:60%">
 						      </div>
 
 						      <div class="item">
-						        <img src="resources/images/web_imges/erlete5.jpg" alt="Chicago" style="height: 25% width:100%;">
+						        <img src="resources/images/web_imges/erlete5.jpg" style="height: 25% width:100%;">
 						      </div>
 						    
 						      <div class="item">
-						        <img src="resources/images/web_imges/erlete4.jpg" alt="New york" style=" height: 25% width:40%;">
+						        <img src="resources/images/web_imges/erlete4.jpg" style=" height: 25% width:40%;">
 						      </div>
 						    </div>
 
