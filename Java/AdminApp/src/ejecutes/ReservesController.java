@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Model;
+import model.Reserve;
 
 /**
  *
@@ -51,31 +52,35 @@ public class ReservesController implements ActionListener {
         String actionCommand = e.getActionCommand();
         //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
-//            case "Add":
-//                int numberBuy = Integer.valueOf(viewBuys.jTextField1.getText());
-//                int id_product = Integer.valueOf(viewBuys.jTextField2.getText());
-//                String price = (String)(viewBuys.jTextField3.getText());
-//                int account = Integer.valueOf(viewBuys.jTextField4.getText());
-//                Buys b=new Buys(numberBuy,id_product,price,account);
-//                model.addBuys(b);
-//                this.viewBuys.setVisible(false);
-//                ViewBuys view2 = ViewBuys.viewaSortuBistaratu();
-//                Model model2 = new Model();
-//                BuysController controller = new BuysController (model2, view2);
-//                break;
-//            case "Delete":
-//                if(viewBuys.jTable1.getSelectedRow()!=-1){
-//                    Buys b1=new Buys(Integer.parseInt(viewBuys.jTextField1.getText()),Integer.parseInt(viewBuys.jTextField2.getText()),(String)(viewBuys.jTextField3.getText()),Integer.parseInt(viewBuys.jTextField4.getText()));
-//                    model.deleteBuys(b1);
-//                    this.viewBuys.setVisible(false);
-//                    ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
-//                    Model model1 = new Model();
-//                    BuysController controller1 = new BuysController (model1, view1);
-//                    break;
-//                }else{
-//                    JOptionPane.showMessageDialog(null,"You have to seelct row");
-//                }
-//                break;
+            case "Add":
+                String dni = viewReserves.jComboBox1.getSelectedItem().toString();
+                String dia_reservado = (String)(viewReserves.jTextField3.getText());
+                int lata = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
+                String dia_dereserva = viewReserves.jTextField4.getText();
+                Reserve r=new Reserve(dni,dia_reservado,lata,dia_dereserva);
+                model.addReserve(r);
+                this.viewReserves.setVisible(false);
+                ViewReserves view2 = ViewReserves.viewaSortuBistaratu();
+                Model model2 = new Model();
+                ReservesController controller = new ReservesController (model2, view2);
+                break;
+            case "Delete":
+                String dni1 = viewReserves.jComboBox1.getSelectedItem().toString();
+                String dia_reservado1 = (String)(viewReserves.jTextField3.getText());
+                int lata1 = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
+                String dia_dereserva1 = viewReserves.jTextField4.getText();
+                if(viewReserves.jTable1.getSelectedRow()!=-1){
+                    Reserve r1=new Reserve(dni1,dia_reservado1,lata1,dia_dereserva1);
+                    model.deleteReserve(r1);
+                    this.viewReserves.setVisible(false);
+                    ViewReserves view1 = ViewReserves.viewaSortuBistaratu();
+                    Model model1 = new Model();
+                    ReservesController controller1 = new ReservesController (model1, view1);
+                    break;
+                }else{
+                    JOptionPane.showMessageDialog(null,"You have to seelct row");
+                }
+                break;
 //            case "Update":
 //                if (viewBuys.jTable1.getSelectedRow()!=-1) {
 //                    int nb = Integer.parseInt(viewBuys.jTextField1.getText());

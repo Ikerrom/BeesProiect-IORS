@@ -48,6 +48,5 @@ public class Inventary {
     public String toString() {
         return "Inventary{" + "id_product=" + id_product + ", name=" + name + ", amount=" + amount + '}';
     }
-    
-    
+
 }

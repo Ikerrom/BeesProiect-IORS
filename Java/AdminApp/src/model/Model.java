@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import model.Buys;
+import model.Purchase;
 import model.Member;
 import model.Reserve;
 
@@ -175,12 +175,29 @@ public class Model {
     }
     /**
      * 
+     * @param comboLata
+     */
+    public static void comboBoxLatas(JComboBox<Latas> comboLata) {
+        String sql="SELECT * FROM latas";
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                comboLata.addItem(new Latas(rs.getInt("lata_id"),rs.getString("capacidad")));
+
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+    }
+    /**
+     * 
      * @return reserve list
      */
     public static ArrayList<Reserve> readReserve() {
 //        ArrayList<Reserve> reserves = new ArrayList<>();
 //
-//        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM ((reservas INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
+//        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM reservas(( INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
 //
 //        try (Connection conn = connect();
 //                Statement stmt = conn.createStatement();
@@ -193,16 +210,17 @@ public class Model {
 //            System.out.println(ex.getMessage());
 //        }
 //        return reserves;
-        ArrayList<Reserve> reserves = new ArrayList<>();
 
-        String sql = "SELECT * FROM reservas";
+        ArrayList<Reserve> reserves = new ArrayList<>();
+        String taula = "reservas";
+        String sql = "SELECT * FROM " + taula;
 
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-//                Reserve r=new Reserve(rs.getNString("dni"),rs.getNString("dia_reservado"),rs.getInt("lata_id"),rs.getNString("dia_dereserva"));
-//                reserves.add(r);
+                Reserve r= new Reserve(rs.getString("dni"),rs.getString("dia_reservado"),rs.getInt("lata_id"),rs.getString("dia_dereserva"));
+                reserves.add(r);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage());
@@ -215,11 +233,11 @@ public class Model {
      * @return 1 if a reservation is added otherwise it returns 0
      */
     public static int addReserve(Reserve r){
-        String sql = "INSERT INTO reservas(dni,dia_reservado,id_lata,dia_dereserva) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO reservas(dni,dia_reservado,lata_id,dia_dereserva) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setObject(1,r.getDni());
-            ptmt.setString(4,String.valueOf(r.getDia_reservado()));
+            ptmt.setString(2,String.valueOf(r.getDia_reservado()));
             ptmt.setInt(3,r.getIdLata());
             ptmt.setString(4,String.valueOf(r.getDia_dereserva()));
    
@@ -268,10 +286,10 @@ public class Model {
     }
     /**
      * See buy list
-     * @return Buys of DataBase
+     * @return Purchase of DataBase
      */
-    public static ArrayList<Buys> readBuys() {
-        ArrayList<Buys> buys = new ArrayList<>();
+    public static ArrayList<Purchase> readBuys() {
+        ArrayList<Purchase> buys = new ArrayList<>();
         String taula = "compras";
         String sql = "SELECT * FROM " + taula;
 
@@ -279,7 +297,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Buys b= new Buys(rs.getInt("numeroCompra"),rs.getInt("id_producto"),rs.getString("precio"),rs.getInt("cantidad"));
+                Purchase b= new Purchase(rs.getInt("numeroCompra"),rs.getInt("id_producto"),rs.getString("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -292,7 +310,7 @@ public class Model {
      * @param b buys object
      * @return returns 1 if a buys is added otherwise it returns 0
      */
-    public static int addBuys(Buys b){
+    public static int addBuys(Purchase b){
         String sql = "INSERT INTO compras(numeroCompra,id_producto,precio,cantidad) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
@@ -308,10 +326,10 @@ public class Model {
         }
     }
     /**
-     * Delete Buys of dataBase
+     * Delete Purchase of dataBase
      * @param b object buys
      */
-    public static void deleteBuys(Buys b) {
+    public static void deleteBuys(Purchase b) {
         String sql = "DELETE FROM compras WHERE numeroCompra = ?";
 
         try (Connection conn = connect();
@@ -327,7 +345,7 @@ public class Model {
      * Update data of buys 
      * @param b object buys
      */
-    public static void updateBuys(Buys b) {
+    public static void updateBuys(Purchase b) {
         String sql = "UPDATE compras SET id_producto= ?, precio=?, cantidad=? WHERE numeroCompra=?";
 
         try (Connection conn = connect();

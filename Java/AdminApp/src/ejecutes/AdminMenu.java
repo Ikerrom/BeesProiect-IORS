@@ -159,7 +159,7 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
         Model mode11 = new Model();
-        BuysController controller = new BuysController (mode11, view1);
+        PurchaseController controller = new PurchaseController (mode11, view1);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
     /**

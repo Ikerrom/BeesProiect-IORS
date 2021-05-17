@@ -26,7 +26,7 @@ public class Reserve {
      * @param dia_reservado date reserved
      * @param dia_dereserva reservation day
      */
-    public Reserve(String dni,int idLata, String dia_reservado,  String dia_dereserva) {
+    public Reserve(String dni,String dia_reservado, int idLata, String dia_dereserva) {
         this.dni=dni;
         this.dia_reservado = LocalDate.parse(dia_reservado);
         this.idLata = idLata;

@@ -12,54 +12,54 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author arambarri.oihana
  */
-public class ReserveTable extends AbstractTableModel {
+public class PurchaseTable extends AbstractTableModel {
     /**
      * Private atributes
      */
-    private ArrayList<Reserve> reserves = new ArrayList<>();
-    private String[] columns = {"Dni","Dia reservado","Lata","Dia dereserva"};
+    private ArrayList<Purchase> buys = new ArrayList<>();
+    private String[] columns = {"NumberBuys","id_product","Price","Account"};
     /**
      * Constructor
      */
-    public ReserveTable(){
-        reserves=Model.readReserve();
+    public PurchaseTable(){
+        buys=Model.readBuys();
       
     }
-    @Override
-    /**
+     /**
      * Returns the number of rows in the model.
+
      */
-    public int getRowCount() {
-        return reserves.size();
-    }
-    
     @Override
-    /**
+    public int getRowCount() {
+        return buys.size();
+    }
+     /**
      * Returns the number of columns in the model.
      */
+    @Override
     public int getColumnCount() {
         return columns.length;
     }
-   
-    @Override
-    /**
+   /**
      * Returns the name of the column at columnIndex.
-     */   
+     */  
+    @Override
     public String getColumnName(int column){
         return columns[column];
     }
-    
-    @Override
     /**
      * Returns the value for the cell at columnIndex and rowIndex.
      */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
-            case 0: return reserves.get(rowIndex).getDni();
-            case 1: return reserves.get(rowIndex).getDia_reservado();
-            case 2: return reserves.get(rowIndex).getIdLata();
-            case 3: return reserves.get(rowIndex).getDia_dereserva();
+            case 0: return buys.get(rowIndex).getNumberBuy();
+            case 1: return buys.get(rowIndex).getId_product();
+            case 2: return buys.get(rowIndex).getPrice();
+            case 3: return buys.get(rowIndex).getAccount();
             default: return null;
         }
     }
-}
+} 
+    
+

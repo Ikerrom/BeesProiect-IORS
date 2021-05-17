@@ -5,7 +5,7 @@
  */
 package ejecutes;
 
-import model.BuysTable;
+import model.PurchaseTable;
 
 
 
@@ -72,7 +72,7 @@ public class ViewBuys extends javax.swing.JFrame {
 
         jLabel5.setText("Price: ");
 
-        jTable1.setModel(new BuysTable());
+        jTable1.setModel(new PurchaseTable());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

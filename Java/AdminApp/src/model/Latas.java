@@ -24,6 +24,10 @@ public class Latas {
         this.lata_id = lata_id;
         this.capacidad = capacidad;
     }
+
+    public Latas() {
+    }
+    
     /**
      * 
      * @return id of lata
@@ -55,6 +59,6 @@ public class Latas {
 
     @Override
     public String toString() {
-        return "Latas{" + "lata_id=" + lata_id + ", capacidad=" + capacidad + '}';
-    } 
+        return String.valueOf(lata_id);
+    }
 }
