@@ -81,7 +81,18 @@
 					With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
 					</p>	
 					
-					<img src="resources/images/web_imges/erlete1.jpg" width=70% height=16%>
+							
+
+								
+							<div class="carousel-inner">
+						      <div class="item active">
+						       <img src="resources/images/web_imges/erlete1.jpg" style= "height: 25% width:60%">
+						      </div>
+						  </div>
+
+						        
+				 	
+		
 
 				
 					<p>
@@ -157,7 +168,8 @@
 
 					<br><br><br>
 					
-					<iframe width="700" height="350" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+					<iframe style="width:43vw ;height:45vh; ;" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 				</div>
 			</div>

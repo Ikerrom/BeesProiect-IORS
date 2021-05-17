@@ -111,7 +111,16 @@
 
 						<br><br>
 
-						<img src="resources/images/web_imges/asociacion.jpg" width="500" height="300">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+								
+							<div class="carousel-inner">
+						      <div class="item active">
+						       <img src="resources/images/web_imges/asociacion.jpg" width="500" height="300">
+						      </div>
+						  </div>
+						 </div>
+
 
 					
 				</div>
