@@ -229,10 +229,11 @@ table.tableacc tfoot td {
 }
 
 .bgdiv{
-	margin-top: 5%;
+	margin-top:5%; 
 	background-color: #FAD002;
 	width: 70%;
-	margin: auto;
+	margin-left: 15%;
+
 }
 
 .photodiv{
