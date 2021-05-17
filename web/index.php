@@ -59,7 +59,7 @@
 							</form>
 
 						<form action="singout.php">
-							<input class="buttonT" type="submit" value="LOG OFF"/>
+							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
 
 						
