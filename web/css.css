@@ -143,10 +143,17 @@ form{
 
 .textstyle{
 	color: white;
-	font-size: 140%;
+	font-size: 2vh;
 	margin-top:5%;
 	width: 40%;
 	text-align: justify;
+}
+
+.header{
+	color: white;
+	font-size: 3vh;
+	margin-top:5%;
+
 }
 
 .aboutusimages{

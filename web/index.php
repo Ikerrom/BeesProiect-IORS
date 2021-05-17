@@ -46,10 +46,6 @@
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
-						<form action="singout.php">
-							<input class="buttonT" type="submit" value="LOG OUT"/>
-						</form>
-
 						<form action="account.php">
 							<input class="buttonT" type="submit" value="YOUR ACCOUNT"/>
 						</form>
@@ -58,18 +54,32 @@
 							<input class="buttonT" type="submit" value="BOOKING"/>
 						</form>
 
+						<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+						<form action="singout.php">
+							<input class="buttonT" type="submit" value="LOG OFF"/>
+						</form>
+
+						
+
 						<?php
 							}else{
 							?>
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
 							<form action="login.php">
 								<input class="buttonT" type="submit" value="LOG IN"/>
 							</form>
+
+
 							<?php
 							}
 						?>
-					<form action="about.php">
-								<input class="buttonT" type="submit" value="ABOUT US"/>
-							</form>
+					
 					
 				</div>
 
@@ -95,8 +105,9 @@
 		
 
 				
-					<p>
-						<h2>Here's where our idea comes from:</h2>
+					<p class="header">
+
+						Here's where our idea comes from:
 					</p>	
 					<p>
 						<i><u>Felix:</u></i> 

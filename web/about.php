@@ -77,7 +77,7 @@
 			<div class="texttotal">
 
 				<div class="textstyle">
-					<p><h2>Why did we start working in beekeeping? Where do we sell honey?</h2></p>
+					<p class="header">Why did we start working in beekeeping? Where do we sell honey?</p>
 							<br>
 							<br>
 							<p><i><u>Aitor: </u></i></p> My father was already home and I started taking care of the bees. I've been on my way since I was a kid. I share honey among friends and acquaintances.
