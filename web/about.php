@@ -44,9 +44,8 @@
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
-
 						<form action="index.php">
-								<input class="buttonT" type="submit" value="HOME"/>
+							<input class="buttonT" type="submit" value="HOME"/>
 						</form>
 
 						<form action="account.php">
@@ -56,21 +55,28 @@
 						<form action="booking.php">
 							<input class="buttonT" type="submit" value="BOOKING"/>
 						</form>
-
+						<form action="singout.php">
+								<input class="buttonT" type="submit" value="LOG OUT"/>
+							</form>
 						<?php
 							}else{
 							?>
+
+							<form action="index.php">
+									<input class="buttonT" type="submit" value="HOME"/>
+							</form>
+
 							<form action="login.php">
 								<input class="buttonT" type="submit" value="LOG IN"/>
-							</form>
+							</form>			
 							<?php
+
 							}
+
 						?>
 
 					
-						<form action="singout.php">
-							<input class="buttonT" type="submit" value="LOG OUT"/>
-						</form>
+	
 				</div>
 
 
