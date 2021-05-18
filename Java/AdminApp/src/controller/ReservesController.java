@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejecutes;
+package controller;
 
+import ejecutes.AdminMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -84,15 +85,16 @@ public class ReservesController implements ActionListener {
                 break;
             case "Update":
                 if (viewReserves.jTable1.getSelectedRow()!=-1) {
-                    String dni2= (String) viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 0);
-                    LocalDate day_reserved2=(LocalDate)  viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 1);
-                    int lata2=(int) viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 2);
-                    LocalDate day_reservation2= (LocalDate)viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 3);
+                    String dni2 = viewReserves.jComboBox1.getSelectedItem().toString();
+                    String day_reserved2 = (viewReserves.jTextField4.getText());
+                    int lata2 = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
+                    String day_reservation2 = viewReserves.jTextField3.getText();
+                    
                     viewReserves.jTable1.setValueAt(dni2, viewReserves.jTable1.getSelectedRow(), 0);
                     viewReserves.jTable1.setValueAt(day_reserved2, viewReserves.jTable1.getSelectedRow(), 1);
                     viewReserves.jTable1.setValueAt(lata2, viewReserves.jTable1.getSelectedRow(), 2);
                     viewReserves.jTable1.setValueAt(day_reservation2, viewReserves.jTable1.getSelectedRow(), 3);
-                    Reserve r2=new Reserve(dni2,String.valueOf(day_reserved2),lata2,String.valueOf(day_reservation2));
+                    Reserve r2=new Reserve(dni2,day_reserved2,lata2,day_reservation2);
                     model.updateReserve(r2);
                     JOptionPane.showMessageDialog(null, "Is change ");
                     this.viewReserves.setVisible(false);

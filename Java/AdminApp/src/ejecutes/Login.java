@@ -165,7 +165,6 @@ public class Login extends javax.swing.JFrame {
  * @param evt  the old-style event
  */
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
-
         Model.login(jTextFieldUser.getText(),jPasswordFieldPass.getText());
         this.dispose();
     }//GEN-LAST:event_jButtonSingInActionPerformed

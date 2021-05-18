@@ -5,6 +5,14 @@
  */
 package ejecutes;
 
+import controller.InventaryController;
+import controller.MemberController;
+import controller.PurchasesController;
+import controller.ReservesController;
+import controller.ViewBuys;
+import controller.ViewInventary;
+import controller.ViewMembers;
+import controller.ViewReserves;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -180,9 +188,9 @@ public class AdminMenu extends javax.swing.JFrame {
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+        ViewBuys view = ViewBuys.viewaSortuBistaratu();
         Model mode11 = new Model();
-        PurchasesController controller = new PurchasesController (mode11, view1);
+        PurchasesController controller = new PurchasesController (mode11, view);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
     /**

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejecutes;
+package controller;
 
+import ejecutes.AdminMenu;
 import model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
