@@ -77,13 +77,15 @@ session_start();
 
             }
 
-            function setdate(date){
+            function setdate(date,obj){
                 try {
                     document.getElementById(selecteddate).style.background = "";
+                    alert(obj[0]);
 				} catch (error) {}
                 selecteddate = date;
                 document.getElementById(date).style.background = "darkgrey";
-            }
+                }
+            
 
 		    var xhttpcalendar = new XMLHttpRequest();
             xhttpcalendar.onreadystatechange = function () {
@@ -126,7 +128,7 @@ session_start();
              		
              		for (; i < 7 && !done; i++) {
 
-             		  	ret += '<button id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\')">' + diacounter + '</button>';
+             		  	ret += '<button id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
              		  	diacounter += 1;
              		  	if (diacounter > obj.dias) {
                             done = true;
@@ -152,6 +154,7 @@ session_start();
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
                     document.getElementById(obj.bookedMe[i]).style.color = "blue";
                 }
+
              }
 		</script>
 
