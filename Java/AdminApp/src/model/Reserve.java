@@ -71,9 +71,10 @@ public class Reserve {
      * 
      * @param dia_reservado Sets the Day_reserved to the given valu
      */
-    public void setDia_reservado(String dia_reservado) {
-        this.dia_reservado = LocalDate.parse(dia_reservado);
+    public void setDia_reservado(LocalDate dia_reservado) {    
+        this.dia_reservado = dia_reservado;
     }
+
     /**
      * 
      * @return Reservation day
@@ -85,8 +86,8 @@ public class Reserve {
      * 
      * @param dia_dereserva Sets the reservation day to the given valu
      */
-    public void setDia_dereserva(String dia_dereserva) {
-        this.dia_dereserva = LocalDate.parse(dia_dereserva);
+    public void setDia_dereserva(LocalDate dia_dereserva) {
+        this.dia_dereserva = dia_dereserva;
     }
 
     @Override

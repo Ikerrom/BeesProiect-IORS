@@ -213,7 +213,7 @@ public class ViewReserves extends javax.swing.JFrame {
         // TODO add your handling code here:
         String dni= (String) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         LocalDate day_reserved=(LocalDate)  jTable1.getValueAt(jTable1.getSelectedRow(), 1);
-        int lata=(int) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
+        int lata=(int)jTable1.getValueAt(jTable1.getSelectedRow(), 2);
         LocalDate day_reservation= (LocalDate)jTable1.getValueAt(jTable1.getSelectedRow(), 3);
         
         jComboBox1.setSelectedItem(dni);

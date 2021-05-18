@@ -6,7 +6,6 @@
 package model;
 
 import ejecutes.AdminMenu;
-import ejecutes.AdminMenu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -236,7 +235,7 @@ public class Model {
         String sql = "INSERT INTO reservas(dni,dia_reservado,lata_id,dia_dereserva) VALUES(?,?,?,?)";
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
-            ptmt.setObject(1,r.getDni());
+            ptmt.setString(1,r.getDni());
             ptmt.setString(2,String.valueOf(r.getDia_reservado()));
             ptmt.setInt(3,r.getIdLata());
             ptmt.setString(4,String.valueOf(r.getDia_dereserva()));
@@ -268,17 +267,17 @@ public class Model {
      * @param r Reserve object
      */
     public static  void updateReserve(Reserve r) {
-        String sql = "UPDATE reservas SET lata_id = ? ,"
-                + "dia_reservado = ? ,"
-                + "dia_reserva = ?"
-                + "WHERE dni = ? ";
+        String sql = "UPDATE reservas SET dni= ?,"
+                + "lata_id = ?,"
+                + "dia_dereserva = ?"
+                + "WHERE dia_reservado = ? ";
 
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setObject(1,r.getDni());
+            pstmt.setString(1,r.getDni());
+            pstmt.setInt(2,r.getIdLata());
+            pstmt.setString(3,String.valueOf(r.getDia_dereserva()));
             pstmt.setString(4,String.valueOf(r.getDia_reservado()));
-            pstmt.setInt(3,r.getIdLata());
-            pstmt.setString(4,String.valueOf(r.getDia_dereserva()));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -355,6 +354,61 @@ public class Model {
             pstmt.setInt(3, b.getAccount());
             pstmt.setInt(4, b.getNumberBuy());
             
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+     public static ArrayList<Inventary> readInventary() {
+        ArrayList<Inventary> inventaries = new ArrayList<>();
+        String taula = "inventario";
+        String sql = "SELECT * FROM " + taula;
+
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Inventary i= new Inventary(rs.getInt("id_producto"),rs.getString("nombre"),rs.getInt("cantidad"));
+                inventaries.add(i);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        return inventaries;
+    }
+    public static int addInventary(Inventary i) {
+        String sql = "INSERT INTO inventario(id_producto,nombre,cantidad) VALUES(?,?,?)";
+        try (Connection conn = connect();
+            PreparedStatement ptmt = conn.prepareStatement(sql)) {
+            ptmt.setInt(1,i.getId_product());
+            ptmt.setString(2,i.getName());
+            ptmt.setInt(3,i.getAmount());
+            return ptmt.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+            return 0;
+        }
+    }
+    public static void deleteInventary(Inventary i) {
+        String sql = "DELETE FROM inventario WHERE id_producto = ?";
+
+        try (Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1,i.getId_product());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+    public static void updateInventary(Inventary i) {
+        String sql = "UPDATE inventario SET  nombre=?, cantidad=? WHERE id_producto =?";
+        try (Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, i.getName());
+            pstmt.setInt(2, i.getAmount());
+            pstmt.setInt(3, i.getId_product());
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
