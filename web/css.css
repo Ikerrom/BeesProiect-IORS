@@ -23,6 +23,10 @@ body::-webkit-scrollbar {
 	transition: height 300ms, opacity 400ms ease-out;	
 }
 
+.calendardisabled{
+	color: lightgrey; 
+}
+
 .topbar:hover{
 	height: 10vh;
 	opacity:1;

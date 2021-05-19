@@ -43,7 +43,7 @@ session_start();
             }
 
             function parseinfo(obj) {
-                var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata'];
+                var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','berandu'];
                 for (var i = 0; i < attrs.length; ++i) {
                     checkEnable(attrs[i], obj);
                 }
@@ -86,7 +86,7 @@ session_start();
                     document.getElementById(selecteddate).style.background = "";
                     ret4= "";
                     document.querySelector('#deldiv').innerHTML = ret4;
-                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted'];
+                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu'];
                     for (var i = 0; i < attrs.length; ++i) {
                     	document.getElementById(attrs[i]).style.display = "none";
                 	}
@@ -105,6 +105,7 @@ session_start();
             xhttpcalendar.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfocalendar(JSON.parse(this.responseText));
+
                 }
             };
 
@@ -130,6 +131,9 @@ session_start();
              	var i = obj.diainicio;
              	var diacounter = 1;
              	var done = false;
+             	var d = new Date();
+             	var Nyear = d.getFullYear();
+             	var Nmonth =1 +  parseInt(d.getMonth());
              	var ret = "";
              	var ret2 ="";
 
@@ -145,29 +149,37 @@ session_start();
 		             for (var j = 0; j < i; ++j) {
 		             	ret += '<div class="spacer"></div>';
 		             }
+		        var attr = "day";
              	while (!done) {
              			if (!(diacounter === 1)) {
              				ret += "<div>";
              			}
-             		
-             		for (; i < 7 && !done; i++) {
 
+             		for (; i < 7 && !done; i++) {
+		                if ((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) {
+		                    ret += '<button disabled class="calendardisabled" id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
+		                
+             		  	diacounter += 1;
+		                }else{
              		  	ret += '<button id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
              		  	diacounter += 1;
-             		  	if (diacounter > obj.dias) {
+             		  }
+
+             		  	if (diacounter > obj.dias){
                             done = true;
                         }
 
              		}
+
              		i = 0;
              		ret += "</div>";      	
              	}
 
              	document.querySelector('#content').innerHTML = ret;
              	document.querySelector('#yearmonth').innerHTML = ret2;
-                attr = "day";
+                
                 if (attr in obj) {
-                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "green";
+                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "blue";
                 }
 
                 for (var i = obj.booked.length - 1 ; i >= 0; i--) {
@@ -176,7 +188,7 @@ session_start();
                 }
 
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
-                    document.getElementById(obj.bookedMe[i]).style.color = "blue";
+                    document.getElementById(obj.bookedMe[i]).style.color = "green";
                 }
 
              }
@@ -264,6 +276,9 @@ session_start();
 					        </h3>
 					         <h3 id="deleted" style="display: none;">
 					            Deleted Sucsesfully.
+					        </h3>
+					        <h3 id="berandu" style="display: none;">
+					            The date has already passed or is today.
 					        </h3>
 					        <h3 id="ezlata" style="display: none;">
 					            Sorry, the bin was already booked.
