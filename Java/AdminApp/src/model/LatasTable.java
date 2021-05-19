@@ -12,17 +12,17 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author arambarri.oihana
  */
-public class InventaryTable extends AbstractTableModel {
+public class LatasTable extends AbstractTableModel {
     /**
      * Private atributes
      */
-    private ArrayList<Inventary> inventaries = new ArrayList<>();
-    private String[] columns = {"Id_product","name","amount"};
+    private ArrayList<Lata> latas = new ArrayList<>();
+    private String[] columns = {"lata_id","capacidad"};
     /**
      * Constructor
      */
-    public InventaryTable(){
-        inventaries=Model.readInventary();
+    public LatasTable(){
+        latas=Model.readLatas();
       
     }
      /**
@@ -31,7 +31,7 @@ public class InventaryTable extends AbstractTableModel {
      */
     @Override
     public int getRowCount() {
-        return inventaries.size();
+        return latas.size();
     }
      /**
      * Returns the number of columns in the model.
@@ -53,9 +53,8 @@ public class InventaryTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
-            case 0: return inventaries.get(rowIndex).getId_product();
-            case 1: return inventaries.get(rowIndex).getName();
-            case 2: return inventaries.get(rowIndex).getAmount();
+            case 0: return latas.get(rowIndex).getLata_id();
+            case 1: return latas.get(rowIndex).getCapacidad();
             default: return null;
         }
     }

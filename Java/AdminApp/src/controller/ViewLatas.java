@@ -13,12 +13,12 @@ import model.PurchaseTable;
  *
  * @author arambarri.oihana
  */
-public class ViewInventary extends javax.swing.JFrame {
+public class ViewLatas extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewMembers
      */
-    public ViewInventary() {
+    public ViewLatas() {
         initComponents();
     }
 
@@ -37,8 +37,6 @@ public class ViewInventary extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -54,13 +52,11 @@ public class ViewInventary extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Inventary");
+        jLabel1.setText("LATAS");
 
-        jLabel2.setText("iid_producto");
+        jLabel2.setText("iid_lata");
 
-        jLabel3.setText("name");
-
-        jLabel5.setText("Amount: ");
+        jLabel3.setText("capacity:");
 
         jTable1.setModel(new model.InventaryTable());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,11 +102,7 @@ public class ViewInventary extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -135,7 +127,7 @@ public class ViewInventary extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +145,7 @@ public class ViewInventary extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,15 +174,14 @@ public class ViewInventary extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         jTextField1.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
-        jTextField2.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-        jTextField3.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 2)));
+        jTextField2.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 1)));
     }//GEN-LAST:event_jTable1MouseClicked
     /**
-     * Create ViewInventary
+     * Create ViewLatas
      * @return ViewBuys JFrame
      */
-   public static ViewInventary viewaSortuBistaratu() {
-        ViewInventary v = new ViewInventary();
+   public static ViewLatas viewaSortuBistaratu() {
+        ViewLatas v = new ViewLatas();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 v.setVisible(true);
@@ -209,13 +198,11 @@ public class ViewInventary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     javax.swing.JTable jTable1;
     javax.swing.JTextField jTextField1;
     javax.swing.JTextField jTextField2;
-    javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

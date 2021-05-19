@@ -23,15 +23,15 @@ public class InventaryController implements ActionListener {
      * Private atributes
      */
     private Model model;
-    private ViewInventary viewInventory;
+    private ViewInventary viewInventary;
     /**
-     * Constructor
+     * 
      * @param model Model
-     * @param viewMembers  viewMembers
+     * @param viewInventory ViewInventary
      */
-    public InventaryController(Model model, ViewInventary viewInventory) {
+    public InventaryController(Model model, ViewInventary viewInventary) {
         this.model = model;
-        this.viewInventory = viewInventory;
+        this.viewInventary = viewInventary;
         anadirActionListener(this);
         
     }
@@ -40,10 +40,10 @@ public class InventaryController implements ActionListener {
      * @param listener 
      */
     private void anadirActionListener(ActionListener listener) {
-        viewInventory.jButton1.addActionListener(listener);
-        viewInventory.jButton2.addActionListener(listener);
-        viewInventory.jButton3.addActionListener(listener);
-        viewInventory.jButton5.addActionListener(listener);
+        viewInventary.jButton1.addActionListener(listener);
+        viewInventary.jButton2.addActionListener(listener);
+        viewInventary.jButton3.addActionListener(listener);
+        viewInventary.jButton5.addActionListener(listener);
     }
     /**
      * Invoked when an action occurs.
@@ -52,24 +52,23 @@ public class InventaryController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
-        //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
-                Inventary i=new Inventary(Integer.parseInt(viewInventory.jTextField1.getText()),viewInventory.jTextField2.getText(),Integer.parseInt(viewInventory.jTextField3.getText()));
+                Inventary i=new Inventary(Integer.parseInt(viewInventary.jTextField1.getText()),viewInventary.jTextField2.getText(),Integer.parseInt(viewInventary.jTextField3.getText()));
                 model.addInventary(i);
-                this.viewInventory.setVisible(false);
+                this.viewInventary.setVisible(false);
                 ViewInventary view2 = ViewInventary.viewaSortuBistaratu();
                 Model model2 = new Model();
                 InventaryController controller = new InventaryController (model2, view2);
                 break;
             case "Delete":
-                int id=(int)viewInventory.jTable1.getModel().getValueAt(viewInventory.jTable1.getSelectedRow(), 0);
-                String name=(String)viewInventory.jTable1.getModel().getValueAt(viewInventory.jTable1.getSelectedRow(), 1);
-                int amount=(int)viewInventory.jTable1.getModel().getValueAt(viewInventory.jTable1.getSelectedRow(), 2);
-                if(viewInventory.jTable1.getSelectedRow()!=-1){
+                int id=(int)viewInventary.jTable1.getModel().getValueAt(viewInventary.jTable1.getSelectedRow(), 0);
+                String name=(String)viewInventary.jTable1.getModel().getValueAt(viewInventary.jTable1.getSelectedRow(), 1);
+                int amount=(int)viewInventary.jTable1.getModel().getValueAt(viewInventary.jTable1.getSelectedRow(), 2);
+                if(viewInventary.jTable1.getSelectedRow()!=-1){
                     Inventary i1=new Inventary(id,name,amount);
                     model.deleteInventary(i1);
-                    this.viewInventory.setVisible(false);
+                    this.viewInventary.setVisible(false);
                     ViewInventary view1 = ViewInventary.viewaSortuBistaratu();
                     Model model1 = new Model();
                     InventaryController controller1 = new InventaryController (model1, view1);
@@ -78,27 +77,27 @@ public class InventaryController implements ActionListener {
                 }
                 break;
             case "Update":
-                if (viewInventory.jTable1.getSelectedRow()!=-1) {
-                    int id1 =Integer.parseInt(viewInventory.jTextField1.getText());
-                    String name1 = (String) viewInventory.jTextField2.getText();
-                    int amount1 = Integer.parseInt(viewInventory.jTextField1.getText());
+                if (viewInventary.jTable1.getSelectedRow()!=-1) {
+                    int id1 =Integer.parseInt(viewInventary.jTextField1.getText());
+                    String name1 = (String) viewInventary.jTextField2.getText();
+                    int amount1 = Integer.parseInt(viewInventary.jTextField1.getText());
 
                     
-                    viewInventory.jTable1.setValueAt(id1, viewInventory.jTable1.getSelectedRow(), 0);
-                    viewInventory.jTable1.setValueAt(name1, viewInventory.jTable1.getSelectedRow(), 1);
-                    viewInventory.jTable1.setValueAt(amount1, viewInventory.jTable1.getSelectedRow(), 2);
+                    viewInventary.jTable1.setValueAt(id1, viewInventary.jTable1.getSelectedRow(), 0);
+                    viewInventary.jTable1.setValueAt(name1, viewInventary.jTable1.getSelectedRow(), 1);
+                    viewInventary.jTable1.setValueAt(amount1, viewInventary.jTable1.getSelectedRow(), 2);
 
                     Inventary i2=new Inventary(id1,name1,amount1);
                     model.updateInventary(i2);
                     JOptionPane.showMessageDialog(null, "Is change");
-                    this.viewInventory.setVisible(false);
-                    ViewMembers view1 = ViewMembers.viewaSortuBistaratu();
+                    this.viewInventary.setVisible(false);
+                    ViewInventary view1 = ViewInventary.viewaSortuBistaratu();
                     Model model1 = new Model();
-                    MemberController controller1 = new MemberController (model1, view1);
+                    InventaryController controller1 = new InventaryController (model1, view1);
                     break;
 
                 } else {
-                    if (viewInventory.jTable1.getRowCount() == 0) {
+                    if (viewInventary.jTable1.getRowCount() == 0) {
                         JOptionPane.showMessageDialog(null, "Table is empty");
                     } else {
                         JOptionPane.showMessageDialog(null, "You have to select a row");
@@ -108,7 +107,7 @@ public class InventaryController implements ActionListener {
             case "Back":
                 AdminMenu a1=new AdminMenu();
                 a1.setVisible(true);
-                this.viewInventory.setVisible(false);
+                this.viewInventary.setVisible(false);
                 break;
         }
     }
