@@ -134,9 +134,9 @@ session_start();
              	var d = new Date();
              	var Nyear = d.getFullYear();
              	var Nmonth =1 +  parseInt(d.getMonth());
+             	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
              	var ret = "";
              	var ret2 ="";
-
              	ret += "<div>";
              	ret2 += '<button onclick="changedate('+ parseInt(year) + "," + (parseInt(month) - 2) +')"> < </button>';
              	ret2 += '<button>' + monthnames[month-1] + '</button>';
@@ -190,6 +190,14 @@ session_start();
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
                     document.getElementById(obj.bookedMe[i]).style.color = "green";
                 }
+
+                for (var i = obj.bookedMe.length - 1; i >= 0; i--) {
+					if (obj.bookedMe[i] ==  NDate) {
+						ret5 = '<button onclick="finishbook()"> Finish Booking </button>';
+						document.querySelector('#finishdiv').innerHTML = ret5;
+                	}                
+                }
+
 
              }
 		</script>
@@ -305,6 +313,8 @@ session_start();
 					       </div>
 						        <div id="deldiv">
 						       	</div>
+						    <div id="finishdiv">
+						    </div>
 
 			</div>
 			        <script>
