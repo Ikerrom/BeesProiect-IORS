@@ -31,7 +31,7 @@ session_start();
 
 	<script>
             var selectInnerText = '<option selected="selected" value="ez">Please select</option><option>Your own</option>';
-            var selecteddate = "2021-05-20";
+            var selecteddate = "";
             let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
             function checkEnable(attr, obj) {
@@ -86,6 +86,10 @@ session_start();
                     document.getElementById(selecteddate).style.background = "";
                     ret4= "";
                     document.querySelector('#deldiv').innerHTML = ret4;
+                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted'];
+                    for (var i = 0; i < attrs.length; ++i) {
+                    	document.getElementById(attrs[i]).style.display = "none";
+                	}
 				} catch (error) {}
 	                selecteddate = date;
 	                document.getElementById(date).style.background = "darkgrey";
@@ -116,6 +120,8 @@ session_start();
 			    xhttpdel.send();
 			    xhttpcalendar.open("GET", "calendarsend.php", true);
                 xhttpcalendar.send();
+                document.getElementById('deleted').style.display = '';
+
             }
 
              function parseinfocalendar(obj) {
@@ -256,6 +262,9 @@ session_start();
 							 <h3 id="ezbete" style="display: none;">
 					            Please fill all blanks.
 					        </h3>
+					         <h3 id="deleted" style="display: none;">
+					            Deleted Sucsesfully.
+					        </h3>
 					        <h3 id="ezlata" style="display: none;">
 					            Sorry, the bin was already booked.
 					        </h3>
@@ -277,10 +286,10 @@ session_start();
 						            <option>Your own</option>
 					        	</select>
 					        	<button id="submit">Submit</button>
+
 					       </div>
-					       <div id="deldiv">
-					       	
-					       </div>
+						        <div id="deldiv">
+						       	</div>
 
 			</div>
 			        <script>
