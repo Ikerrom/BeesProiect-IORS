@@ -1,13 +1,13 @@
 
 		<html>					
-			<head>  
+			<head>  <!-- todos los scripts y los links para el cabezado de la pagina -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css">
-				<title>ERLETE</title>
+				<title>ERLETE</title>						<!-- Titulo de la Pagina(Encabezado) -->
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
@@ -16,7 +16,9 @@
 			</head>
 			<body>
 				<div class="title">
-					
+					<!-- PHP -->
+					<!-- Para el inicio de sesion que compruebe a traves de 
+					la base de datos si todos los datos son correctos -->
 					    <?php
 					    session_start();
 					    if (isset($_SESSION['erablitzailea_a_g'])) {
@@ -26,6 +28,8 @@
 						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
+							<!-- En la parte del encabezado codigo para 
+							que salga la foto del perfil, el dni y el nombre -->
 								<div class="perfil">
 									<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
 									<div class="perfiltext">
@@ -42,6 +46,10 @@
 				</div>
 				
 				<div class="topbar">
+					<!-- PHP -->
+					<!-- Si esta con la sesion iniciada que pueda navegar 
+					a traves de las distintas paginas que tenemos, Your Account,
+					Booking,About us, Log out -->
 					    <?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
@@ -65,6 +73,10 @@
 						
 
 						<?php
+						 /**
+						 Si no esta logeado en la pagina que solo puedas acceder 
+						 al index, al about us o a la pagina de iniciar sesion 
+ 							*/
 							}else{
 							?>
 							<form action="about.php">
@@ -82,10 +94,15 @@
 					
 					
 				</div>
+						
+						<!-- HTML -->
 
 			<div class="texttotal">
 
-				<div class="textstyle">
+				<div class="textstyle">	
+										<!-- DIV para la parte izquierda de la pagina principal -->
+										<!-- Parte de la informacion del index -->
+
 					<p>We are the Erlete association, our goal is to help beekeepers with the extraction of honey, through our extractor which is located in our premises, you can find us in Axpe and ask us any kind of doubts you have about this.
 					The association was created by a group of young entrepreneurs with the desire of  not to let the bees die.
 					With other eight men and women, the founding beekeepers of the Erlete association are Aitor Unzueta, Urdaspal Alberdi , Félix Zabarte,Iñigo Mendibil, Hegoi Escudero, Inazio Uruburu and Roberto Ardanza.
@@ -93,7 +110,9 @@
 					
 							
 
-								
+											<!-- Div para darle el tamaño a la imagen y que cuando minimizes 
+											el tamaño de la pagina la imagen se vaya minimizando tambien -->
+		
 							<div class="carousel-inner">
 						      <div class="item active">
 						       <img src="resources/images/web_imges/erlete1.jpg" style= "height: 25% width:60%">
@@ -106,6 +125,9 @@
 
 				
 					<p class="header">
+												<!-- Parte de Entrevista a los creadores de Erlete -->
+												<!-- De donde viene la idea y porque decidieron crear Erlete -->
+
 
 						Here's where our idea comes from:
 					</p>	
@@ -124,21 +146,33 @@
 
 						<br><br>
 
+											<!-- Mapa Google -->
+											<!-- El mapa que sale en la parte inferior izquierda de la pagina index,
+											con su altura y su ancho, esta se podra agrandar si clickas dentro de el,
+											mismo funcionamiento con la parte de minimizar -->
+
+
+
 					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
 					</iframe>
 						<br><br><br>
 
 				</div>
 
-				<div class="textstyle">
+				<div class="textstyle">			<!-- DIV para la parte derecha de la pagina principal -->
 
-					
+															<!-- Informacion -->
+
 					<p>
 						
 					Bees are said to pollinate 80% of plants. Therefore, they do a very important job. The bee demands care; there are diseases that, if not treated, kill the bee. In recent years, the vespa velutine wasp, coming or brought from Asia, has also appeared and hurts.
 					<br><br>
 
 					
+					<!-- HTML -->
+					<!-- Toda la parte del carousel del index(parte derecha de la pagina)
+					el tamaño de las imagenes, que se deslizen al darle a los botones,  y tambien que 
+					se vayan minimizando con la pagina -->
 
 						  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 						    <!-- Indicators -->
@@ -148,7 +182,7 @@
 						      <li data-target="#myCarousel" data-slide-to="2"></li>
 						    </ol>
 
-						    <!-- Wrapper for slides -->
+						    <!-- Tamaño de las imagenes  -->
 						    <div class="carousel-inner">
 						      <div class="item active">
 						        <img src="resources/images/web_imges/erlete3.jpg" style= "height: 25% width:60%">
@@ -163,7 +197,7 @@
 						      </div>
 						    </div>
 
-						    <!-- Left and right controls -->
+						    <!-- Controles para ir a la imagen de la derecha o izquierda -->
 						    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 						      <span class="glyphicon glyphicon-chevron-left"></span>
 						      <span class="sr-only">Previous</span>
@@ -175,10 +209,17 @@
 						  </div>
 
 					<br><br><br>
+										<!-- Informacion -->
+
 					In addition, globalization has only been harm to the bee: insecticides, pesticides, mud disease, vespa velutin... When I was young there was no professional beekeeping, but the bees were in the forest because they had a much more suitable environment. Today, the only way to resist is to unite the little beekeepers. In addition, the Administration is interested in having ten beekeepers, each with lots of bees, to keep revenue under control.
 
 					<br><br><br>
 					
+											<!-- Video de Youtube -->
+											<!--  la altura y el ancho del video 
+											ademas tiene el mismo funcionamiento que las imagenes, 
+											al minizar la pagina se va minimizando tambien -->
+
 
 					<iframe style="width:43vw ;height:45vh; ;" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

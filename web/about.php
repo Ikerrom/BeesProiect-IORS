@@ -1,12 +1,12 @@
 		<html>					
-			<head>  
+			<head>  		<!-- todos los scripts y los links para el cabezado de la pagina -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css"/>
-				<title>ERLETE</title>
+				<title>ERLETE</title>					<!-- Titulo de la Pagina(Encabezado) -->
 				<link rel="preconnect" href="https://fonts.gstatic.com"/>
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
 
@@ -14,8 +14,10 @@
 
 			</head>
 			<body>
-				<div class="title">
-					
+				<div class="title">		
+					<!-- PHP -->
+					<!-- Para el inicio de sesion que compruebe a traves de 
+					la base de datos si todos los datos son correctos -->
 					    <?php
 					    session_start();
 					    if (isset($_SESSION['erablitzailea_a_g'])) {
@@ -25,6 +27,8 @@
 						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
+							<!-- En la parte del encabezado codigo para 
+							que salga la foto del perfil, el dni y el nombre -->
 								<div class="perfil">
 									<img class="perfilimage" src="<?php echo $imprimir['Foto'];?>">
 									<div class="perfiltext">
@@ -40,6 +44,10 @@
 				</div>
 				
 				<div class="topbar">
+										<!-- PHP -->
+					<!-- Si esta con la sesion iniciada que pueda navegar 
+					a traves de las distintas paginas que tenemos, HOME,Your Account,
+					Booking y  Log out -->
 					    <?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
@@ -81,8 +89,8 @@
 
 
 			<div class="texttotal">
-
-				<div class="textstyle">
+													<!-- HTML -->
+				<div class="textstyle">		<!-- DIV parte izquierda de la pagina del About Us -->
 					<p class="header">Why did we start working in beekeeping? Where do we sell honey?</p>
 							<br>
 							<br>
@@ -101,7 +109,7 @@
 
 				</div>
 
-				<div class="textstyle">
+				<div class="textstyle">			<!-- DIV parte derecha de la pagina del About Us -->
 
 						<br>
 
@@ -116,6 +124,9 @@
 						</p>
 
 						<br><br>
+
+							<!-- Div para darle el tamaño a la imagen y que cuando minimizes 
+							el tamaño de la pagina la imagen se vaya minimizando tambien -->
 
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -132,7 +143,10 @@
 				</div>
 			</div>
 			<br><br><br>	
-			<div class="texttotal">
+			<div class="texttotal"> 	<!-- Div para darle el tamaño a las imagenes de la parte inferior 
+											 y la funcion de minimizar,
+											 ademas de poner tambien la informacion necesaria por si algun cliente 
+											 necesita ponerse en contacto con nosotros -->
 						<img src="resources/images/web_imges/telefono.png" style=" width:9%; height:1%;"> <p><font color ="white">Call us at <br>  94 751 34 12</font></p>
 						<br>
 						<br>
