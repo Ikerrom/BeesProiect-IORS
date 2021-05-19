@@ -2,10 +2,6 @@
 
 <?php 
 session_start();
-include("test_connect_db.php");
- if (isset($_SESSION['erablitzailea_a_g'])) {
-	$dni = $_SESSION['erablitzailea_a_g'];
-	$link =  ConnectDataBase();
 ?>					
 			<head>  
 				<meta charset="utf-8">
@@ -71,7 +67,6 @@ include("test_connect_db.php");
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfo(JSON.parse(this.responseText));
                     xhttpcalendar.open("GET", "calendarsend.php", true);
-                    alert(this.responseText);
                     xhttpcalendar.send();
                 }
             };
@@ -82,36 +77,13 @@ include("test_connect_db.php");
 
             }
 
-            function date2(year, month, day){
-            	this.year=year;
-            	this.month=month;
-            	this.day=day;
-
-            }
-
-            function deldate(date){
-            	
-            }
-
             function setdate(date,obj){
-            	ret3 = '<button onclick="deldate(\''+date+'\')"> Delete Reservation </button>';
                 try {
                     document.getElementById(selecteddate).style.background = "";
-                    for (var i = obj.length - 1 ; i >= 0; i--) {
-	                    if(obj[i]==selecteddate){
-	                    	document.querySelector('#deldiv').innerHTML = "";
-	                    }
-                }
+                    alert(obj[0]);
 				} catch (error) {}
                 selecteddate = date;
                 document.getElementById(date).style.background = "darkgrey";
-                for (var i = obj.length - 1 ; i >= 0; i--) {
-	                    if(obj[i]==selecteddate){
-	                    	
-	                    	document.querySelector('#deldiv').innerHTML = ret3;
-	                    }
-                }
-
                 }
             
 
@@ -191,6 +163,10 @@ include("test_connect_db.php");
 				<div class="title">
 					
 					    <?php
+					    if (isset($_SESSION['erablitzailea_a_g'])) {
+					    include("test_connect_db.php");
+						$dni = $_SESSION['erablitzailea_a_g'];
+						$link =  ConnectDataBase();
 						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
@@ -202,14 +178,17 @@ include("test_connect_db.php");
 									</div>
 								</div>
 							<?php
-							
+							}
 							?>
 
 						<p class="titletext">ERLETE</p>
 				</div>
-
 				
 				<div class="topbar">
+					    <?php
+							if (isset($_SESSION['erablitzailea_a_g'])) 
+							{
+						?>
 
 						<form action="index.php">
 								<input class="buttonT" type="submit" value="HOME"/>
@@ -222,7 +201,18 @@ include("test_connect_db.php");
 						<form action="about.php">
 							<input class="buttonT" type="submit" value="ABOUT US"/>
 						</form>
-				
+
+						<?php
+							}else{
+							?>
+							<form action="login.php">
+								<input class="buttonT" type="submit" value="LOG IN"/>
+							</form>
+							<?php
+							}
+						?>
+
+					
 						<form action="singout.php">
 							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
@@ -270,13 +260,8 @@ include("test_connect_db.php");
 					        	</select>
 					        	<button id="submit">Submit</button>
 					       </div>
-					       <div id="deldiv">
-					       	
-					       </div>
 
 			</div>
-
-
 			        <script>
 			            xhttp.open("GET", "book/book.php", true);
 			            xhttp.send();
@@ -288,17 +273,9 @@ include("test_connect_db.php");
 			                }
 			                document.querySelector('#ezbete').style.display = 'none';
 			                xhttp.open("GET", "book/book.php?x=" + JSON.stringify(new getinfo()), true);
-			                alert(JSON.stringify(new getinfo()));
 			                xhttp.send();
 			            };
 			            xhttpcalendar.open("GET", "calendarsend.php", true);
 			            xhttpcalendar.send();
 
 			        </script>
-
-					<?php 
-			} else {
-				echo "You are not logged in.";
-
-			}
-				?>
