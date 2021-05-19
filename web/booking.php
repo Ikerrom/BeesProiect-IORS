@@ -74,18 +74,28 @@ session_start();
             function date(year,month){
             	this.year=year;
             	this.month=month;
-
             }
+
+            var xhttpdel = new XMLHttpRequest();
+            xhttpdel.onreadystatechange = function () {
+            };
+
 
             function setdate(date,obj){
                 try {
                     document.getElementById(selecteddate).style.background = "";
-                    alert(obj[0]);
+                    ret4= "";
+                    document.querySelector('#deldiv').innerHTML = ret4;
 				} catch (error) {}
-                selecteddate = date;
-                document.getElementById(date).style.background = "darkgrey";
+	                selecteddate = date;
+	                document.getElementById(date).style.background = "darkgrey";
+	                for (var i = obj.length - 1 ; i >= 0; i--) {
+	                    if (obj[i] == selecteddate) {
+	                    	ret4= '<button onclick="deldate(\''+ date +'\')"> Delete Book </button>';
+	                    	document.querySelector('#deldiv').innerHTML = ret4;
+	                    }
+	                }
                 }
-            
 
 		    var xhttpcalendar = new XMLHttpRequest();
             xhttpcalendar.onreadystatechange = function () {
@@ -98,6 +108,14 @@ session_start();
             	const sentinfo = JSON.stringify(new date(year,month));
 			    xhttpcalendar.open("GET", "calendarsend.php?x=" + sentinfo, true);
 			    xhttpcalendar.send();
+            }
+
+            function deldate(date){
+            	const sentinfo = date;
+			    xhttpdel.open("GET", "book/bookdel.php?x=" + sentinfo, true);
+			    xhttpdel.send();
+			    xhttpcalendar.open("GET", "calendarsend.php", true);
+                xhttpcalendar.send();
             }
 
              function parseinfocalendar(obj) {
@@ -259,6 +277,9 @@ session_start();
 						            <option>Your own</option>
 					        	</select>
 					        	<button id="submit">Submit</button>
+					       </div>
+					       <div id="deldiv">
+					       	
 					       </div>
 
 			</div>
