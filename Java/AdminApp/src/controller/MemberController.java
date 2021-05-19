@@ -26,7 +26,7 @@ public class MemberController implements ActionListener {
     /**
      * Constructor
      * @param model Model
-     * @param viewMembers  viewMembers
+     * @param viewMembers  ViewMembers
      */
     public MemberController(Model model, ViewMembers viewMembers) {
         this.model = model;
@@ -51,7 +51,6 @@ public class MemberController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
-        //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
                 Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),viewMembers.jTextField6.getText(),viewMembers.jTextField7.getText(),viewMembers.jTextField8.getText());

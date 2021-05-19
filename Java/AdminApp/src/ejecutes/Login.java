@@ -1,8 +1,8 @@
 package ejecutes;
 
+import javax.swing.JOptionPane;
 import model.Model;
-import model.Member;
-import static model.Model.connect;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -165,8 +165,9 @@ public class Login extends javax.swing.JFrame {
  * @param evt  the old-style event
  */
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
+
         Model.login(jTextFieldUser.getText(),jPasswordFieldPass.getText());
-        this.dispose();
+        this.dispose(); 
     }//GEN-LAST:event_jButtonSingInActionPerformed
 
     /**
@@ -203,7 +204,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSingIn;
     private javax.swing.JLabel jLabel1;

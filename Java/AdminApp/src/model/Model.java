@@ -6,6 +6,7 @@
 package model;
 
 import ejecutes.AdminMenu;
+import ejecutes.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,8 +30,8 @@ import static model.Model.connect;
  */
 public class Model {
     /**
-     * 
-     * @return Connection to database
+     * Connection to dataBase
+     * @return Connection
      */
     public static Connection connect() {
         Connection conn = null;
@@ -52,7 +53,7 @@ public class Model {
      * @param pass password of member
      */
     public static void login(String user, String pass){
-        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+"'";
+        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+" AND Admin=1'";
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 ResultSet rs = pstmt.executeQuery()) {
@@ -62,13 +63,16 @@ public class Model {
                 AdminMenu a1=new AdminMenu();
                 a1.setVisible(true);
             }else{
-                JOptionPane.showMessageDialog(null, "Data wrong");            }
+                JOptionPane.showMessageDialog(null, "Data wrong");
+                Login l1=new Login();
+                l1.setVisible(true);
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage());
         }
     }
     /***
-     * 
+     * See Members
      * @return Members of data base
      */
     public static ArrayList<Member> read() {
@@ -159,6 +163,10 @@ public class Model {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    /**
+     * Add Member items to comboBox
+     * @param comboMember 
+     */
     public static void comboBoxMember(JComboBox<Member> comboMember) {
         String sql="SELECT * FROM personas";
         try (Connection conn = connect();
@@ -173,16 +181,16 @@ public class Model {
         }
     }
     /**
-     * 
+     * Add Lata items to comboBox
      * @param comboLata
      */
-    public static void comboBoxLatas(JComboBox<Latas> comboLata) {
+    public static void comboBoxLatas(JComboBox<Lata> comboLata) {
         String sql="SELECT * FROM latas";
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                comboLata.addItem(new Latas(rs.getInt("lata_id"),rs.getString("capacidad")));
+                comboLata.addItem(new Lata(rs.getInt("lata_id"),rs.getInt("capacidad")));
 
             }
         } catch (Exception ex) {
@@ -190,7 +198,7 @@ public class Model {
         }
     }
     /**
-     * 
+     * See Reserves
      * @return reserve list
      */
     public static ArrayList<Reserve> readReserve() {
@@ -280,14 +288,14 @@ public class Model {
             pstmt.setString(4,String.valueOf(r.getDia_reservado()));
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
     /**
      * See buy list
      * @return Purchase of DataBase
      */
-    public static ArrayList<Purchase> readPurchase() {
+    public static ArrayList<Purchase> readPurchase(){
         ArrayList<Purchase> buys = new ArrayList<>();
         String taula = "compras";
         String sql = "SELECT * FROM " + taula;
@@ -317,7 +325,6 @@ public class Model {
             ptmt.setInt(2,b.getId_product());
             ptmt.setString(3,b.getPrice());
             ptmt.setInt(4,b.getAccount());
-   
             return ptmt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
@@ -360,6 +367,10 @@ public class Model {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    /**
+     * See Inventary
+     * @return Inventary list
+     */
      public static ArrayList<Inventary> readInventary() {
         ArrayList<Inventary> inventaries = new ArrayList<>();
         String taula = "inventario";
@@ -377,6 +388,11 @@ public class Model {
         }
         return inventaries;
     }
+     /**
+      * Add producto to inventary
+      * @param i Inventary object
+      * @return 1 if a product is added otherwise it returns 0
+      */
     public static int addInventary(Inventary i) {
         String sql = "INSERT INTO inventario(id_producto,nombre,cantidad) VALUES(?,?,?)";
         try (Connection conn = connect();
@@ -390,6 +406,10 @@ public class Model {
             return 0;
         }
     }
+    /**
+     * Delete Product of inventary
+     * @param i Inventary object
+     */
     public static void deleteInventary(Inventary i) {
         String sql = "DELETE FROM inventario WHERE id_producto = ?";
 
@@ -402,6 +422,10 @@ public class Model {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    /**
+     * Update product
+     * @param i  Invnetary object
+     */
     public static void updateInventary(Inventary i) {
         String sql = "UPDATE inventario SET  nombre=?, cantidad=? WHERE id_producto =?";
         try (Connection conn = connect();
@@ -415,4 +439,74 @@ public class Model {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
+    /**
+     * See Latas
+     * @return Lata list
+     */
+     public static ArrayList<Lata> readLatas() {
+        ArrayList<Lata> latas = new ArrayList<>();
+        String taula = "latas";
+        String sql = "SELECT * FROM " + taula;
+
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Lata l= new Lata(rs.getInt("lata_id"),rs.getInt("capacidad"));
+                latas.add(l);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+        return latas;
+    }
+     /**
+      * Add Latas
+      * @param l Lata object
+      * @return 1 if a lata is added otherwise it returns 0
+      */
+    public static int addLatas(Lata l) {
+        String sql = "INSERT INTO latas(lata_id,capacidad) VALUES(?,?)";
+        try (Connection conn = connect();
+            PreparedStatement ptmt = conn.prepareStatement(sql)) {
+            ptmt.setInt(1,l.getLata_id());
+            ptmt.setInt(2,l.getCapacidad());
+            return ptmt.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+            return 0;
+        }
+    }
+    /**
+     * Delete Lata
+     * @param l Lata object
+     */
+    public static void deleteLatas(Lata l) {
+        String sql = "DELETE FROM latas WHERE lata_id = ?";
+
+        try (Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1,l.getLata_id());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+    /**
+     * Update Lata
+     * @param l Lata object
+     */
+    public static void updateLatas(Lata l) {
+        String sql = "UPDATE inventario SET capacidad=? WHERE lata_id =?";
+        try (Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1,l.getCapacidad());
+            pstmt.setInt(2, l.getLata_id());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }
+    
 }

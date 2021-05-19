@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package controller;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-import model.Latas;
+import model.Lata;
 import model.Member;
 import model.Model;
 import model.ReserveTable;
-
-
 
 /**
  *
@@ -27,7 +24,7 @@ public class ViewReserves extends javax.swing.JFrame {
         initComponents();
         Member m1=new Member();
         Model.comboBoxMember(jComboBox1);
-        Latas l1=new Latas();
+        Lata l1=new Lata();
         Model.comboBoxLatas(jComboBox2);
         
     }
@@ -54,7 +51,6 @@ public class ViewReserves extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
@@ -95,12 +91,6 @@ public class ViewReserves extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
-        jButton2.setText("Update");
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         jButton3.setText("Back");
@@ -108,16 +98,6 @@ public class ViewReserves extends javax.swing.JFrame {
         jButton3.setContentAreaFilled(false);
 
         jComboBox1.setEditable(true);
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jComboBox2.setEditable(true);
 
@@ -159,9 +139,7 @@ public class ViewReserves extends javax.swing.JFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(jButton1))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(jButton2)
-                                        .addGap(18, 18, 18)
+                                        .addGap(111, 111, 111)
                                         .addComponent(jButton3)))))))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
@@ -180,7 +158,6 @@ public class ViewReserves extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,14 +184,10 @@ public class ViewReserves extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        // TODO add your handling code here      
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
-/**
- * Invoked when the mouse button has been clicked (pressed and released) on a component.
- * @param evt 
- */
+    /**
+     * Invoked when the mouse button has been clicked (pressed and released) on a component.
+     * @param evt 
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         jComboBox1.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
@@ -224,12 +197,8 @@ public class ViewReserves extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     /**
-     * 
+     * Create ViewReserves
      * @return ViewReserves JFrame
      */
    public static ViewReserves viewaSortuBistaratu() {
@@ -244,7 +213,6 @@ public class ViewReserves extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton jButton1;
-    javax.swing.JButton jButton2;
     javax.swing.JButton jButton3;
     javax.swing.JButton jButton4;
     javax.swing.JComboBox jComboBox1;

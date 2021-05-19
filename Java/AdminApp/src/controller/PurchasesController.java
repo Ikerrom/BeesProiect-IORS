@@ -23,15 +23,15 @@ public class PurchasesController implements ActionListener {
      * Private atributes
      */
     private Model model;
-    private ViewBuys viewBuys;
+    private ViewPurchases viewPurchase;
     /**
-     * Constructor
-     * @param model Model
-     * @param viewBuys ViewBuys
+     * 
+     * @param model
+     * @param viewBuys 
      */
-    public PurchasesController(Model model, ViewBuys viewBuys) {
+    public PurchasesController(Model model, ViewPurchases viewBuys) {
         this.model = model;
-        this.viewBuys = viewBuys;
+        this.viewPurchase = viewBuys;
         anadirActionListener(this);
         
     }
@@ -40,11 +40,10 @@ public class PurchasesController implements ActionListener {
      * @param listener 
      */
     private void anadirActionListener(ActionListener listener) {
-        //GUIaren konponente guztiei gehitu listenerra
-        viewBuys.jButton1.addActionListener(listener);
-        viewBuys.jButton2.addActionListener(listener);
-        viewBuys.jButton3.addActionListener(listener);
-        viewBuys.jButton5.addActionListener(listener);
+        viewPurchase.jButton1.addActionListener(listener);
+        viewPurchase.jButton2.addActionListener(listener);
+        viewPurchase.jButton3.addActionListener(listener);
+        viewPurchase.jButton5.addActionListener(listener);
     }
     /**
      * Invoked when an action occurs.
@@ -53,26 +52,25 @@ public class PurchasesController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
-        //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
-                int numberBuy = Integer.valueOf(viewBuys.jTextField1.getText());
-                int id_product = Integer.valueOf(viewBuys.jTextField2.getText());
-                String price = (String)(viewBuys.jTextField3.getText());
-                int account = Integer.valueOf(viewBuys.jTextField4.getText());
+                int numberBuy = Integer.valueOf(viewPurchase.jTextField1.getText());
+                int id_product = Integer.valueOf(viewPurchase.jTextField2.getText());
+                String price = (String)(viewPurchase.jTextField3.getText());
+                int account = Integer.valueOf(viewPurchase.jTextField4.getText());
                 Purchase b=new Purchase(numberBuy,id_product,price,account);
                 model.addPurchase(b);
-                this.viewBuys.setVisible(false);
-                ViewBuys view2 = ViewBuys.viewaSortuBistaratu();
+                this.viewPurchase.setVisible(false);
+                ViewPurchases view2 = ViewPurchases.viewaSortuBistaratu();
                 Model model2 = new Model();
                 PurchasesController controller = new PurchasesController (model2, view2);
                 break;
             case "Delete":
-                if(viewBuys.jTable1.getSelectedRow()!=-1){
-                    Purchase b1=new Purchase(Integer.parseInt(viewBuys.jTextField1.getText()),Integer.parseInt(viewBuys.jTextField2.getText()),(String)(viewBuys.jTextField3.getText()),Integer.parseInt(viewBuys.jTextField4.getText()));
+                if(viewPurchase.jTable1.getSelectedRow()!=-1){
+                    Purchase b1=new Purchase(Integer.parseInt(viewPurchase.jTextField1.getText()),Integer.parseInt(viewPurchase.jTextField2.getText()),(String)(viewPurchase.jTextField3.getText()),Integer.parseInt(viewPurchase.jTextField4.getText()));
                     model.deletePurchase(b1);
-                    this.viewBuys.setVisible(false);
-                    ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+                    this.viewPurchase.setVisible(false);
+                    ViewPurchases view1 = ViewPurchases.viewaSortuBistaratu();
                     Model model1 = new Model();
                     PurchasesController controller1 = new PurchasesController (model1, view1);
                     break;
@@ -81,27 +79,27 @@ public class PurchasesController implements ActionListener {
                 }
                 break;
             case "Update":
-                if (viewBuys.jTable1.getSelectedRow()!=-1) {
-                    int nb = Integer.parseInt(viewBuys.jTextField1.getText());
-                    int idproduct = Integer.valueOf(viewBuys.jTextField2.getText());
-                    String pric = (String)(viewBuys.jTextField3.getText());
-                    int acco = Integer.valueOf(viewBuys.jTextField4.getText());
-                    viewBuys.jTable1.setValueAt(nb, viewBuys.jTable1.getSelectedRow(), 0);
-                    viewBuys.jTable1.setValueAt(idproduct, viewBuys.jTable1.getSelectedRow(), 1);
-                    viewBuys.jTable1.setValueAt(pric, viewBuys.jTable1.getSelectedRow(), 2);
-                    viewBuys.jTable1.setValueAt(acco, viewBuys.jTable1.getSelectedRow(), 3);
+                if (viewPurchase.jTable1.getSelectedRow()!=-1) {
+                    int nb = Integer.parseInt(viewPurchase.jTextField1.getText());
+                    int idproduct = Integer.valueOf(viewPurchase.jTextField2.getText());
+                    String pric = (String)(viewPurchase.jTextField3.getText());
+                    int acco = Integer.valueOf(viewPurchase.jTextField4.getText());
+                    viewPurchase.jTable1.setValueAt(nb, viewPurchase.jTable1.getSelectedRow(), 0);
+                    viewPurchase.jTable1.setValueAt(idproduct, viewPurchase.jTable1.getSelectedRow(), 1);
+                    viewPurchase.jTable1.setValueAt(pric, viewPurchase.jTable1.getSelectedRow(), 2);
+                    viewPurchase.jTable1.setValueAt(acco, viewPurchase.jTable1.getSelectedRow(), 3);
                     Purchase b2=new Purchase(nb,idproduct,pric,acco);
                     model.updatePurchase(b2);
                     JOptionPane.showMessageDialog(null, "Is change ");
-                    this.viewBuys.setVisible(false);
-                    ViewBuys view1 = ViewBuys.viewaSortuBistaratu();
+                    this.viewPurchase.setVisible(false);
+                    ViewPurchases view1 = ViewPurchases.viewaSortuBistaratu();
                     Model model1 = new Model();
                     PurchasesController controller1 = new PurchasesController (model1, view1);
                     break;
 
                     
                 } else {
-                    if (viewBuys.jTable1.getRowCount() == 0) {
+                    if (viewPurchase.jTable1.getRowCount() == 0) {
                         JOptionPane.showMessageDialog(null, "Table is empty");
                     } else {
                         JOptionPane.showMessageDialog(null, "You have to select a row");
@@ -111,7 +109,7 @@ public class PurchasesController implements ActionListener {
             case "Back":
                 AdminMenu a1=new AdminMenu();
                 a1.setVisible(true);
-                this.viewBuys.setVisible(false);
+                this.viewPurchase.setVisible(false);
                 break;       
         }
     }

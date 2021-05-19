@@ -16,13 +16,13 @@ public class InventaryTable extends AbstractTableModel {
     /**
      * Private atributes
      */
-    private ArrayList<Inventary> buys = new ArrayList<>();
+    private ArrayList<Inventary> inventaries = new ArrayList<>();
     private String[] columns = {"Id_product","name","amount"};
     /**
      * Constructor
      */
     public InventaryTable(){
-        buys=Model.readInventary();
+        inventaries=Model.readInventary();
       
     }
      /**
@@ -31,7 +31,7 @@ public class InventaryTable extends AbstractTableModel {
      */
     @Override
     public int getRowCount() {
-        return buys.size();
+        return inventaries.size();
     }
      /**
      * Returns the number of columns in the model.
@@ -53,9 +53,9 @@ public class InventaryTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex){
         switch(columnIndex){
-            case 0: return buys.get(rowIndex).getId_product();
-            case 1: return buys.get(rowIndex).getName();
-            case 2: return buys.get(rowIndex).getAmount();
+            case 0: return inventaries.get(rowIndex).getId_product();
+            case 1: return inventaries.get(rowIndex).getName();
+            case 2: return inventaries.get(rowIndex).getAmount();
             default: return null;
         }
     }

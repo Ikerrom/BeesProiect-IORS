@@ -60,12 +60,6 @@ public class ViewInventary extends javax.swing.JFrame {
 
         jLabel3.setText("name");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("Amount: ");
 
         jTable1.setModel(new model.InventaryTable());
@@ -81,11 +75,6 @@ public class ViewInventary extends javax.swing.JFrame {
         jButton5.setText("Add");
         jButton5.setBorder(null);
         jButton5.setContentAreaFilled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
@@ -188,10 +177,6 @@ public class ViewInventary extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
     /**
      * Invoked when the mouse button has been clicked (pressed and released) on a component.
      * @param evt 
@@ -202,12 +187,8 @@ public class ViewInventary extends javax.swing.JFrame {
         jTextField2.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
         jTextField3.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 2)));
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
     /**
-     * 
+     * Create ViewInventary
      * @return ViewBuys JFrame
      */
    public static ViewInventary viewaSortuBistaratu() {

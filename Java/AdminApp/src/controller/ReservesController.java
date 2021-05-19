@@ -39,9 +39,7 @@ public class ReservesController implements ActionListener {
      * @param listener 
      */
     private void anadirActionListener(ActionListener listener) {
-        //GUIaren konponente guztiei gehitu listenerra
         viewReserves.jButton1.addActionListener(listener);
-        viewReserves.jButton2.addActionListener(listener);
         viewReserves.jButton3.addActionListener(listener);
         viewReserves.jButton4.addActionListener(listener);
     }
@@ -52,7 +50,6 @@ public class ReservesController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionCommand = e.getActionCommand();
-        //listenerrak entzun dezakeen eragiketa bakoitzeko. Konponenteek 'actionCommad' propietatea daukate
         switch (actionCommand) {
             case "Add":
                 String dni = viewReserves.jComboBox1.getSelectedItem().toString();
@@ -81,33 +78,6 @@ public class ReservesController implements ActionListener {
                     break;
                 }else{
                     JOptionPane.showMessageDialog(null,"You have to seelct row");
-                }
-                break;
-            case "Update":
-                if (viewReserves.jTable1.getSelectedRow()!=-1) {
-                    String dni2 = viewReserves.jComboBox1.getSelectedItem().toString();
-                    String day_reserved2 = (viewReserves.jTextField4.getText());
-                    int lata2 = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
-                    String day_reservation2 = viewReserves.jTextField3.getText();
-                    
-                    viewReserves.jTable1.setValueAt(dni2, viewReserves.jTable1.getSelectedRow(), 0);
-                    viewReserves.jTable1.setValueAt(day_reserved2, viewReserves.jTable1.getSelectedRow(), 1);
-                    viewReserves.jTable1.setValueAt(lata2, viewReserves.jTable1.getSelectedRow(), 2);
-                    viewReserves.jTable1.setValueAt(day_reservation2, viewReserves.jTable1.getSelectedRow(), 3);
-                    Reserve r2=new Reserve(dni2,day_reserved2,lata2,day_reservation2);
-                    model.updateReserve(r2);
-                    JOptionPane.showMessageDialog(null, "Is change ");
-                    this.viewReserves.setVisible(false);
-                    ViewReserves view1 = ViewReserves.viewaSortuBistaratu();
-                    Model model1 = new Model();
-                    ReservesController controller1 = new ReservesController(model1, view1);
-                    break;
-                } else {
-                    if (viewReserves.jTable1.getRowCount() == 0) {
-                        JOptionPane.showMessageDialog(null, "Table is empty");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "You have to select a row");
-                    }
                 }
                 break;
             case "Back":
