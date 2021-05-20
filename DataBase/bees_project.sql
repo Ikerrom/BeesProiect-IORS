@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2021 a las 10:24:12
+-- Tiempo de generación: 20-05-2021 a las 10:51:14
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -36,19 +36,6 @@ CREATE TABLE `compras` (
   `precio` decimal(65,2) NOT NULL,
   `cantidad` int(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `compras`
---
-
-INSERT INTO `compras` (`numeroCompra`, `id_producto`, `precio`, `cantidad`) VALUES
-(23, 1, '2.00', 20),
-(51, 2, '1.00', 7),
-(61, 3, '5.00', 6),
-(14151241, 6, '5.00', 8),
-(4123, 2, '3.00', 3),
-(12, 3, '3.00', 4),
-(45354, 3, '2.00', 5);
 
 --
 -- Disparadores `compras`
@@ -85,7 +72,7 @@ CREATE TABLE `elkarte` (
 --
 
 INSERT INTO `elkarte` (`dinero_total`) VALUES
-('378.00');
+('0.00');
 
 -- --------------------------------------------------------
 
@@ -105,9 +92,7 @@ CREATE TABLE `inventario` (
 
 INSERT INTO `inventario` (`id_producto`, `nombre`, `cantidad`) VALUES
 (1, 'jar', 20),
-(2, 'botes', 15),
-(3, 'X', 20),
-(6, 'miel', 10);
+(2, 'botes', 15);
 
 -- --------------------------------------------------------
 
@@ -141,22 +126,6 @@ CREATE TABLE `pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `pagos`
---
-
-INSERT INTO `pagos` (`dni`, `dinero`, `fecha`) VALUES
-('12345678G', '30.00', '2021-05-04 15:05:10'),
-('12345678A', '400.00', '2021-05-11 10:26:00'),
-('45167495H', '10.00', '2021-05-17 09:25:24'),
-('12345678A', '100.00', '2021-05-17 09:28:02'),
-('12345678A', '50.00', '2021-05-17 09:54:58'),
-('12345678G', '2.00', '2021-05-17 10:07:35'),
-('12345678G', '25.00', '2021-05-17 10:20:16'),
-('12345678G', '40.00', '2021-05-17 11:50:38'),
-('12345678G', '30.00', '2021-05-19 13:07:56'),
-('45167495H', '5.00', '2021-05-20 10:22:29');
-
---
 -- Disparadores `pagos`
 --
 DELIMITER $$
@@ -182,7 +151,7 @@ CREATE TABLE `personas` (
   `admin` tinyint(1) NOT NULL,
   `dinero_pagar` decimal(65,2) NOT NULL,
   `dinero_cuenta` decimal(65,2) NOT NULL,
-  `foto` varchar(100) NOT NULL
+  `foto` varchar(100) NOT NULL DEFAULT 'resources/images/perfiles/perfil.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -190,9 +159,9 @@ CREATE TABLE `personas` (
 --
 
 INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`) VALUES
-('12345678A', 'oscar', 'garcia', 'o.garcia@gmail.com', '1234', 1, '25.00', '20.00', 'resources/images/perfiles/perfil-empresario-dibujos-animados_18591-58479.jpg'),
-('12345678G', 'Julio Sebastian', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '30.00', '1000.00', 'resources/images/perfiles/Captura.PNG'),
-('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000000.00', 'resources/images/perfiles/perfil-empresario-dibujos-animados_18591-58479.jpg');
+('12345678G', 'Julio Sebastián', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '32.50', '1000.00', 'resources/images/perfiles/perfil.png'),
+('22222222A', 'Iker', 'Romero', 'romero.iker@uni.eus', '12345', 1, '10.00', '10000.00', 'resources/images/perfiles/perfil.png'),
+('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000.00', 'resources/images/perfiles/perfil.png');
 
 --
 -- Disparadores `personas`
@@ -217,12 +186,18 @@ CREATE TABLE `reservas` (
   `dni` varchar(9) NOT NULL,
   `dia_reservado` date NOT NULL,
   `lata_id` int(5) DEFAULT NULL,
-  `dia_dereserva` date NOT NULL
+  `dia_dereserva` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `compras`
+--
+ALTER TABLE `compras`
+  ADD PRIMARY KEY (`numeroCompra`);
 
 --
 -- Indices de la tabla `elkarte`
