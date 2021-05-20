@@ -29,7 +29,7 @@ public class ModelTest extends TestCase {
     @Override
     public void setUp() {
        m1=new Model();
-       m2=new Member("342","34523","","","",false,"","",""); 
+       m2=new Member("342","34523","","","",false,0.0,0.0,""); 
     }
 
     /**

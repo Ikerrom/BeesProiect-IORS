@@ -146,28 +146,28 @@ public class Member {
      * 
      * @return money to pay the member
      */
-    public String getMoneyToPay() {
+    public Double getMoneyToPay() {
         return moneyToPay;
     }
     /**
      * 
      * @param moneyToPay Sets the money to pay the member to the given value
      */
-    public void setMoneyToPay(String moneyToPay) {
+    public void setMoneyToPay(Double moneyToPay) {
         this.moneyToPay = moneyToPay;
     }
     /**
      * 
      * @return money in account
      */
-    public String getMoneyInAccount() {
+    public Double getMoneyInAccount() {
         return moneyInAccount;
     }
     /**
      * 
      * @param moneyInAccount Sets the money in account to the given value
      */
-    public void setMoneyInAccount(String moneyInAccount) {
+    public void setMoneyInAccount(Double moneyInAccount) {
         this.moneyInAccount = moneyInAccount;
     }
     /**

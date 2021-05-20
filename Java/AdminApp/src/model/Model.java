@@ -84,7 +84,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Member m= new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"),rs.getString("foto"));
+                Member m= new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getDouble("dinero_pagar"),rs.getDouble("dinero_cuenta"),rs.getString("foto"));
                 members.add(m);
             }
         } catch (Exception ex) {
@@ -107,8 +107,8 @@ public class Model {
             ptmt.setString(4,m.getGmail());
             ptmt.setString(5,m.getPassword());
             ptmt.setBoolean(6,m.isAdmin());
-            ptmt.setString(7,m.getMoneyToPay());
-            ptmt.setString(8,m.getMoneyInAccount());
+            ptmt.setDouble(7,m.getMoneyToPay());
+            ptmt.setDouble(8,m.getMoneyInAccount());
             ptmt.setString(9,m.getPhoto());
             ptmt.executeUpdate();
             return 1;
@@ -155,8 +155,8 @@ public class Model {
             pstmt.setString(3, m.getGmail());
             pstmt.setString(4, m.getPassword());
             pstmt.setBoolean(5, m.isAdmin());
-            pstmt.setString(6, m.getMoneyToPay());
-            pstmt.setString(7, m.getMoneyInAccount());
+            pstmt.setDouble(6, m.getMoneyToPay());
+            pstmt.setDouble(7, m.getMoneyInAccount());
             pstmt.setString(8, m.getPhoto());
             pstmt.setString(9, m.getDni());
             pstmt.executeUpdate();
@@ -174,7 +174,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                comboMember.addItem(new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"),rs.getString("foto")));
+                comboMember.addItem(new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getDouble("dinero_pagar"),rs.getDouble("dinero_cuenta"),rs.getString("foto")));
 
             }
         } catch (Exception ex) {

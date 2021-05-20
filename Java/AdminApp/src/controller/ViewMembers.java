@@ -254,8 +254,8 @@ public class ViewMembers extends javax.swing.JFrame {
         String gmail = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 3);
         String password = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 4);
         boolean admin = (boolean) jTable1.getValueAt(jTable1.getSelectedRow(), 5);
-        String moneyPay =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 6);
-        String moneyAccount =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 7);
+        double moneyPay =(double) jTable1.getValueAt(jTable1.getSelectedRow(), 6);
+        double moneyAccount =(double) jTable1.getValueAt(jTable1.getSelectedRow(), 7);
         String photo =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 8);
         
         jTextField1.setText(dni);
@@ -264,8 +264,8 @@ public class ViewMembers extends javax.swing.JFrame {
         jTextField4.setText(gmail);
         jTextField5.setText(password);
         jCheckBox1.setSelected(admin);
-        jTextField6.setText(moneyPay);
-        jTextField7.setText(moneyAccount);
+        jTextField6.setText(String.valueOf(moneyPay));
+        jTextField7.setText(String.valueOf(moneyAccount));
         jTextField8.setText(photo);
     }//GEN-LAST:event_jTable1MouseClicked
 
