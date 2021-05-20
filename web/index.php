@@ -25,7 +25,7 @@
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
+						$result=mysqli_query($link, "select nombre,Foto from personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
 							<!-- En la parte del encabezado codigo para 

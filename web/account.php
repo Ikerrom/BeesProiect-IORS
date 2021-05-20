@@ -54,7 +54,7 @@
 					    			include("test_connect_db.php");
 					    			$dni = $_SESSION['erablitzailea_a_g'];
 									$link =  ConnectDataBase();
-									$result3=mysqli_query($link, "select Foto from Personas where dni = '$dni'");
+									$result3=mysqli_query($link, "select Foto from personas where dni = '$dni'");
 									$imprimir=mysqli_fetch_array($result3);
 									?>
 														<!-- PHP -->
@@ -71,7 +71,7 @@
 									a traves de un select queremos elegir todos los datos, 
 									dinero,nombre,dni,gmail, foto etc...  -->
 	  	 			<?php	
-					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas where dni = '$dni'"); 
+					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from personas where dni = '$dni'"); 
 					$imprimir = mysqli_fetch_array($result);
 					?>
 
@@ -145,11 +145,11 @@
 							<!-- PHP --> 
 							<!--Select para coger los datos que queremos printear  -->
 					<?php
-						$result2 =mysqli_query($link, "select dni,nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas"); 
+						$result2 =mysqli_query($link, "select dni,nombre,apellido,gmail,dinero_pagar,dinero_cuenta from personas"); 
 						while($imprimir2 = mysqli_fetch_array($result2)){
 							if ($result2->num_rows > 0) { /* Siempre y cuando haya mas de 0 miembros printeara estos datos */
 							  	?>
-										<tbody> <!-- Tabla de todas las Personas  -->
+										<tbody> <!-- Tabla de todas las personas  -->
 											<tr>
 												<td>
 													<?php  /* printea el dni del usuario*/

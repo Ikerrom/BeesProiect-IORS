@@ -13,7 +13,7 @@
 		include("test_connect_db.php");
 		$dni = $_SESSION['erablitzailea_a_g'];
 		$link =  ConnectDataBase();
-		$result=mysqli_query($link, "UPDATE Personas SET Foto = '$dir' WHERE dni = '$dni'");   /* Update para guardar en la base de datos 
+		$result=mysqli_query($link, "UPDATE personas SET Foto = '$dir' WHERE dni = '$dni'");   /* Update para guardar en la base de datos 
 																								  la nueva imagen de perfil*/
 		header("Location:account.php");
 		}
