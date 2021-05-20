@@ -83,7 +83,7 @@ public class PurchasesController implements ActionListener {
                     int nb = Integer.parseInt(viewPurchase.jTextField1.getText());
                     int idproduct = Integer.parseInt(viewPurchase.jTextField2.getText());
                     Double pric = Double.parseDouble(viewPurchase.jTextField3.getText());
-                    int acco = Integer.valueOf(viewPurchase.jTextField4.getText());
+                    int acco = Integer.parseInt(viewPurchase.jTextField4.getText());
                     viewPurchase.jTable1.setValueAt(nb, viewPurchase.jTable1.getSelectedRow(), 0);
                     viewPurchase.jTable1.setValueAt(idproduct, viewPurchase.jTable1.getSelectedRow(), 1);
                     viewPurchase.jTable1.setValueAt(pric, viewPurchase.jTable1.getSelectedRow(), 2);
