@@ -1,4 +1,6 @@
-<?php 
+
+<?php
+/*	Finaliza la reserva y manda a la base de datos el dinero que debe pagar */ 
 session_start();
 include_once '../test_connect_db.php';
 $dni = $_SESSION['erablitzailea_a_g'];

@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*Comprueba si la sesion esta iniciada */
 header('Content-Type: application/json');
 include_once '../test_input.php';
 include_once 'connect_db_2.php';
@@ -12,6 +13,11 @@ if (!isset($_SESSION['erablitzailea_a_g'])) {
 }
 $dni = $_SESSION['erablitzailea_a_g'];
 
+                                                    /*        Recibe un dia que quieres resvar y lo inserta, siempre y cuando sea 
+                                                            la reserva mas antigua, de lo contrario haria un rollback   */
+
+                                                    /* Envia informacion sobre errores(lata ya reservada, dia ya reservado, etc...)*/
+    
 $ret = new stdClass();
 $conn = ConnectDataBase();
 $conn->autocommit(false);
@@ -67,7 +73,7 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
         $ret->berandu = true;
     }
 }
-
+                                                        /*  Por ultimo manda de la base da datos las latas que hay en general  */
 $ret->lataid = array();
 $stmt3 = $conn->prepare("SELECT lata_id FROM Latas");
 $stmt3->execute();

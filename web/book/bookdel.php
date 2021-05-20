@@ -1,4 +1,6 @@
+
 <?php 
+/*	Elimina tu propia reserva */
 session_start();
 include_once '../test_connect_db.php';
 $dni = $_SESSION['erablitzailea_a_g'];

@@ -1,4 +1,5 @@
 <?php
+/* Metodo alternativo para conectarse a la bse de datos y poder utilizar una rollback */
 	function ConnectDataBase() {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     if (!($lotura = mysqli_connect("localhost", "root", ""))) {

@@ -1,5 +1,5 @@
 <?php
-
+        /*  devuelve un intervalo de tiempo en el cual comprueba si la lata esta reservada*/
 function get_booked($arr) {
     if ($arr->lataid === null) {
         $days = 0;

@@ -3,7 +3,7 @@
 <?php 
 session_start();
 ?>					
-			<head>  
+			<head>   <!-- todos los links para la pagina  -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -15,7 +15,7 @@ session_start();
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 		<style>
-			button{
+			button{ 	/* css para el diseño de la pagina */
 				  background-color: #ffbb00;
 				  border:none;
 				  color:#595959; 
@@ -29,12 +29,15 @@ session_start();
 			
 		</style>
 
-	<script>
+	<script>/* opciones que estan siempre dentro del select  */
             var selectInnerText = '<option selected="selected" value="ez">Please select</option><option>Your own</option>';
+            /*variable que guarda la fecha seleccionada*/
             var selecteddate = "";
-            let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+            /*meses que hay */
+            let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"] 
 
-            function checkEnable(attr, obj) {
+            function checkEnable(attr, obj) {	/*  comprueba si el atributo esta en un objeto, 
+            										si esta, muestra el contenido del h3 asociado */
                 if (attr in obj && obj[attr] === true) {
                     document.querySelector('#' + attr).style.display = '';
                 } else {
@@ -42,11 +45,13 @@ session_start();
                 }
             }
 
-            function parseinfo(obj) {
+            function parseinfo(obj) {	
+            	/*comprueba si peudes reservar la lata en el dia seleccionado*/
                 var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','berandu'];
                 for (var i = 0; i < attrs.length; ++i) {
                     checkEnable(attrs[i], obj);
-                }
+                } 
+                /*recibe de la base de datos todas las opciones que hay de latas */
                 if ('lataid' in obj) {
                     const sele = document.querySelector('#lataid');
                     sele.innerHTML = selectInnerText;
@@ -57,13 +62,14 @@ session_start();
                 }
             }
 
-            function getinfo() {
+            function getinfo() { /* constructor para crear un objeto leyendo el documento*/
                 this.date = selecteddate;
                 this.lataid = parseInt(document.querySelector('#lataid').value);
             }
 
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function () { /* recibe el estado de la lata pedida a traves del metodo GET, 
+            											para posteriormente actualizar el calendario*/
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfo(JSON.parse(this.responseText));
                     xhttpcalendar.open("GET", "calendarsend.php", true);
@@ -71,12 +77,12 @@ session_start();
                 }
             };
 
-            function date(year,month){
+            function date(year,month){ /*constructor mes y año */
             	this.year=year;
             	this.month=month;
             }
 
-            var xhttpdel = new XMLHttpRequest();
+            var xhttpdel = new XMLHttpRequest(); 
             xhttpdel.onreadystatechange = function () {
             };
             var xhttpfinish = new XMLHttpRequest();
@@ -84,7 +90,8 @@ session_start();
             };
 
 
-            function setdate(date,obj){
+            function setdate(date,obj){	/* si clickas cambia el background, y crear los botones 
+            							delete o finish dependiendo si el dia ha pasado o no */
             	var d = new Date();
             	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
                 try {
@@ -99,7 +106,7 @@ session_start();
                 	}
 				} catch (error) {}
 	                selecteddate = date;
-	                document.getElementById(date).style.background = "darkgrey";
+	                document.getElementById(date).style.background = "darkgrey"; /* cambia el color del fondo de la fecha seleccionada */
 	                for (var i = obj.length - 1 ; i >= 0; i--) {
 	                    if (obj[i] == selecteddate) {
 	                    	if (NDate < selecteddate) {
@@ -115,7 +122,7 @@ session_start();
 	                }
                 }
 
-		    var xhttpcalendar = new XMLHttpRequest();
+		    var xhttpcalendar = new XMLHttpRequest(); /* recibe informacion sobre el calendario */
             xhttpcalendar.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfocalendar(JSON.parse(this.responseText));
@@ -123,7 +130,7 @@ session_start();
                 }
             };
 
-            function changedate(year,month){
+            function changedate(year,month){	/* para cambiar de fecha (mes y año)*/
             	const sentinfo = JSON.stringify(new date(year,month));
             	ret4= "";
                 ret6= "";
@@ -133,7 +140,7 @@ session_start();
 			    xhttpcalendar.send();
             }
 
-            function deldate(date){
+            function deldate(date){	/* 	para eliminar tu propia reserva  */
             	const sentinfo = date;
 			    xhttpdel.open("GET", "book/bookdel.php?x=" + sentinfo, true);
 			    xhttpdel.send();
@@ -145,7 +152,7 @@ session_start();
 
             }
 
-            function finishdate(date){
+            function finishdate(date){	/* finalizar una reserva, te pide los kilos que has generado*/
             	const sentinfo = date;
             	const kgs = document.getElementById('kgs').value/4;
             	let info = [date,kgs];
@@ -164,7 +171,7 @@ session_start();
 
             }
 
-             function parseinfocalendar(obj) {
+             function parseinfocalendar(obj) {	/* crea el calendario manualmente */
              	var month = obj.month;
              	var year = obj.year;
              	var i = obj.diainicio;
@@ -206,7 +213,7 @@ session_start();
              					
              				}
              			}
-
+             				/*comprueba si la fecha en la que esta del calendario es menor que la fecha actual */
 		                if (((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) && !(Dateinbook == true)) {
 		                    ret += '<button disabled class="calendardisabled" id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
 		                
@@ -230,16 +237,16 @@ session_start();
              	document.querySelector('#yearmonth').innerHTML = ret2;
                 
                 if (attr in obj) {
-                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "blue";
+                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "blue";	/*para saber el dia actual */
                 }
 
                 for (var i = obj.booked.length - 1 ; i >= 0; i--) {
-                    document.getElementById(obj.booked[i]).style.color = "red";
-                    document.getElementById(obj.booked[i]).disabled = "true";
+                    document.getElementById(obj.booked[i]).style.color = "red"; 	/* reservas de otros usuarios */
+                    document.getElementById(obj.booked[i]).disabled = "true";	
                 }
 
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
-                    document.getElementById(obj.bookedMe[i]).style.color = "green";
+                    document.getElementById(obj.bookedMe[i]).style.color = "green"; /*tus propias reservas*/
                 }
 
              }
@@ -248,7 +255,11 @@ session_start();
 			</head>
 			<body>
 				<div class="title">
-					
+						
+						<!-- PHP -->
+					<!-- Para el inicio de sesion que compruebe a traves de 
+					la base de datos si todos los datos son correctos -->
+
 					    <?php
 					    if (isset($_SESSION['erablitzailea_a_g'])) {
 					    include("test_connect_db.php");
@@ -272,6 +283,12 @@ session_start();
 				</div>
 				
 				<div class="topbar">
+
+					<!-- PHP -->
+					<!-- Si esta con la sesion iniciada que pueda navegar 
+					a traves de las distintas paginas que tenemos, Your Account,
+					Booking,About us, Log out -->
+
 					    <?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
@@ -305,11 +322,14 @@ session_start();
 						</form>
 				</div>
 
+				<!-- HTML -->
 				
 			<div class="totalcalendar">	
 					<div id="yearmonth">
+						<!-- Parte de la tabla, genera el mes y el año y los botones para cambiarlos -->
 					</div>
-					<div class="weeknames">
+					<div class="weeknames"> 
+						<!-- Parte de la tabla mensual, genera los dias de la semana -->
 						<button>Mon</button>
 						<button>Tus</button>
 						<button>Wed</button>
@@ -319,6 +339,7 @@ session_start();
 						<button>Sun</button>
 					</div>
 				<div id="content">
+					<!-- muestra los dias del mes en numero -->
 				</div>
 
 					<div class="textstyle">
@@ -350,20 +371,25 @@ session_start();
 					</div>
 
 					       <div class="submitdiv">
+					       	<!-- las opciones para elegir llevar tu propia lata o una que se pueda utilizar  -->
 					    		<select class="calendaroption" name="latai" id="lataid">
 						            <option selected="selected" value="ez">Please select</option>
 						            <option>Your own</option>
 					        	</select>
-					        	<button id="submit">Submit</button>
+					        	<button id="submit">Submit</button> <!-- submit para enviar tu respuesta -->
 
 					       </div>
-						        <div id="deldiv">
+						        <div id="deldiv"> 
+						        	<!-- elimina la reserva -->
 						       	</div>
 						    <div id="finishdiv">
+						    	<!-- finaliza la reserva, y pide los kg generados -->
 						    </div>
 
 			</div>
 			        <script>
+			        	/* JavaSript, pide los datos al servidor cuando se carga o descarga la pagina por primera vez*/
+			        	/* Se ejecuta despues de que todo lo demas se haya cargado */
 			            xhttp.open("GET", "book/book.php", true);
 			            xhttp.send();
 
