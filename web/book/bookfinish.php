@@ -21,7 +21,7 @@ $stmt6->execute();
 $stmt6->close();
 
 $stmt7 = $conn->prepare("UPDATE Personas SET dinero_pagar = dinero_pagar + ? WHERE dni = ?");
-$stmt7->bind_param('is',$arr[1],$dni);
+$stmt7->bind_param('ds',$arr[1],$dni);
 $stmt7->execute();
 $stmt7->close();
 $conn->close();
