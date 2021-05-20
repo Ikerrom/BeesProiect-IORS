@@ -128,7 +128,8 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/honey.png"))); // NOI18N
+        jButton6.setBackground(new java.awt.Color(255, 255, 0));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/miel.png"))); // NOI18N
         jButton6.setText("Latas");
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
@@ -290,6 +291,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AdminMenu().setVisible(true);
             }
