@@ -53,7 +53,7 @@ public class Model {
      * @param pass password of member
      */
     public static void login(String user, String pass){
-        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+" AND Admin=1'";
+        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+"'AND admin=1";
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 ResultSet rs = pstmt.executeQuery()) {
