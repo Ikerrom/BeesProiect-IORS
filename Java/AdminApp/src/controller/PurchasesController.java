@@ -57,7 +57,7 @@ public class PurchasesController implements ActionListener {
                 int numberBuy = Integer.parseInt(viewPurchase.jTextField1.getText());
                 int id_product = Integer.parseInt(viewPurchase.jTextField2.getText());
                 Double price = Double.parseDouble(viewPurchase.jTextField3.getText());
-                int account = Integer.valueOf(viewPurchase.jTextField4.getText());
+                int account = Integer.parseInt(viewPurchase.jTextField4.getText());
                 Purchase b=new Purchase(numberBuy,id_product,price,account);
                 model.addPurchase(b);
                 this.viewPurchase.setVisible(false);
