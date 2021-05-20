@@ -191,12 +191,12 @@ public class ViewPurchases extends javax.swing.JFrame {
         // TODO add your handling code here:
         int nb =(int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         int idpro =(int) jTable1.getValueAt(jTable1.getSelectedRow(), 1);
-        String price = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
+        double price = (double) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
         int account = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 3);
 
         jTextField1.setText(String.valueOf(nb));
         jTextField2.setText(String.valueOf(idpro));
-        jTextField3.setText(price);
+        jTextField3.setText(String.valueOf(price));
         jTextField4.setText(String.valueOf(account));
 
 
