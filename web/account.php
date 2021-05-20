@@ -114,13 +114,13 @@
 						<div class="campoacc">
 								<p class="textstyleacc">To pay:</p>
 							<?php  /* printea el dinero que debe pagar el usuario*/
-								echo  $imprimir['dinero_pagar'] . "$";
+								echo  $imprimir['dinero_pagar']/100 . "$";
 							?>	
 						</div>
 						<div class="campoacc">
 								<p class="textstyleacc">Acc Money:</p>
 							<?php  /* printea el dinero que tiene en cuenta el usuario*/
-								echo $imprimir['dinero_cuenta']. "$";
+								echo $imprimir['dinero_cuenta']/100 . "$";
 							?>	
 						</div>
 					</div>
