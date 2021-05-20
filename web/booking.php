@@ -147,7 +147,7 @@ session_start();
 
             function finishdate(date){
             	const sentinfo = date;
-            	const kgs = document.getElementById('kgs').value * 25;
+            	const kgs = document.getElementById('kgs').value/4;
             	let info = [date,kgs];
             	alert(info);
             	if(kgs != ""){
