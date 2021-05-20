@@ -19,3 +19,4 @@ $stmt6->bind_param('ss',$dni, $datedel);
 $stmt6->execute();
 $stmt6->close();
 $conn->close();
+?>

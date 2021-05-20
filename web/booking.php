@@ -79,6 +79,9 @@ session_start();
             var xhttpdel = new XMLHttpRequest();
             xhttpdel.onreadystatechange = function () {
             };
+            var xhttpfinish = new XMLHttpRequest();
+            xhttpfinish.onreadystatechange = function () {
+            };
 
 
             function setdate(date,obj){
@@ -90,7 +93,7 @@ session_start();
                     ret6= "";
                     document.querySelector('#deldiv').innerHTML = ret4;
                     document.querySelector('#finishdiv').innerHTML = ret6;
-                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu'];
+                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu','finished','ezbete'];
                     for (var i = 0; i < attrs.length; ++i) {
                     	document.getElementById(attrs[i]).style.display = "none";
                 	}
@@ -103,7 +106,8 @@ session_start();
 	                    		ret4 = '<button onclick="deldate(\''+ date +'\')"> Delete '+ selecteddate +' Booking </button>';
 	                    		document.querySelector('#deldiv').innerHTML = ret4;
 	                    	}else{
-	                    		ret6 = '<button onclick="finishbook()"> Finish '+ selecteddate +' Booking </button>';
+	                    		ret6 = '<button onclick="finishdate(\''+ date +'\')"> Finish '+ selecteddate +' Booking </button>';
+	                    		ret6 += '<input type="number" id="kgs">';
 								document.querySelector('#finishdiv').innerHTML = ret6;
 	                    	}
 
@@ -138,6 +142,25 @@ session_start();
                 document.getElementById('deleted').style.display = '';
                 ret4 = "";
 	            document.querySelector('#deldiv').innerHTML = ret4;
+
+            }
+
+            function finishdate(date){
+            	const sentinfo = date;
+            	const kgs = document.getElementById('kgs').value * 25;
+            	let info = [date,kgs];
+            	alert(info);
+            	if(kgs != ""){
+	            	xhttpfinish.open("GET", "book/bookfinish.php?x=" + info, true);
+				    xhttpfinish.send();
+				    xhttpcalendar.open("GET", "calendarsend.php", true);
+	                xhttpcalendar.send();
+	                document.getElementById('finished').style.display = '';
+	                ret6 = "";
+		            document.querySelector('#finishdiv').innerHTML = ret6;
+            	}else{
+            		document.getElementById('ezbete').style.display = '';
+            	}
 
             }
 
@@ -302,8 +325,11 @@ session_start();
 							 <h3 id="ezbete" style="display: none;">
 					            Please fill all blanks.
 					        </h3>
+					        <h3 id="finished" style="display: none;">
+					            Finished Sucessfully.
+					        </h3>
 					         <h3 id="deleted" style="display: none;">
-					            Deleted Sucsesfully.
+					            Deleted Sucssfully.
 					        </h3>
 					        <h3 id="berandu" style="display: none;">
 					            The date has already passed or is today.
