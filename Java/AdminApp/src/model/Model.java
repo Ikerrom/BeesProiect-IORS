@@ -110,7 +110,8 @@ public class Model {
             ptmt.setString(7,m.getMoneyToPay());
             ptmt.setString(8,m.getMoneyInAccount());
             ptmt.setString(9,m.getPhoto());
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;

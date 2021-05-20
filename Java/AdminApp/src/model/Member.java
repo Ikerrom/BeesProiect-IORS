@@ -19,8 +19,8 @@ public class Member {
     private String gmail;
     private String password;
     private boolean admin;
-    private String moneyToPay;
-    private String moneyInAccount;
+    private Double moneyToPay;
+    private Double moneyInAccount;
     private String photo;
     /**
      * Constructor
@@ -34,7 +34,7 @@ public class Member {
      * @param moneyInAccount money in account member
      * @param photo photo url of member
      */
-    public Member(String dni, String name, String surname, String gmail, String password, boolean admin, String moneyToPay, String moneyInAccount,String photo) {
+    public Member(String dni, String name, String surname, String gmail, String password, boolean admin, Double moneyToPay, Double moneyInAccount,String photo) {
         this.dni = dni;
         this.name = name;
         this.surname = surname;
