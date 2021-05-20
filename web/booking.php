@@ -82,10 +82,14 @@ session_start();
 
 
             function setdate(date,obj){
+            	var d = new Date();
+            	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
                 try {
                     document.getElementById(selecteddate).style.background = "";
                     ret4= "";
+                    ret6= "";
                     document.querySelector('#deldiv').innerHTML = ret4;
+                    document.querySelector('#finishdiv').innerHTML = ret6;
                     var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu'];
                     for (var i = 0; i < attrs.length; ++i) {
                     	document.getElementById(attrs[i]).style.display = "none";
@@ -95,8 +99,14 @@ session_start();
 	                document.getElementById(date).style.background = "darkgrey";
 	                for (var i = obj.length - 1 ; i >= 0; i--) {
 	                    if (obj[i] == selecteddate) {
-	                    	ret4= '<button onclick="deldate(\''+ date +'\')"> Delete Book </button>';
-	                    	document.querySelector('#deldiv').innerHTML = ret4;
+	                    	if (NDate < selecteddate) {
+	                    		ret4 = '<button onclick="deldate(\''+ date +'\')"> Delete '+ selecteddate +' Booking </button>';
+	                    		document.querySelector('#deldiv').innerHTML = ret4;
+	                    	}else{
+	                    		ret6 = '<button onclick="finishbook()"> Finish '+ selecteddate +' Booking </button>';
+								document.querySelector('#finishdiv').innerHTML = ret6;
+	                    	}
+
 	                    }
 	                }
                 }
@@ -111,6 +121,10 @@ session_start();
 
             function changedate(year,month){
             	const sentinfo = JSON.stringify(new date(year,month));
+            	ret4= "";
+                ret6= "";
+                document.querySelector('#deldiv').innerHTML = ret4;
+                document.querySelector('#finishdiv').innerHTML = ret6;
 			    xhttpcalendar.open("GET", "calendarsend.php?x=" + sentinfo, true);
 			    xhttpcalendar.send();
             }
@@ -122,6 +136,8 @@ session_start();
 			    xhttpcalendar.open("GET", "calendarsend.php", true);
                 xhttpcalendar.send();
                 document.getElementById('deleted').style.display = '';
+                ret4 = "";
+	            document.querySelector('#deldiv').innerHTML = ret4;
 
             }
 
@@ -135,6 +151,7 @@ session_start();
              	var Nyear = d.getFullYear();
              	var Nmonth =1 +  parseInt(d.getMonth());
              	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
+             	var Dateinbook = false;
              	var ret = "";
              	var ret2 ="";
              	ret += "<div>";
@@ -156,7 +173,18 @@ session_start();
              			}
 
              		for (; i < 7 && !done; i++) {
-		                if ((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) {
+
+             			for (var j = obj.bookedMe.length - 1; j >= 0; j--) {
+
+             				if (obj.bookedMe[j] == (year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0'))) {
+								Dateinbook = true;
+             				} else {
+             					Dateinbook = false;
+             					
+             				}
+             			}
+
+		                if (((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) && !(Dateinbook == true)) {
 		                    ret += '<button disabled class="calendardisabled" id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
 		                
              		  	diacounter += 1;
@@ -190,14 +218,6 @@ session_start();
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
                     document.getElementById(obj.bookedMe[i]).style.color = "green";
                 }
-
-                for (var i = obj.bookedMe.length - 1; i >= 0; i--) {
-					if (obj.bookedMe[i] ==  NDate) {
-						ret5 = '<button onclick="finishbook()"> Finish Booking </button>';
-						document.querySelector('#finishdiv').innerHTML = ret5;
-                	}                
-                }
-
 
              }
 		</script>
