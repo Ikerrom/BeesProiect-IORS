@@ -14,13 +14,13 @@ public class Lata {
      * Private atributes
      */
     private int lata_id;
-    private int capacidad;
+    private String capacidad;
     /**
      * 
      * @param lata_id id of lata
      * @param capacidad capacidad of lata
      */
-    public Lata(int lata_id, int capacidad) {
+    public Lata(int lata_id, String capacidad) {
         this.lata_id = lata_id;
         this.capacidad = capacidad;
     }
@@ -46,14 +46,14 @@ public class Lata {
      * 
      * @return capacidad of lata
      */
-    public int getCapacidad() {
+    public String getCapacidad() {
         return capacidad;
     }
     /**
      * 
      * @param capacidad Sets the capacidad to the given value
      */
-    public void setCapacidad(int capacidad) {
+    public void setCapacidad(String capacidad) {
         this.capacidad = capacidad;
     }
 

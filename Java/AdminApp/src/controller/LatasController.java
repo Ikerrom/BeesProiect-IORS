@@ -54,7 +54,7 @@ public class LatasController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                Lata l=new Lata(Integer.parseInt(viewLatas.jTextField1.getText()),Integer.parseInt(viewLatas.jTextField2.getText()));
+                Lata l=new Lata(Integer.parseInt(viewLatas.jTextField1.getText()),viewLatas.jTextField2.getText());
                 model.addLatas(l);
                 this.viewLatas.setVisible(false);
                 ViewLatas view2 = ViewLatas.viewaSortuBistaratu();
@@ -63,7 +63,7 @@ public class LatasController implements ActionListener {
                 break;
             case "Delete":
                 int id=(int)viewLatas.jTable1.getModel().getValueAt(viewLatas.jTable1.getSelectedRow(), 0);
-                int capa =(int )viewLatas.jTable1.getModel().getValueAt(viewLatas.jTable1.getSelectedRow(), 1);
+                String capa =(String)viewLatas.jTable1.getModel().getValueAt(viewLatas.jTable1.getSelectedRow(), 1);
                 if(viewLatas.jTable1.getSelectedRow()!=-1){
                     Lata l1=new Lata(id,capa);
                     model.deleteLatas(l1);
@@ -78,7 +78,7 @@ public class LatasController implements ActionListener {
             case "Update":
                 if (viewLatas.jTable1.getSelectedRow()!=-1) {
                     int id1 =Integer.parseInt(viewLatas.jTextField1.getText());
-                    int capa1 = Integer.parseInt(viewLatas.jTextField2.getText());
+                    String capa1 = viewLatas.jTextField2.getText();
 
                     viewLatas.jTable1.setValueAt(id1, viewLatas.jTable1.getSelectedRow(), 0);
                     viewLatas.jTable1.setValueAt(capa1, viewLatas.jTable1.getSelectedRow(), 1);

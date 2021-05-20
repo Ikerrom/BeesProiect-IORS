@@ -174,7 +174,7 @@ public class ViewLatas extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         jTextField1.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
-        jTextField2.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 1)));
+        jTextField2.setText((String) jTable1.getValueAt(jTable1.getSelectedRow(), 1));
     }//GEN-LAST:event_jTable1MouseClicked
     /**
      * Create ViewLatas

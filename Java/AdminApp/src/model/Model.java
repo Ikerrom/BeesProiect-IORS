@@ -190,7 +190,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                comboLata.addItem(new Lata(rs.getInt("lata_id"),rs.getInt("capacidad")));
+                comboLata.addItem(new Lata(rs.getInt("lata_id"),rs.getString("capacidad")));
 
             }
         } catch (Exception ex) {
@@ -452,7 +452,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Lata l= new Lata(rs.getInt("lata_id"),rs.getInt("capacidad"));
+                Lata l= new Lata(rs.getInt("lata_id"),rs.getString("capacidad"));
                 latas.add(l);
             }
         } catch (Exception ex) {
@@ -470,7 +470,7 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,l.getLata_id());
-            ptmt.setInt(2,l.getCapacidad());
+            ptmt.setString(2,l.getCapacidad());
             return ptmt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
@@ -501,7 +501,7 @@ public class Model {
         String sql = "UPDATE inventario SET capacidad=? WHERE lata_id =?";
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,l.getCapacidad());
+            pstmt.setString(1,l.getCapacidad());
             pstmt.setInt(2, l.getLata_id());
             pstmt.executeUpdate();
         } catch (SQLException e) {
