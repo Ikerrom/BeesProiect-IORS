@@ -46,6 +46,8 @@ public class ModelTest extends TestCase {
        p2=new Purchase(1,1,1.1,1);
        l1=new Lata(3,"700");
        l2=new Lata(4,"800");
+       i1=new Inventary(1,"",1);
+       i2=new Inventary(2,"",2);
     }
 
     /**
