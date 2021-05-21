@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
 
 import ejecutes.AdminMenu;
 import ejecutes.Login;
@@ -18,11 +18,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import model.Inventary;
+import model.Lata;
 import model.Purchase;
 import model.Member;
+import model.Member;
+import model.Purchase;
 import model.Reserve;
 
-import static model.Model.connect;
+import model.Reserve;
+import static controller.Model.connect;
 
 /**
  *
@@ -36,9 +41,9 @@ public class Model {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:mariadb://localhost/bees_project";
-            String user="root"; 
-            String password="";
+            String url = "jdbc:mariadb://10.2.1.67/bees_project";
+            String user="erlete"; 
+            String password="erlete";
             conn = DriverManager.getConnection(url,user,password); 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());

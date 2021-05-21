@@ -18,9 +18,9 @@ import controller.ViewReserves;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Model;
+import controller.Model;
 import javax.swing.JOptionPane;
-import static model.Model.connect;
+import static controller.Model.connect;
 
 /**
  *

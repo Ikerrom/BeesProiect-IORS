@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.Model;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 

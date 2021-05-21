@@ -5,6 +5,8 @@
  */
 package controller;
 
+import javax.swing.table.TableColumnModel;
+import model.LatasTable;
 import model.PurchaseTable;
 
 
@@ -58,7 +60,7 @@ public class ViewLatas extends javax.swing.JFrame {
 
         jLabel3.setText("capacity:");
 
-        jTable1.setModel(new model.InventaryTable());
+        jTable1.setModel(new model.LatasTable());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);

@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.Model;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
