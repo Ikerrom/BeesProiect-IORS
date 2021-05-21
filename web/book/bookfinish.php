@@ -17,7 +17,7 @@ if (isset($_GET['x'])) {
 
 
 include("../calendar.php");
-$stmt6 = $conn->prepare("DELETE FROM Reservas WHERE dni = ? AND dia_reservado = ?");
+$stmt6 = $conn->prepare("DELETE FROM reservas WHERE dni = ? AND dia_reservado = ?");
 $stmt6->bind_param('ss',$dni, $arr[0]);
 $stmt6->execute();
 $stmt6->close();

@@ -48,7 +48,7 @@ if (isset($_GET['x'])) {
 
 								/*	manda al usuario/interfaz los dias reservados de otros usuarios*/
 $ret->booked = array();
-$stmt4 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni != ? AND dia_reservado BETWEEN ? and ?");
+$stmt4 = $conn->prepare("SELECT dia_reservado FROM reservas WHERE dni != ? AND dia_reservado BETWEEN ? and ?");
 $from = $ret->year . "-" . $ret->month . "-1";
 $until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
 $stmt4->bind_param('sss',$dni, $from, $until);
@@ -60,7 +60,7 @@ while ($stmt4->fetch()) {
 $stmt4->close();
 								/*	manda al usuario/interfaz los dias reservados propios */
 $ret->bookedMe = array();
-$stmt5 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni = ? AND dia_reservado BETWEEN ? and ?");
+$stmt5 = $conn->prepare("SELECT dia_reservado FROM reservas WHERE dni = ? AND dia_reservado BETWEEN ? and ?");
 $from = $ret->year . "-" . $ret->month . "-1";
 $until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
 $stmt5->bind_param('sss',$dni, $from, $until);

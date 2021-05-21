@@ -34,11 +34,11 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
         $sdt = ($cdt)->format('Y-m-d H:i:s');
         try {
             if ($arr->lataid === null) {
-                $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
+                $stmt = $conn->prepare("INSERT INTO reservas (dni, dia_reservado, lata_id,"
                         . " dia_dereserva) VALUES (?, ?, NULL, ?)");
                 $stmt->bind_param("sss", $dni, $arr->date, $sdt);
             } else {
-                $stmt = $conn->prepare("INSERT INTO Reservas (dni, dia_reservado, lata_id,"
+                $stmt = $conn->prepare("INSERT INTO reservas (dni, dia_reservado, lata_id,"
                         . " dia_dereserva) VALUES (?, ?, ?, ?)");
                 $stmt->bind_param("ssis", $dni, $arr->date, $arr->lataid, $sdt);
             }
@@ -48,7 +48,7 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
             if ($arr->lataid === null) {
                 $ret->eginda = true;
             } else {
-                $stmt2 = $conn->prepare("SELECT dni, dia_dereserva FROM Reservas "
+                $stmt2 = $conn->prepare("SELECT dni, dia_dereserva FROM reservas "
                         . "WHERE lata_id = ? AND dia_reservado BETWEEN ? AND ? "
                         . "ORDER BY dia_dereserva ASC, dni");
                 $booking = get_booked($arr);
@@ -75,7 +75,7 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
 }
                                                         /*  Por ultimo manda de la base da datos las latas que hay en general  */
 $ret->lataid = array();
-$stmt3 = $conn->prepare("SELECT lata_id FROM Latas");
+$stmt3 = $conn->prepare("SELECT lata_id FROM latas");
 $stmt3->execute();
 $stmt3->bind_result($lataid);
 while ($stmt3->fetch()) {
