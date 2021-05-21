@@ -248,8 +248,8 @@ public class Model {
             ptmt.setString(2,String.valueOf(r.getDia_reservado()));
             ptmt.setInt(3,r.getIdLata());
             ptmt.setString(4,String.valueOf(r.getDia_dereserva()));
-   
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -326,7 +326,8 @@ public class Model {
             ptmt.setInt(2,b.getId_product());
             ptmt.setDouble(3,b.getPrice());
             ptmt.setInt(4,b.getAccount());
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -472,7 +473,8 @@ public class Model {
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,l.getLata_id());
             ptmt.setString(2,l.getCapacidad());
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
