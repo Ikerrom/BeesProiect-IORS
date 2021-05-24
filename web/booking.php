@@ -114,7 +114,7 @@ session_start();
 	                    		document.querySelector('#deldiv').innerHTML = ret4;
 	                    	}else{
 	                    		ret6 = '<button onclick="finishdate(\''+ date +'\')"> Finish '+ selecteddate +'</button>';
-	                    		ret6 += '<input type="number" id="kgs">';
+	                    		ret6 += '<input type="number" id="kgs" class="kgstyle" placeholder="Weight in KGS">';
 								document.querySelector('#finishdiv').innerHTML = ret6;
 	                    	}
 
@@ -154,7 +154,7 @@ session_start();
 
             function finishdate(date){	/* finalizar una reserva, te pide los kilos que has generado*/
             	const sentinfo = date;
-            	const kgs = document.getElementById('kgs').value/4;
+            	const kgs = Math.abs(document.getElementById('kgs').value/4);
             	let info = [date,kgs];
             	alert(info);
             	if(kgs != ""){
@@ -400,9 +400,9 @@ session_start();
 				<li><p>When the background of a date is grayed out, it means that you are selecting that day.</p></li>
 				<li><p>If the calendar day is white, it means that day has already passed, so reservations cannot be made.</p></li>
 				<li><p>The day that has the color <span style="color: blue">blue</span> is the current day.</p></li>
-				<li><p>If the color of any day is <span style="color: green">green</span>, it means that day has been reserved by you.</p></li>
+				<li><p>If the color of any day is <span style="color: green">green</span>, it means that day has been booked by you.</p></li>
 				<li><p>If the color of the dates are <span style="color: gray">gray</span>, it means that those days are free, so you can book them</p></li>
-				<li><p>If you don't have days in green it means you haven't made any reservations, so you've either booked poorly, or didn't want to book.</p></li>
+				<li><p>If you don't have days in green it means you haven't made any bookings, so ethier something went wrong or the admin changed it.</p></li>
 				</ul>
 			</div>
 

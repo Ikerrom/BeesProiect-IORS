@@ -349,3 +349,14 @@ float: right;
 	height: 7vw;
 	margin-top: -1.3%;
 }
+
+.kgstyle{
+	background-color:#191919;
+	border:0.4vh solid #ffbb00;
+	color:#595959; 
+	height: 6vh;
+	float:right;
+	font-size: 2vh;
+	font-weight: bold;
+	color: white;
+}

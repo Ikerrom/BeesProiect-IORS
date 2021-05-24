@@ -14,17 +14,19 @@ if (isset($_GET['x'])) {
 	$arr = array("2018-01-01",0);
 }
 
+if ($arr[1] > 0) {
+	include("../calendar.php");
+	$stmt6 = $conn->prepare("DELETE FROM reservas WHERE dni = ? AND dia_reservado = ?");
+	$stmt6->bind_param('ss',$dni, $arr[0]);
+	$stmt6->execute();
+	$stmt6->close();
+
+	$stmt7 = $conn->prepare("UPDATE personas SET dinero_pagar = dinero_pagar + ? WHERE dni = ?");
+	$stmt7->bind_param('ds',$arr[1],$dni);
+	$stmt7->execute();
+	$stmt7->close();
+	$conn->close();
+}
 
 
-include("../calendar.php");
-$stmt6 = $conn->prepare("DELETE FROM reservas WHERE dni = ? AND dia_reservado = ?");
-$stmt6->bind_param('ss',$dni, $arr[0]);
-$stmt6->execute();
-$stmt6->close();
-
-$stmt7 = $conn->prepare("UPDATE personas SET dinero_pagar = dinero_pagar + ? WHERE dni = ?");
-$stmt7->bind_param('ds',$arr[1],$dni);
-$stmt7->execute();
-$stmt7->close();
-$conn->close();
 ?>
