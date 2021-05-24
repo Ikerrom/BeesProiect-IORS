@@ -10,6 +10,9 @@
 
 	session_start();
 	if (isset($_SESSION['erablitzailea_a_g'])) { 
+		if ($dir == "resources/images/perfiles/") {
+			header("Location:account.php");
+		}else{
 		include("test_connect_db.php");
 		$dni = $_SESSION['erablitzailea_a_g'];
 		$link =  ConnectDataBase();
@@ -17,4 +20,6 @@
 																								  la nueva imagen de perfil*/
 		header("Location:account.php");
 		}
+
+	}
 ?>

@@ -63,7 +63,7 @@
 									 enviada a traves de POST -->
 								<img  class="photoacc" src="<?php echo $imprimir['Foto']; ?>">
 								<form action="upload.php" method="POST" enctype="multipart/form-data">
-									<input type='file' name="imagen">
+									<input class="input-file" type='file' name="imagen">
 									<input type="submit">
 								</form>
 													<!-- PHP -->
