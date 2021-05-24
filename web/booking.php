@@ -322,6 +322,10 @@ session_start();
 						</form>
 				</div>
 
+				<div class="arrowdiv">
+					<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
+				</div>
+
 				<!-- HTML -->
 				
 			<div class="totalcalendar">	

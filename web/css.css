@@ -333,3 +333,19 @@ table.tableacc tfoot td {
 .finishF{
 float: right;
 }
+
+.arrowdiv{
+	display: flex;
+	align-items: center;
+	justify-content: column;
+	margin-left: 46.5%;
+
+}
+
+.arrowimg{
+	position: absolute;
+	z-index: 0;
+	width: 7vw;
+	height: 7vw;
+	margin-top: -1.3%;
+}
