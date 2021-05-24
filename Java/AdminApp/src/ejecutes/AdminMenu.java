@@ -245,7 +245,10 @@ public class AdminMenu extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * Open ViewInventary
+     * @param evt the old-style event
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ViewInventary view = ViewInventary.viewaSortuBistaratu();
@@ -253,7 +256,10 @@ public class AdminMenu extends javax.swing.JFrame {
         InventaryController controller = new InventaryController (model, view);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    /**
+     * Open ViewLatas
+     * @param evt the old-style event
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         ViewLatas view = ViewLatas.viewaSortuBistaratu();

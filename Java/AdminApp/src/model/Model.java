@@ -207,22 +207,6 @@ public class Model {
      * @return reserve list
      */
     public static ArrayList<Reserve> readReserve() {
-//        ArrayList<Reserve> reserves = new ArrayList<>();
-//
-//        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM reservas(( INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                Reserve r= new Reserve(rs.getString("dni"),rs.getString("dia_reservado"),rs.getInt("id_lata"),rs.getString("dia_dereserva"));
-//                reserves.add(r);
-//            }
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return reserves;
-
         ArrayList<Reserve> reserves = new ArrayList<>();
         String taula = "reservas";
         String sql = "SELECT * FROM " + taula;

@@ -23,7 +23,7 @@ public class Reserve {
     private LocalDateTime dia_dereserva=LocalDateTime.now();
 
     /**
-     * 
+     * Constructor
      * @param dni dni of member
      * @param idLata id of lata
      * @param dia_reservado date reserved
