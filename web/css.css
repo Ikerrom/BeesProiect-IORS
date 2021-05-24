@@ -183,7 +183,7 @@ form{
 
 }
 .textstyleacc{
-	font-size: 150%;
+	font-size: 2vh;
 
 }
 .bgacc{
@@ -191,7 +191,7 @@ form{
 	flex-direction:row;
 	justify-content: space-evenly;
 	font-size: 1.5vh;
-	width:60%;
+	width:50%;
 }
 
 table.tableacc {
@@ -242,23 +242,23 @@ table.tableacc tfoot td {
 .bgdiv{
 	margin-top:5%; 
 	background-color: #FAD002;
-	width: 70%;
-	margin-left: 15%;
+	width: 80%;
+	margin-left: 10%;
 
 }
 
 .photodiv{
 	display: flex;
-	flex-direction: center;
+	flex-direction: column;
 	align-items:center;
-	width: 40%;
-	height: 45vh;
+	width: 50%;
 	float:right;
+	margin-top: 3%;
 }
 
 .photoacc{
-	width: 25vh;
-	height: 25vh;
+	width: 40%;
+	height: 40%;
 
 }
 
@@ -280,17 +280,51 @@ table.tableacc tfoot td {
 	flex-direction:row;
 }
 
-.input-file {
-  background-color: #941B80;
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0 auto 0;
-  min-height: 15px;
-  overflow: hidden;s
-  padding: 10px;
-  position: relative;
-  text-align: center;
-  width: 10%;
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+	  background-color: #ffbb00;
+	  color:#595959; 
+	  margin-top: 2%;
+	  padding-top: 2%;
+	  padding-bottom:2%;
+	  padding-left: 1vw;
+	  padding-right: 1vw;
+	  text-align: center;
+	  text-decoration: none;
+	  font-size: 1.5vh;
+	  font-weight: bold;
+	  transition: background-color 200ms;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #ffa200;
+}
+
+.buttonSub{
+	background-color: #ffbb00;
+	  color:#595959; 
+	  margin-top: 2%;
+	  padding-top: 2%;
+	  padding-bottom:2%;
+	  padding-left: 1vw;
+	  padding-right: 1vw;
+	  text-align: center;
+	  text-decoration: none;
+	  font-size: 1.5vh;
+	  font-weight: bold;
+	  border:0vh solid #ffbb00;
+	  transition: background-color 200ms;
+
+}
+.buttonSub:hover {
+    background-color: #ffa200;
 }

@@ -63,8 +63,9 @@
 									 enviada a traves de POST -->
 								<img  class="photoacc" src="<?php echo $imprimir['Foto']; ?>">
 								<form action="upload.php" method="POST" enctype="multipart/form-data">
-									<input class="input-file" type='file' name="imagen">
-									<input type="submit">
+									<input class="inputfile" type='file' name="imagen" id="imagen">
+									<label for="imagen">Choose a file</label>
+									<input type="submit" class="buttonSub" value="Upload">
 								</form>
 													<!-- PHP -->
 									<!-- Codigo para que en esta pagina salga toda la informacion de cada persona, 
