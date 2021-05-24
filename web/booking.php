@@ -1,4 +1,4 @@
-<html>
+	<html>
 
 <?php 
 session_start();
@@ -387,6 +387,21 @@ session_start();
 						    </div>
 
 			</div>
+
+			<div style="color: white;font-size: 2vh;margin-left: 27%;width: 43%;text-align:justify;margin-top:5%;margin-bottom: 5%">
+				<p class="header" style="margin-left: 3%"> How to use: </p>
+				<ul style="list-style-type:square;">
+				<li><p>If the calendar day comes out in <span style="color: red">red</span> it means that day is already booked by another member.</p></li>
+				<li><p>When the background of a date is grayed out, it means that you are selecting that day.</p></li>
+				<li><p>If the calendar day is white, it means that day has already passed, so reservations cannot be made.</p></li>
+				<li><p>The day that has the color <span style="color: blue">blue</span> is the current day.</p></li>
+				<li><p>If the color of any day is <span style="color: green">green</span>, it means that day has been reserved by you.</p></li>
+				<li><p>If the color of the dates are <span style="color: gray">gray</span>, it means that those days are free, so you can book them</p></li>
+				<li><p>If you don't have days in green it means you haven't made any reservations, so you've either booked poorly, or didn't want to book.</p></li>
+				</ul>
+			</div>
+
+
 			        <script>
 			        	/* JavaSript, pide los datos al servidor cuando se carga o descarga la pagina por primera vez*/
 			        	/* Se ejecuta despues de que todo lo demas se haya cargado */
