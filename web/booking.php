@@ -110,10 +110,10 @@ session_start();
 	                for (var i = obj.length - 1 ; i >= 0; i--) {
 	                    if (obj[i] == selecteddate) {
 	                    	if (NDate < selecteddate) {
-	                    		ret4 = '<button onclick="deldate(\''+ date +'\')"> Delete '+ selecteddate +' Booking </button>';
+	                    		ret4 = '<button onclick="deldate(\''+ date +'\')"> Delete '+ selecteddate +'</button>';
 	                    		document.querySelector('#deldiv').innerHTML = ret4;
 	                    	}else{
-	                    		ret6 = '<button onclick="finishdate(\''+ date +'\')"> Finish '+ selecteddate +' Booking </button>';
+	                    		ret6 = '<button onclick="finishdate(\''+ date +'\')"> Finish '+ selecteddate +'</button>';
 	                    		ret6 += '<input type="number" id="kgs">';
 								document.querySelector('#finishdiv').innerHTML = ret6;
 	                    	}
@@ -367,7 +367,7 @@ session_start();
 					        <h3 id="eginda" style="display: none;">
 					            Booked successfully.
 					        </h3>
-					        <p>Enter the bin id</p>
+					        <p>Enter the bin id:</p>
 					</div>
 
 					       <div class="submitdiv">
@@ -379,10 +379,11 @@ session_start();
 					        	<button id="submit">Submit</button> <!-- submit para enviar tu respuesta -->
 
 					       </div>
-						        <div id="deldiv"> 
+
+						    <div id="deldiv" class="finishF"> 
 						        	<!-- elimina la reserva -->
-						       	</div>
-						    <div id="finishdiv">
+						    </div>
+						    <div id="finishdiv" class="finishF">
 						    	<!-- finaliza la reserva, y pide los kg generados -->
 						    </div>
 
