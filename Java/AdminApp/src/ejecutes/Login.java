@@ -1,7 +1,7 @@
 package ejecutes;
 
 import javax.swing.JOptionPane;
-import controller.Model;
+import model.Model;
 
 
 /*

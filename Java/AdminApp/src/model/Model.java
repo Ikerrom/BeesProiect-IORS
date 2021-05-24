@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model;
 
 import ejecutes.AdminMenu;
 import ejecutes.Login;
@@ -22,12 +22,11 @@ import model.Inventary;
 import model.Lata;
 import model.Purchase;
 import model.Member;
-import model.Member;
 import model.Purchase;
 import model.Reserve;
 
 import model.Reserve;
-import static controller.Model.connect;
+
 
 /**
  *
@@ -41,9 +40,9 @@ public class Model {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String url = "jdbc:mariadb://10.2.1.67/bees_project";
-            String user="erlete"; 
-            String password="erlete";
+            String url = "jdbc:mariadb://localhost/bees_project";
+            String user="root"; 
+            String password="";
             conn = DriverManager.getConnection(url,user,password); 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
@@ -272,27 +271,6 @@ public class Model {
             pstmt.setString(1, String.valueOf(r.getDia_reservado()));
             pstmt.executeUpdate();
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-    }
-    /**
-     * Update reserve
-     * @param r Reserve object
-     */
-    public static  void updateReserve(Reserve r) {
-        String sql = "UPDATE reservas SET dni= ?,"
-                + "lata_id = ?,"
-                + "dia_dereserva = ?"
-                + "WHERE dia_reservado = ? ";
-
-        try (Connection conn = connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1,r.getDni());
-            pstmt.setInt(2,r.getIdLata());
-            pstmt.setString(3,String.valueOf(r.getDia_dereserva()));
-            pstmt.setString(4,String.valueOf(r.getDia_reservado()));
-            pstmt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }

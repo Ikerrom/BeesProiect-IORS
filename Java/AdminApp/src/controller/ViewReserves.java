@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import model.Lata;
 import model.Member;
+import model.Model;
 import model.ReserveTable;
 
 /**
