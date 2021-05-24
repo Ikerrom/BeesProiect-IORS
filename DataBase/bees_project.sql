@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2021 a las 10:51:14
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 24-05-2021 a las 11:54:16
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -151,17 +151,18 @@ CREATE TABLE `personas` (
   `admin` tinyint(1) NOT NULL,
   `dinero_pagar` decimal(65,2) NOT NULL,
   `dinero_cuenta` decimal(65,2) NOT NULL,
-  `foto` varchar(100) NOT NULL DEFAULT 'resources/images/perfiles/perfil.png'
+  `foto` varchar(100) NOT NULL DEFAULT 'resources/images/perfiles/perfil.png',
+  `cambio_contraseña` datetime DEFAULT '2018-01-01 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`) VALUES
-('12345678G', 'Julio Sebastián', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '32.50', '1000.00', 'resources/images/perfiles/perfil.png'),
-('22222222A', 'Iker', 'Romero', 'romero.iker@uni.eus', '12345', 1, '10.00', '10000.00', 'resources/images/perfiles/perfil.png'),
-('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000.00', 'resources/images/perfiles/perfil.png');
+INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`, `cambio_contraseña`) VALUES
+('12345678G', 'Julio Sebastián', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '32.50', '1000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00'),
+('22222222A', 'Iker', 'Romero', 'romero.iker@uni.eus', '12345', 1, '10.00', '10000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00'),
+('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00');
 
 --
 -- Disparadores `personas`
