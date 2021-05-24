@@ -7,7 +7,7 @@ package controller;
 
 import javax.swing.table.TableColumnModel;
 import model.LatasTable;
-import model.PurchaseTable;
+
 
 
 

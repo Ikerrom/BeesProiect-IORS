@@ -27,11 +27,11 @@ public class PurchasesController implements ActionListener {
     /**
      * 
      * @param model
-     * @param viewBuys 
+     * @param viewPurchase 
      */
-    public PurchasesController(Model model, ViewPurchases viewBuys) {
+    public PurchasesController(Model model, ViewPurchases viewPurchase) {
         this.model = model;
-        this.viewPurchase = viewBuys;
+        this.viewPurchase = viewPurchase;
         anadirActionListener(this);
         
     }

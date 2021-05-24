@@ -22,6 +22,9 @@ import static org.junit.Assert.*;
  * @author arambarri.oihana
  */
 public class ModelTest extends TestCase {
+    /**
+     * Atributes
+     */
     Model m1;
     Member m2;
     Member m3;
@@ -33,9 +36,15 @@ public class ModelTest extends TestCase {
     Lata l2;
     Inventary i1;
     Inventary i2;
+    /**
+     * Constructor
+     */
     public ModelTest() {
         setUp();
     }
+    /**
+     * create objects
+     */
     @Override
     public void setUp() {
        m1=new Model();
@@ -70,71 +79,63 @@ public class ModelTest extends TestCase {
     public void testDeleteMember() {
        Model.deleteMember(m3);
     }
-//    /**
-//     * Test of addPurchase method, of class Model.
-//     */
-//    @Test
-//    public void testAddPurchase() {
-//        int expResult = 1;
-//        int result = Model.addPurchase(p1);
-//        int result1 = Model.addPurchase(p2);
-//        assertEquals(expResult, result);
-//        assertEquals(expResult, result1);
-//        testDeletePurchase();
-//    }
-//    /**
-//     * Test of deletePurchase method, of class Model.
-//     */
-//    @Test
-//    public void testDeletePurchase() {
-//       Model.deletePurchase(p1);
-//    }
-//    /**
-//     * Test of deleteLatas method, of class Model.
-//     */
-//     @Test
-//    public void testAddLatas() {
-//        int expResult = 1;
-//        int result = Model.addLatas(l1);
-//        int result1 = Model.addLatas(l2);
-//        assertEquals(expResult, result);
-//        assertEquals(expResult, result1);
-//        testDeleteLatas();
-//    }
-//    /**
-//     * Test of deleteLatas method, of class Model.
-//     */
-//    @Test
-//    public void testDeleteLatas() {
-//       Model.deleteLatas(l2);
-//    }
-//    /**
-//     * Test of addInventary method, of class Model.
-//     */
-//
-//    @Test
-//    public void testAddInventary() {
-//        int expResult = 1;
-//        int result = Model.addInventary(i1);
-//        int result1 = Model.addInventary(i2);
-//        assertEquals(expResult, result);
-//        assertEquals(expResult, result1);
-//        testDeleteLatas();
-//    }
-//    /**
-//     * Test of deleteInventary method, of class Model.
-//     */
-//    @Test
-//    public void testDeleteInventary() {
-//       Model.deleteInventary(i1);
-//    }
-    
-    
+    /**
+     * Test of addPurchase method, of class Model.
+     */
+    @Test
+    public void testAddPurchase() {
+        int expResult = 1;
+        int result = Model.addPurchase(p1);
+        int result1 = Model.addPurchase(p2);
+        assertEquals(expResult, result);
+        assertEquals(expResult, result1);
+        testDeletePurchase();
+    }
+    /**
+     * Test of deletePurchase method, of class Model.
+     */
+    @Test
+    public void testDeletePurchase() {
+       Model.deletePurchase(p1);
+    }
+    /**
+     * Test of deleteLatas method, of class Model.
+     */
+     @Test
+    public void testAddLatas() {
+        int expResult = 1;
+        int result = Model.addLatas(l1);
+        int result1 = Model.addLatas(l2);
+        assertEquals(expResult, result);
+        assertEquals(expResult, result1);
+        testDeleteLatas();
+    }
+    /**
+     * Test of deleteLatas method, of class Model.
+     */
+    @Test
+    public void testDeleteLatas() {
+       Model.deleteLatas(l2);
+    }
+    /**
+     * Test of addInventary method, of class Model.
+     */
 
-    
-    
-    
-    
-    
-    
+    @Test
+    public void testAddInventary() {
+        int expResult = 1;
+        int result = Model.addInventary(i1);
+        int result1 = Model.addInventary(i2);
+        assertEquals(expResult, result);
+        assertEquals(expResult, result1);
+        testDeleteLatas();
+    }
+    /**
+     * Test of deleteInventary method, of class Model.
+     */
+    @Test
+    public void testDeleteInventary() {
+       Model.deleteInventary(i1);
+    }
+     
 }
