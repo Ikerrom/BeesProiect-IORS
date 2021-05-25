@@ -75,7 +75,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
-        jButton4.setText("Buys");
+        jButton4.setText("Purchases");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
