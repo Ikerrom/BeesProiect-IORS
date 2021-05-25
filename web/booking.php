@@ -275,9 +275,9 @@ session_start();
 											<p>DNI: <?php echo $dni;?></p>
 									</div>
 								</div>
-							<?php
+						<?php
 							}
-							?>
+						?>
 
 						<p class="titletext">ERLETE</p>
 				</div>
@@ -288,14 +288,12 @@ session_start();
 					<!-- Si esta con la sesion iniciada que pueda navegar 
 					a traves de las distintas paginas que tenemos, Your Account,
 					Booking,About us, Log out -->
-
-					    <?php
+<?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
-
 						<form action="index.php">
-								<input class="buttonT" type="submit" value="HOME"/>
+							<input class="buttonT" type="submit" value="HOME"/>
 						</form>
 
 						<form action="account.php">
@@ -303,23 +301,38 @@ session_start();
 						</form>
 
 						<form action="about.php">
-							<input class="buttonT" type="submit" value="ABOUT US"/>
-						</form>
-
-						<?php
-							}else{
-							?>
-							<form action="login.php">
-								<input class="buttonT" type="submit" value="LOG IN"/>
+								<input class="buttonT" type="submit" value="ABOUT US"/>
 							</form>
-							<?php
-							}
-						?>
 
-					
 						<form action="singout.php">
 							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
+
+						
+
+						<?php
+						 /**
+						 Si no esta logeado en la pagina que solo puedas acceder 
+						 al index, al about us o a la pagina de iniciar sesion 
+ 							*/
+							}else{
+							?>
+							<form action="index.php">
+								<input class="buttonT" type="submit" value="HOME"/>
+							</form>
+
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+							<form action="login.php">
+								<input class="buttonT" type="submit" value="LOG IN"/>
+							</form>
+
+
+							<?php
+							}
+						?>
 				</div>
 
 				<div class="arrowdiv">
@@ -327,7 +340,9 @@ session_start();
 				</div>
 
 				<!-- HTML -->
-				
+				<?php
+					if (isset($_SESSION['erablitzailea_a_g'])) {
+				?>
 			<div class="totalcalendar">	
 					<div id="yearmonth">
 						<!-- Parte de la tabla, genera el mes y el año y los botones para cambiarlos -->
@@ -407,7 +422,17 @@ session_start();
 			</div>
 
 
-			        <script>
+
+			       		<?php
+							}else{ /* Si no estas logeado y intentas entrar te saldra el siguiente mensaje */
+						?>
+							<p style="	font-size: 4vh; color:white; position: absolute; margin-left: 41%;margin-top: 5%;">You are not logged in</p>
+
+						<?php
+								}
+						?>
+
+						<script>
 			        	/* JavaSript, pide los datos al servidor cuando se carga o descarga la pagina por primera vez*/
 			        	/* Se ejecuta despues de que todo lo demas se haya cargado */
 			            xhttp.open("GET", "book/book.php", true);
@@ -426,3 +451,4 @@ session_start();
 			            xhttpcalendar.send();
 
 			        </script>
+		</body>

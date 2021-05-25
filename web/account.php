@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<?php session_start();
+ ?>
 	  <head>  
 	  		<!-- todos los scripts y los links para el cabezado de la pagina -->
 				<meta charset="utf-8">
@@ -28,19 +30,51 @@
 					</div>
 						<div class="topbar">
 
-								<form action="index.php">
-									<input class="buttonT" type="submit" value="HOME"/>
-								</form>
-								<form action="booking.php">
-									<input class="buttonT" type="submit" value="BOOKING"/>
-								</form>
-								<form action="about.php">
-									<input class="buttonT" type="submit" value="ABOUT US"/>
-								</form>
-								<form action="singout.php">
-									<input class="buttonT" type="submit" value="LOG OUT"/>
-								</form>
-							
+					    <?php
+							if (isset($_SESSION['erablitzailea_a_g'])) 
+							{
+						?>
+						<form action="index.php">
+							<input class="buttonT" type="submit" value="HOME"/>
+						</form>
+
+						<form action="booking.php">
+							<input class="buttonT" type="submit" value="BOOKING"/>
+						</form>
+
+						<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+						<form action="singout.php">
+							<input class="buttonT" type="submit" value="LOG OUT"/>
+						</form>
+
+						
+
+						<?php
+						 /**
+						 Si no esta logeado en la pagina que solo puedas acceder 
+						 al index, al about us o a la pagina de iniciar sesion 
+ 							*/
+							}else{
+							?>
+							<form action="index.php">
+								<input class="buttonT" type="submit" value="HOME"/>
+							</form>
+
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+							<form action="login.php">
+								<input class="buttonT" type="submit" value="LOG IN"/>
+							</form>
+
+
+							<?php
+							}
+						?>
 						</div>
 
 				<div class="arrowdiv">
@@ -53,7 +87,7 @@
 							<!-- Para el inicio de sesion que compruebe a traves de 
 							la base de datos si todos los datos son correctos -->
 								<?php
-								session_start();
+								
 				    			if (isset($_SESSION['erablitzailea_a_g'])) {
 					    			include("test_connect_db.php");
 					    			$dni = $_SESSION['erablitzailea_a_g'];
@@ -188,7 +222,10 @@
 					</div>
 				<?php 
 					} else{ /* Si no estas logeado y intentas entrar te saldra el siguiente mensaje */
-						echo "You are not logged in";
+						?>
+						<p style="	font-size: 4vh; color:white; position: absolute; margin-left:-40%;">You are not logged in</p>
+
+						<?php
 					}
 		?>
 		</table>

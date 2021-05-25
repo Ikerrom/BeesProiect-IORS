@@ -21,15 +21,16 @@
 				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
 					header("Location:account.php");
 				}else{
-					include("test_connect_db.php");
-					$dni = $_SESSION['erablitzailea_a_g'];
-					$link =  ConnectDataBase();
-					move_uploaded_file($archivo, $dir);
-					$result=mysqli_query($link, "UPDATE personas SET Foto = '$dir' WHERE dni = '$dni'");   /* Update para guardar en la base de datos 
-																												  la nueva imagen de perfil*/
-					header("Location:account.php");
+					
+						include("test_connect_db.php");
+						$dni = $_SESSION['erablitzailea_a_g'];
+						$link =  ConnectDataBase();
+						move_uploaded_file($archivo, $dir);
+						$result=mysqli_query($link, "UPDATE personas SET Foto = '$dir' WHERE dni = '$dni'");   /* Update para guardar en la base de datos 
+																													  la nueva imagen de perfil*/
+						header("Location:account.php");
+					}
 				}
 			}
 		}
-	}
 ?>
