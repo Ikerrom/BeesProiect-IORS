@@ -56,7 +56,7 @@ public class ViewLatas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("LATAS");
 
-        jLabel2.setText("iid_lata");
+        jLabel2.setText("id_lata:");
 
         jLabel3.setText("capacity:");
 
