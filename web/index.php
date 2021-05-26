@@ -158,8 +158,20 @@
 
 
 
-					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
-					</iframe>
+					<div id="googleMap" style="width:100%;height:400px;"></div>
+
+					<script>
+						function myMap() {
+						var mapProp= {
+						  center:new google.maps.LatLng(43.1159933,-2.6002891),
+						  zoom:17,
+						};
+						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+						}
+					</script>
+
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCom7rhTlNke8sWXuKjpc-sLbyUiuh03mY&callback=myMap"></script>
+
 						<br><br><br>
 
 				</div>
@@ -228,6 +240,7 @@
 
 					<iframe style="width:43vw ;height:45vh; ;" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+					<div id="googleMap" style="width:100%;height:400px;"></div>
 				</div>
 			</div>
 
