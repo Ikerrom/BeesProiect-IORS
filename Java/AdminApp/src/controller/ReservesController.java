@@ -53,17 +53,23 @@ public class ReservesController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                String dni = viewReserves.jComboBox1.getSelectedItem().toString();
-                String dia_reservado = (String)(viewReserves.jTextField3.getText());
-                int lata = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
-                String dia_dereserva =(String)viewReserves.jTextField4.getText();
-                Reserve r=new Reserve(dni,dia_reservado,lata,dia_dereserva);
-                model.addReserve(r);
-                this.viewReserves.setVisible(false);
-                ViewReserves view2 = ViewReserves.viewaSortuBistaratu();
-                Model model2 = new Model();
-                ReservesController controller = new ReservesController (model2, view2);
-                break;
+                try{
+                    String dni = viewReserves.jComboBox1.getSelectedItem().toString();
+                    String dia_reservado = (String)(viewReserves.jTextField3.getText());
+                    int lata = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
+                    String dia_dereserva =(String)viewReserves.jTextField4.getText();
+                    Reserve r=new Reserve(dni,dia_reservado,lata,dia_dereserva);
+                    model.addReserve(r);
+                    this.viewReserves.setVisible(false);
+                    ViewReserves view2 = ViewReserves.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    ReservesController controller = new ReservesController (model2, view2);
+                    break; 
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+                
             case "Delete":
                 String dni1= (String) viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 0);
                 LocalDate day_reserved1=(LocalDate)  viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 1);

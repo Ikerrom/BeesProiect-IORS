@@ -54,17 +54,23 @@ public class PurchasesController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                int numberBuy = Integer.parseInt(viewPurchase.jTextField1.getText());
-                int id_product = Integer.parseInt(viewPurchase.jTextField2.getText());
-                Double price = Double.parseDouble(viewPurchase.jTextField3.getText());
-                int account = Integer.parseInt(viewPurchase.jTextField4.getText());
-                Purchase b=new Purchase(numberBuy,id_product,price,account);
-                model.addPurchase(b);
-                this.viewPurchase.setVisible(false);
-                ViewPurchases view2 = ViewPurchases.viewaSortuBistaratu();
-                Model model2 = new Model();
-                PurchasesController controller = new PurchasesController (model2, view2);
-                break;
+                try{
+                    int numberBuy = Integer.parseInt(viewPurchase.jTextField1.getText());
+                    int id_product = Integer.parseInt(viewPurchase.jTextField2.getText());
+                    Double price = Double.parseDouble(viewPurchase.jTextField3.getText());
+                    int account = Integer.parseInt(viewPurchase.jTextField4.getText());
+                    Purchase b=new Purchase(numberBuy,id_product,price,account);
+                    model.addPurchase(b);
+                    this.viewPurchase.setVisible(false);
+                    ViewPurchases view2 = ViewPurchases.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    PurchasesController controller = new PurchasesController (model2, view2);
+                    break;  
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+                
             case "Delete":
                 if(viewPurchase.jTable1.getSelectedRow()!=-1){
                     Purchase b1=new Purchase(Integer.parseInt(viewPurchase.jTextField1.getText()),Integer.parseInt(viewPurchase.jTextField2.getText()),Double.parseDouble(viewPurchase.jTextField3.getText()),Integer.parseInt(viewPurchase.jTextField4.getText()));

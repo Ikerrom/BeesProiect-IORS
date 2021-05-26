@@ -54,13 +54,20 @@ public class LatasController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                Lata l=new Lata(Integer.parseInt(viewLatas.jTextField1.getText()),viewLatas.jTextField2.getText());
-                model.addLatas(l);
-                this.viewLatas.setVisible(false);
-                ViewLatas view2 = ViewLatas.viewaSortuBistaratu();
-                Model model2 = new Model();
-                LatasController controller = new LatasController (model2, view2);
-                break;
+                try{
+                    Lata l=new Lata(Integer.parseInt(viewLatas.jTextField1.getText()),viewLatas.jTextField2.getText());
+                    model.addLatas(l);
+                    this.viewLatas.setVisible(false);
+                    ViewLatas view2 = ViewLatas.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    LatasController controller = new LatasController (model2, view2);
+                    break; 
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+
+                
             case "Delete":
                 int id=(int)viewLatas.jTable1.getModel().getValueAt(viewLatas.jTable1.getSelectedRow(), 0);
                 String capa =(String)viewLatas.jTable1.getModel().getValueAt(viewLatas.jTable1.getSelectedRow(), 1);

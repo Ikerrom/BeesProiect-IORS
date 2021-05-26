@@ -53,13 +53,18 @@ public class MemberController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),Double.parseDouble(viewMembers.jTextField6.getText()),Double.parseDouble(viewMembers.jTextField7.getText()),viewMembers.jTextField8.getText());
-                model.addMember(m);
-                this.viewMembers.setVisible(false);
-                ViewMembers view2 = ViewMembers.viewaSortuBistaratu();
-                Model model2 = new Model();
-                MemberController controller = new MemberController (model2, view2);
-                break;
+                try{
+                    Member m=new Member(viewMembers.jTextField1.getText(),viewMembers.jTextField2.getText(),viewMembers.jTextField3.getText(),viewMembers.jTextField4.getText(),viewMembers.jTextField5.getText(),viewMembers.jCheckBox1.isSelected(),Double.parseDouble(viewMembers.jTextField6.getText()),Double.parseDouble(viewMembers.jTextField7.getText()),viewMembers.jTextField8.getText());
+                    model.addMember(m);
+                    this.viewMembers.setVisible(false);
+                    ViewMembers view2 = ViewMembers.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    MemberController controller = new MemberController (model2, view2);
+                    break; 
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
             case "Delete":
                 if(viewMembers.jTable1.getSelectedRow()!=-1){
                     Member me=new Member((String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 0),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 1),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 2),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 3),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 4),(boolean)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 5),(double)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 6),(double)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 7),(String)viewMembers.jTable1.getModel().getValueAt(viewMembers.jTable1.getSelectedRow(), 8));
