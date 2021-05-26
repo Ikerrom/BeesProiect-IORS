@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css.css">
-
+	<title>Login</title>
+	<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 			<script>
 				var even=1;
 			function show(){

@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
 }
 
 .titletext{
-	font-size: 400%;
+	font-size: 7vh;
 	text-decoration: none;
 	font-weight: bold;
 	color: #595959;
@@ -250,7 +250,6 @@ table.tableacc tfoot td {
 }
 
 .bgdiv{
-	margin-top:5%; 
 	background-color: #FAD002;
 	width: 80%;
 	margin-left: 10%;

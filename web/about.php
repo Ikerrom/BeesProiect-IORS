@@ -6,7 +6,8 @@
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css"/>
-				<title>ERLETE</title>					<!-- Titulo de la Pagina(Encabezado) -->
+				<title>About</title>					<!-- Titulo de la Pagina(Encabezado) -->
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com"/>
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
 

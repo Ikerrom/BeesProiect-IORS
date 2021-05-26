@@ -2,6 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css.css">
+	<title>Password Recover</title>
+	<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 </head>
 	
 	<body style="margin:auto;">

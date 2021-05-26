@@ -10,7 +10,8 @@
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css">
-				<title>ERLETE</title>			<!-- Titulo de la Pagina(Encabezado) -->
+				<title>Account</title>		<!-- Titulo de la Pagina(Encabezado) -->
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500display=swap" rel="stylesheet">
 
@@ -80,7 +81,7 @@
 				<div class="arrowdiv">
 					<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
 				</div>
-
+				<p style="margin-left:44.5vw;font-size: 3vh;color:white;font-weight: bolder; margin-top: 3%;">YOUR PROFILE</p>
 	   			<div class="bgdiv">
 	   						<div class="photodiv">
 							<!-- PHP -->
@@ -171,7 +172,7 @@
 					Seleccionando Dni,Nombre,Apellido y Gmail por cada usuario
 					 -->
 					<div class="tableaccdiv">
-						<p class="texttitle">Member List</p>
+						<p style="margin-left:34.8vw;font-size: 3vh;color:white;font-weight: bolder; margin-top: 3%;">MEMBER LIST</p>
 						<table class="tableacc">
 							<thead>
 									<tr>	<!-- titulo de cada columna  -->
