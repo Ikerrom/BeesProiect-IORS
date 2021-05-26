@@ -158,19 +158,7 @@
 
 
 
-					<div id="googleMap" style="width:100%;height:400px;"></div>
-
-					<script>
-						function myMap() {
-						var mapProp= {
-						  center:new google.maps.LatLng(43.1159933,-2.6002891),
-						  zoom:17,
-						};
-						var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-						}
-					</script>
-
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCom7rhTlNke8sWXuKjpc-sLbyUiuh03mY&callback=myMap"></script>
+					<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=San%20Juan%20Plaza,%20Axpe+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a style="opacity:0;" href="https://www.maps.ie/draw-radius-circle-map/">Circle area map</a></div>
 
 						<br><br><br>
 
