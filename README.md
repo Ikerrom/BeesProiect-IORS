@@ -1,5 +1,5 @@
 # BeesProject-IORS
-### Bees Proiect
+### Bees Project
 
 Iker Romero 
 Oihana Arambarri  
