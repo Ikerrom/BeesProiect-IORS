@@ -1,4 +1,6 @@
+
 <?php 
+/*Comprueba si la sesion esta iniciada*/
 session_start();
 if (!isset($_SESSION['erablitzailea_a_g'])) {
     echo json_encode(['ezinduzu' => true]);
@@ -22,8 +24,8 @@ if (isset($_GET['x'])) {
 
 
 	include("calendar.php");
-	$no_bisiesto = array(31,28,31,30,31,30,31,31,30,31,30,31);
-	$bisiesto = array(31,29,31,30,31,30,31,31,30,31,30,31);
+	$no_bisiesto = array(31,28,31,30,31,30,31,31,30,31,30,31);	/* dias de cada mes del año no bisiesto*/
+	$bisiesto = array(31,29,31,30,31,30,31,31,30,31,30,31);	/*dias de cada mes del año bisiesto*/
 	$fecha_inicio = 2018;
 	header('Content-Type: application/json');
 	$dia1 = firstdaymonth($arr -> year, $arr -> month);
@@ -44,9 +46,9 @@ if (isset($_GET['x'])) {
 	$conn->begin_transaction();
 
 
-
+								/*	manda al usuario/interfaz los dias reservados de otros usuarios*/
 $ret->booked = array();
-$stmt4 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni != ? AND dia_reservado BETWEEN ? and ?");
+$stmt4 = $conn->prepare("SELECT dia_reservado FROM reservas WHERE dni != ? AND dia_reservado BETWEEN ? and ?");
 $from = $ret->year . "-" . $ret->month . "-1";
 $until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
 $stmt4->bind_param('sss',$dni, $from, $until);
@@ -56,9 +58,9 @@ while ($stmt4->fetch()) {
     $ret->booked[] = $book_day;
 }
 $stmt4->close();
-
+								/*	manda al usuario/interfaz los dias reservados propios */
 $ret->bookedMe = array();
-$stmt5 = $conn->prepare("SELECT dia_reservado FROM Reservas WHERE dni = ? AND dia_reservado BETWEEN ? and ?");
+$stmt5 = $conn->prepare("SELECT dia_reservado FROM reservas WHERE dni = ? AND dia_reservado BETWEEN ? and ?");
 $from = $ret->year . "-" . $ret->month . "-1";
 $until = $ret->year . "-" . $ret->month . "-" . $ret->dias;
 $stmt5->bind_param('sss',$dni, $from, $until);

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<?php session_start();
+ ?>
 	  <head>  
 	  		<!-- todos los scripts y los links para el cabezado de la pagina -->
 				<meta charset="utf-8">
@@ -8,7 +10,8 @@
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css">
-				<title>ERLETE</title>			<!-- Titulo de la Pagina(Encabezado) -->
+				<title>Account</title>		<!-- Titulo de la Pagina(Encabezado) -->
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500display=swap" rel="stylesheet">
 
@@ -28,33 +31,69 @@
 					</div>
 						<div class="topbar">
 
-								<form action="index.php">
-									<input class="buttonT" type="submit" value="HOME"/>
-								</form>
-								<form action="booking.php">
-									<input class="buttonT" type="submit" value="BOOKING"/>
-								</form>
-								<form action="about.php">
-									<input class="buttonT" type="submit" value="ABOUT US"/>
-								</form>
-								<form action="singout.php">
-									<input class="buttonT" type="submit" value="LOG OUT"/>
-								</form>
-							
+					    <?php
+							if (isset($_SESSION['erablitzailea_a_g'])) 
+							{
+						?>
+						<form action="index.php">
+							<input class="buttonT" type="submit" value="HOME"/>
+						</form>
+
+						<form action="booking.php">
+							<input class="buttonT" type="submit" value="BOOKING"/>
+						</form>
+
+						<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+						<form action="singout.php">
+							<input class="buttonT" type="submit" value="LOG OUT"/>
+						</form>
+
+						
+
+						<?php
+						 /**
+						 Si no esta logeado en la pagina que solo puedas acceder 
+						 al index, al about us o a la pagina de iniciar sesion 
+ 							*/
+							}else{
+							?>
+							<form action="index.php">
+								<input class="buttonT" type="submit" value="HOME"/>
+							</form>
+
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+							<form action="login.php">
+								<input class="buttonT" type="submit" value="LOG IN"/>
+							</form>
+
+
+							<?php
+							}
+						?>
 						</div>
 
+				<div class="arrowdiv">
+					<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
+				</div>
+				<p style="margin-left:44.5vw;font-size: 3vh;color:white;font-weight: bolder; margin-top: 3%;">YOUR PROFILE</p>
 	   			<div class="bgdiv">
 	   						<div class="photodiv">
 							<!-- PHP -->
 							<!-- Para el inicio de sesion que compruebe a traves de 
 							la base de datos si todos los datos son correctos -->
 								<?php
-								session_start();
+								
 				    			if (isset($_SESSION['erablitzailea_a_g'])) {
 					    			include("test_connect_db.php");
 					    			$dni = $_SESSION['erablitzailea_a_g'];
 									$link =  ConnectDataBase();
-									$result3=mysqli_query($link, "select Foto from Personas where dni = '$dni'");
+									$result3=mysqli_query($link, "select Foto from personas where dni = '$dni'");
 									$imprimir=mysqli_fetch_array($result3);
 									?>
 														<!-- PHP -->
@@ -63,15 +102,16 @@
 									 enviada a traves de POST -->
 								<img  class="photoacc" src="<?php echo $imprimir['Foto']; ?>">
 								<form action="upload.php" method="POST" enctype="multipart/form-data">
-									<input type='file' name="imagen">
-									<input type="submit">
+									<input class="inputfile" type='file' name="imagen" id="imagen">
+									<label for="imagen">Choose a file</label>
+									<input type="submit" class="buttonSub" value="Upload">
 								</form>
 													<!-- PHP -->
 									<!-- Codigo para que en esta pagina salga toda la informacion de cada persona, 
 									a traves de un select queremos elegir todos los datos, 
 									dinero,nombre,dni,gmail, foto etc...  -->
 	  	 			<?php	
-					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas where dni = '$dni'"); 
+					$result=mysqli_query($link, "select nombre,apellido,gmail,dinero_pagar,dinero_cuenta from personas where dni = '$dni'"); 
 					$imprimir = mysqli_fetch_array($result);
 					?>
 
@@ -120,7 +160,7 @@
 						<div class="campoacc">
 								<p class="textstyleacc">Acc Money:</p>
 							<?php  /* printea el dinero que tiene en cuenta el usuario*/
-								echo $imprimir['dinero_cuenta']. "$";
+								echo $imprimir['dinero_cuenta'] . "$";
 							?>	
 						</div>
 					</div>
@@ -132,7 +172,7 @@
 					Seleccionando Dni,Nombre,Apellido y Gmail por cada usuario
 					 -->
 					<div class="tableaccdiv">
-						<p class="texttitle">Member List</p>
+						<p style="margin-left:34.8vw;font-size: 3vh;color:white;font-weight: bolder; margin-top: 3%;">MEMBER LIST</p>
 						<table class="tableacc">
 							<thead>
 									<tr>	<!-- titulo de cada columna  -->
@@ -145,11 +185,11 @@
 							<!-- PHP --> 
 							<!--Select para coger los datos que queremos printear  -->
 					<?php
-						$result2 =mysqli_query($link, "select dni,nombre,apellido,gmail,dinero_pagar,dinero_cuenta from Personas"); 
+						$result2 =mysqli_query($link, "select dni,nombre,apellido,gmail,dinero_pagar,dinero_cuenta from personas"); 
 						while($imprimir2 = mysqli_fetch_array($result2)){
 							if ($result2->num_rows > 0) { /* Siempre y cuando haya mas de 0 miembros printeara estos datos */
 							  	?>
-										<tbody> <!-- Tabla de todas las Personas  -->
+										<tbody> <!-- Tabla de todas las personas  -->
 											<tr>
 												<td>
 													<?php  /* printea el dni del usuario*/
@@ -183,7 +223,10 @@
 					</div>
 				<?php 
 					} else{ /* Si no estas logeado y intentas entrar te saldra el siguiente mensaje */
-						echo "You are not logged in";
+						?>
+						<p style="	font-size: 4vh; color:white; position: absolute; margin-left:-40%;">You are not logged in</p>
+
+						<?php
 					}
 		?>
 		</table>

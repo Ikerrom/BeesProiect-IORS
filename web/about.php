@@ -6,7 +6,8 @@
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css"/>
-				<title>ERLETE</title>					<!-- Titulo de la Pagina(Encabezado) -->
+				<title>About</title>					<!-- Titulo de la Pagina(Encabezado) -->
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com"/>
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"/>
 
@@ -24,7 +25,7 @@
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
+						$result=mysqli_query($link, "select nombre,Foto from personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
 							<!-- En la parte del encabezado codigo para 
@@ -86,7 +87,10 @@
 					
 	
 				</div>
-
+				
+				<div class="arrowdiv">
+					<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
+				</div>
 
 			<div class="texttotal">
 													<!-- HTML -->
@@ -94,17 +98,17 @@
 					<p class="header">Why did we start working in beekeeping? Where do we sell honey?</p>
 							<br>
 							<br>
-							<p><i><u>Aitor: </u></i></p> My father was already home and I started taking care of the bees. I've been on my way since I was a kid. I share honey among friends and acquaintances.
+							<p><i><u>Aitor: </u></i></p> The first to start in this world was my father, I started because since I was a child I have had to take care of the bees. I share honey among friends and acquaintances.
 							<br><br>
-							<p><i><u>Urdaspal: </u></i></p> Since I had hives about five years ago. The little honey extracted has been for home or for some detail.
+							<p><i><u>Urdaspal: </u></i></p> It's been over 5 years since I had my first hives. The little honey extracted has been for home or for some detail.
 							<br><br>
-							<p><i><u>Ignacio: </u></i></p> Roberto and I have been friends since childhood, and about 35 years ago we started. We sell in the area of Durango, in the square there, and among friends.
+							<p><i><u>Ignacio: </u></i></p> Roberto and I have been friends since childhood, and it's been 35 years since we started. We sell in the area of Durango, in the square there, and among friends.
 							<br><br>
-							<p><i><u>Hegoi: </u></i></p> This is my third year and, for now, I'm like more honey than I get.
+							<p><i><u>Hegoi: </u></i></p> This is my third year and, So far I've eaten more honey than I produce.
 							<br><br>
 							<p><i><u>Iñigo: </u></i></p> I've been here six to seven years. At work [he's a firefighter] we picked up a lot of bees and since people didn't know what to do, I started taking them home. The honey I take out is for home or for friends. I also take propolis, because it's very good for your health.
 							<br><br>
-							<p><i><u>Felix: </u></i></p> A beekeeper left several hives in Elorrio. I called and started working with him in 2014. Last year I started selling honey at the local market and I've done well. I also sell honey, propolis, pollen and young. It's a nice experience and I'm comfortable.
+							<p><i><u>Felix: </u></i></p> A beekeeper left several hives in Elorrio. I called and started working with him in 2014. Last year I started selling honey at the local market and I've done well. I also sell honey, propolis and  pollen. It's a nice experience and I'm comfortable.
 							<br><br>
 
 				</div>

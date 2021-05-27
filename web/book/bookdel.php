@@ -1,4 +1,6 @@
+
 <?php 
+/*	Elimina tu propia reserva */
 session_start();
 include_once '../test_connect_db.php';
 $dni = $_SESSION['erablitzailea_a_g'];
@@ -12,10 +14,9 @@ if (isset($_GET['x'])) {
 }
 
 
-
-include("../calendar.php");
-$stmt6 = $conn->prepare("DELETE FROM Reservas WHERE dni = ? AND dia_reservado = ?");
+$stmt6 = $conn->prepare("DELETE FROM reservas WHERE dni = ? AND dia_reservado = ?");
 $stmt6->bind_param('ss',$dni, $datedel);
 $stmt6->execute();
 $stmt6->close();
 $conn->close();
+?>

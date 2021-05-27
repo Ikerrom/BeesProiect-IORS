@@ -9,7 +9,7 @@
 	$safe_password = test_input($password);
 	$link =  ConnectDataBase(); 
 	/* conecta con la base de datos */
-	$stmt = $link->prepare('SELECT dni,contraseña FROM Personas WHERE dni = ? and contraseña = ?');
+	$stmt = $link->prepare('SELECT dni,contraseña FROM personas WHERE dni = ? and contraseña = ?');
 	/* Comprueba si el dni y contraseña 
 	es la misma que la de la base de datos */
 	$stmt->bind_param('ss', $safe_user,$safe_password);

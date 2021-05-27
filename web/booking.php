@@ -1,21 +1,22 @@
-<html>
+	<html>
 
 <?php 
 session_start();
 ?>					
-			<head>  
+			<head>   <!-- todos los links para la pagina  -->
 				<meta charset="utf-8">
  				<meta name="viewport" content="width=device-width, initial-scale=1">
   				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css">
-				<title>ERLETE</title>
+				<title>Booking</title>
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 		<style>
-			button{
+			button{ 	/* css para el diseño de la pagina */
 				  background-color: #ffbb00;
 				  border:none;
 				  color:#595959; 
@@ -29,12 +30,15 @@ session_start();
 			
 		</style>
 
-	<script>
+	<script>/* opciones que estan siempre dentro del select  */
             var selectInnerText = '<option selected="selected" value="ez">Please select</option><option>Your own</option>';
+            /*variable que guarda la fecha seleccionada*/
             var selecteddate = "";
-            let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+            /*meses que hay */
+            let monthnames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"] 
 
-            function checkEnable(attr, obj) {
+            function checkEnable(attr, obj) {	/*  comprueba si el atributo esta en un objeto, 
+            										si esta, muestra el contenido del h3 asociado */
                 if (attr in obj && obj[attr] === true) {
                     document.querySelector('#' + attr).style.display = '';
                 } else {
@@ -42,28 +46,31 @@ session_start();
                 }
             }
 
-            function parseinfo(obj) {
+            function parseinfo(obj) {	
+            	/*comprueba si peudes reservar la lata en el dia seleccionado*/
                 var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','berandu'];
                 for (var i = 0; i < attrs.length; ++i) {
                     checkEnable(attrs[i], obj);
-                }
+                } 
+                /*recibe de la base de datos todas las opciones que hay de latas */
                 if ('lataid' in obj) {
                     const sele = document.querySelector('#lataid');
                     sele.innerHTML = selectInnerText;
                     for (var i = 0; i < obj.lataid.length; ++i) {
                         sele.insertAdjacentHTML('beforeend',
-                                '<option value="' + obj.lataid[i] + '">' + obj.lataid[i] + '</option>');
+                                '<option value="' + obj.lataid[i] + '">' + obj.lataid[i] + " - " + obj.capacidad[i] + 'L</option>');
                     }
                 }
             }
 
-            function getinfo() {
+            function getinfo() { /* constructor para crear un objeto leyendo el documento*/
                 this.date = selecteddate;
                 this.lataid = parseInt(document.querySelector('#lataid').value);
             }
 
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function () { /* recibe el estado de la lata pedida a traves del metodo GET, 
+            											para posteriormente actualizar el calendario*/
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfo(JSON.parse(this.responseText));
                     xhttpcalendar.open("GET", "calendarsend.php", true);
@@ -71,37 +78,52 @@ session_start();
                 }
             };
 
-            function date(year,month){
+            function date(year,month){ /*constructor mes y año */
             	this.year=year;
             	this.month=month;
             }
 
-            var xhttpdel = new XMLHttpRequest();
+            var xhttpdel = new XMLHttpRequest(); 
             xhttpdel.onreadystatechange = function () {
+            };
+            var xhttpfinish = new XMLHttpRequest();
+            xhttpfinish.onreadystatechange = function () {
             };
 
 
-            function setdate(date,obj){
+            function setdate(date,obj){	/* si clickas cambia el background, y crear los botones 
+            							delete o finish dependiendo si el dia ha pasado o no */
+            	var d = new Date();
+            	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
                 try {
                     document.getElementById(selecteddate).style.background = "";
                     ret4= "";
+                    ret6= "";
                     document.querySelector('#deldiv').innerHTML = ret4;
-                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu'];
+                    document.querySelector('#finishdiv').innerHTML = ret6;
+                    var attrs = ['ezinda', 'ezinduzu', 'eginda', 'ezlata','deleted','berandu','finished','ezbete'];
                     for (var i = 0; i < attrs.length; ++i) {
                     	document.getElementById(attrs[i]).style.display = "none";
                 	}
 				} catch (error) {}
 	                selecteddate = date;
-	                document.getElementById(date).style.background = "darkgrey";
+	                document.getElementById(date).style.background = "darkgrey"; /* cambia el color del fondo de la fecha seleccionada */
 	                for (var i = obj.length - 1 ; i >= 0; i--) {
 	                    if (obj[i] == selecteddate) {
-	                    	ret4= '<button onclick="deldate(\''+ date +'\')"> Delete Book </button>';
-	                    	document.querySelector('#deldiv').innerHTML = ret4;
+	                    	if (NDate < selecteddate) {
+	                    		ret4 = '<button onclick="deldate(\''+ date +'\')"> Delete '+ selecteddate +'</button>';
+	                    		document.querySelector('#deldiv').innerHTML = ret4;
+	                    	}else{
+	                    		ret6 = '<button onclick="finishdate(\''+ date +'\')"> Finish '+ selecteddate +'</button>';
+	                    		ret6 += '<input type="number" id="kgs" class="kgstyle" placeholder="Weight in KGS">';
+								document.querySelector('#finishdiv').innerHTML = ret6;
+	                    	}
+
 	                    }
 	                }
                 }
 
-		    var xhttpcalendar = new XMLHttpRequest();
+		    var xhttpcalendar = new XMLHttpRequest(); /* recibe informacion sobre el calendario */
             xhttpcalendar.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     parseinfocalendar(JSON.parse(this.responseText));
@@ -109,23 +131,47 @@ session_start();
                 }
             };
 
-            function changedate(year,month){
+            function changedate(year,month){	/* para cambiar de fecha (mes y año)*/
             	const sentinfo = JSON.stringify(new date(year,month));
+            	ret4= "";
+                ret6= "";
+                document.querySelector('#deldiv').innerHTML = ret4;
+                document.querySelector('#finishdiv').innerHTML = ret6;
 			    xhttpcalendar.open("GET", "calendarsend.php?x=" + sentinfo, true);
 			    xhttpcalendar.send();
             }
 
-            function deldate(date){
+            function deldate(date){	/* 	para eliminar tu propia reserva  */
             	const sentinfo = date;
 			    xhttpdel.open("GET", "book/bookdel.php?x=" + sentinfo, true);
 			    xhttpdel.send();
 			    xhttpcalendar.open("GET", "calendarsend.php", true);
                 xhttpcalendar.send();
                 document.getElementById('deleted').style.display = '';
+                ret4 = "";
+	            document.querySelector('#deldiv').innerHTML = ret4;
 
             }
 
-             function parseinfocalendar(obj) {
+            function finishdate(date){	/* finalizar una reserva, te pide los kilos que has generado*/
+            	const sentinfo = date;
+            	const kgs = Math.abs(document.getElementById('kgs').value/4);
+            	let info = [date,kgs];
+            	if(kgs != ""){
+	            	xhttpfinish.open("GET", "book/bookfinish.php?x=" + info, true);
+				    xhttpfinish.send();
+				    xhttpcalendar.open("GET", "calendarsend.php", true);
+	                xhttpcalendar.send();
+	                document.getElementById('finished').style.display = '';
+	                ret6 = "";
+		            document.querySelector('#finishdiv').innerHTML = ret6;
+            	}else{
+            		document.getElementById('ezbete').style.display = '';
+            	}
+
+            }
+
+             function parseinfocalendar(obj) {	/* crea el calendario manualmente */
              	var month = obj.month;
              	var year = obj.year;
              	var i = obj.diainicio;
@@ -135,6 +181,7 @@ session_start();
              	var Nyear = d.getFullYear();
              	var Nmonth =1 +  parseInt(d.getMonth());
              	var NDate = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0')+ "-" + String(d.getDate()).padStart(2,'0');
+             	var Dateinbook = false;
              	var ret = "";
              	var ret2 ="";
              	ret += "<div>";
@@ -156,7 +203,18 @@ session_start();
              			}
 
              		for (; i < 7 && !done; i++) {
-		                if ((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) {
+
+             			for (var j = obj.bookedMe.length - 1; j >= 0; j--) {
+
+             				if (obj.bookedMe[j] == (year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0'))) {
+								Dateinbook = true;
+             				} else {
+             					Dateinbook = false;
+             					
+             				}
+             			}
+             				/*comprueba si la fecha en la que esta del calendario es menor que la fecha actual */
+		                if (((year < Nyear) || ((year == Nyear) && (month < Nmonth)) || ((year == Nyear) && (month == Nmonth) && (diacounter <= obj[attr]))) && !(Dateinbook == true)) {
 		                    ret += '<button disabled class="calendardisabled" id="' + year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') +'" onclick="setdate(\''+ year + "-" + String(month).padStart(2,'0') + "-" + String(diacounter).padStart(2,'0') + '\',[\'' + obj.bookedMe.join(['\',\'']) +'\'])">' + diacounter + '</button>';
 		                
              		  	diacounter += 1;
@@ -179,25 +237,17 @@ session_start();
              	document.querySelector('#yearmonth').innerHTML = ret2;
                 
                 if (attr in obj) {
-                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "blue";
+                    document.getElementById(year + "-" + String(month).padStart(2,'0') + "-" + obj[attr]).style.color = "blue";	/*para saber el dia actual */
                 }
 
                 for (var i = obj.booked.length - 1 ; i >= 0; i--) {
-                    document.getElementById(obj.booked[i]).style.color = "red";
-                    document.getElementById(obj.booked[i]).disabled = "true";
+                    document.getElementById(obj.booked[i]).style.color = "red"; 	/* reservas de otros usuarios */
+                    document.getElementById(obj.booked[i]).disabled = "true";	
                 }
 
                 for (var i = obj.bookedMe.length - 1 ; i >= 0; i--) {
-                    document.getElementById(obj.bookedMe[i]).style.color = "green";
+                    document.getElementById(obj.bookedMe[i]).style.color = "green"; /*tus propias reservas*/
                 }
-
-                for (var i = obj.bookedMe.length - 1; i >= 0; i--) {
-					if (obj.bookedMe[i] ==  NDate) {
-						ret5 = '<button onclick="finishbook()"> Finish Booking </button>';
-						document.querySelector('#finishdiv').innerHTML = ret5;
-                	}                
-                }
-
 
              }
 		</script>
@@ -205,13 +255,17 @@ session_start();
 			</head>
 			<body>
 				<div class="title">
-					
+						
+						<!-- PHP -->
+					<!-- Para el inicio de sesion que compruebe a traves de 
+					la base de datos si todos los datos son correctos -->
+
 					    <?php
 					    if (isset($_SESSION['erablitzailea_a_g'])) {
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
+						$result=mysqli_query($link, "select nombre,Foto from personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
 								<div class="perfil">
@@ -221,21 +275,25 @@ session_start();
 											<p>DNI: <?php echo $dni;?></p>
 									</div>
 								</div>
-							<?php
+						<?php
 							}
-							?>
+						?>
 
 						<p class="titletext">ERLETE</p>
 				</div>
 				
 				<div class="topbar">
-					    <?php
+
+					<!-- PHP -->
+					<!-- Si esta con la sesion iniciada que pueda navegar 
+					a traves de las distintas paginas que tenemos, Your Account,
+					Booking,About us, Log out -->
+<?php
 							if (isset($_SESSION['erablitzailea_a_g'])) 
 							{
 						?>
-
 						<form action="index.php">
-								<input class="buttonT" type="submit" value="HOME"/>
+							<input class="buttonT" type="submit" value="HOME"/>
 						</form>
 
 						<form action="account.php">
@@ -243,30 +301,54 @@ session_start();
 						</form>
 
 						<form action="about.php">
-							<input class="buttonT" type="submit" value="ABOUT US"/>
-						</form>
-
-						<?php
-							}else{
-							?>
-							<form action="login.php">
-								<input class="buttonT" type="submit" value="LOG IN"/>
+								<input class="buttonT" type="submit" value="ABOUT US"/>
 							</form>
-							<?php
-							}
-						?>
 
-					
 						<form action="singout.php">
 							<input class="buttonT" type="submit" value="LOG OUT"/>
 						</form>
+
+						
+
+						<?php
+						 /**
+						 Si no esta logeado en la pagina que solo puedas acceder 
+						 al index, al about us o a la pagina de iniciar sesion 
+ 							*/
+							}else{
+							?>
+							<form action="index.php">
+								<input class="buttonT" type="submit" value="HOME"/>
+							</form>
+
+							<form action="about.php">
+								<input class="buttonT" type="submit" value="ABOUT US"/>
+							</form>
+
+							<form action="login.php">
+								<input class="buttonT" type="submit" value="LOG IN"/>
+							</form>
+
+
+							<?php
+							}
+						?>
 				</div>
 
-				
+				<div class="arrowdiv">
+					<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
+				</div>
+
+				<!-- HTML -->
+				<?php
+					if (isset($_SESSION['erablitzailea_a_g'])) {
+				?>
 			<div class="totalcalendar">	
 					<div id="yearmonth">
+						<!-- Parte de la tabla, genera el mes y el año y los botones para cambiarlos -->
 					</div>
-					<div class="weeknames">
+					<div class="weeknames"> 
+						<!-- Parte de la tabla mensual, genera los dias de la semana -->
 						<button>Mon</button>
 						<button>Tus</button>
 						<button>Wed</button>
@@ -276,14 +358,18 @@ session_start();
 						<button>Sun</button>
 					</div>
 				<div id="content">
+					<!-- muestra los dias del mes en numero -->
 				</div>
 
 					<div class="textstyle">
 							 <h3 id="ezbete" style="display: none;">
 					            Please fill all blanks.
 					        </h3>
+					        <h3 id="finished" style="display: none;">
+					            Finished Sucessfully.
+					        </h3>
 					         <h3 id="deleted" style="display: none;">
-					            Deleted Sucsesfully.
+					            Deleted Sucssfully.
 					        </h3>
 					        <h3 id="berandu" style="display: none;">
 					            The date has already passed or is today.
@@ -300,24 +386,55 @@ session_start();
 					        <h3 id="eginda" style="display: none;">
 					            Booked successfully.
 					        </h3>
-					        <p>Enter the bin id</p>
+					        <p>Enter the bin id:</p>
 					</div>
 
 					       <div class="submitdiv">
+					       	<!-- las opciones para elegir llevar tu propia lata o una que se pueda utilizar  -->
 					    		<select class="calendaroption" name="latai" id="lataid">
 						            <option selected="selected" value="ez">Please select</option>
 						            <option>Your own</option>
 					        	</select>
-					        	<button id="submit">Submit</button>
+					        	<button id="submit">Submit</button> <!-- submit para enviar tu respuesta -->
 
 					       </div>
-						        <div id="deldiv">
-						       	</div>
-						    <div id="finishdiv">
+
+						    <div id="deldiv" class="finishF"> 
+						        	<!-- elimina la reserva -->
+						    </div>
+						    <div id="finishdiv" class="finishF">
+						    	<!-- finaliza la reserva, y pide los kg generados -->
 						    </div>
 
 			</div>
-			        <script>
+
+			<div style="color: white;font-size: 2vh;margin-left: 27%;width: 43%;text-align:justify;margin-top:5%;margin-bottom: 5%">
+				<p class="header" style="margin-left: 3%"> How to use: </p>
+				<ul style="list-style-type:square;">
+				<li><p>If the calendar day comes out in <span style="color: red">red</span> it means that day is already booked by another member.</p></li>
+				<li><p>When the background of a date is grayed out, it means that you are selecting that day.</p></li>
+				<li><p>If the calendar day is white, it means that day has already passed, so reservations cannot be made.</p></li>
+				<li><p>The day that has the color <span style="color: blue">blue</span> is the current day.</p></li>
+				<li><p>If the color of any day is <span style="color: green">green</span>, it means that day has been booked by you.</p></li>
+				<li><p>If the color of the dates are <span style="color: gray">gray</span>, it means that those days are free, so you can book them</p></li>
+				<li><p>If you don't have days in green it means you haven't made any bookings, so ethier something went wrong or the admin changed it.</p></li>
+				</ul>
+			</div>
+
+
+
+			       		<?php
+							}else{ /* Si no estas logeado y intentas entrar te saldra el siguiente mensaje */
+						?>
+							<p style="	font-size: 4vh; color:white; position: absolute; margin-left: 41%;margin-top: 5%;">You are not logged in</p>
+
+						<?php
+								}
+						?>
+
+						<script>
+			        	/* JavaSript, pide los datos al servidor cuando se carga o descarga la pagina por primera vez*/
+			        	/* Se ejecuta despues de que todo lo demas se haya cargado */
 			            xhttp.open("GET", "book/book.php", true);
 			            xhttp.send();
 
@@ -334,3 +451,4 @@ session_start();
 			            xhttpcalendar.send();
 
 			        </script>
+		</body>

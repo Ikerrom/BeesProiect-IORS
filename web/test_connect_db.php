@@ -2,18 +2,32 @@
 /*Funcion para conectar con la base de datos bees_project*/
 		function ConnectDataBase()
 		{
-			if (!($lotura=mysqli_connect("localhost","root","")))
+			error_reporting(0);
+			if (($lotura=mysqli_connect("localhost","erlete","erlete")))
 			{
-			echo "There is an error connecting the server.";
-			exit();
+				if (!mysqli_select_db($lotura,"bees_project"))
+				{
+				/*Si no se conecta printea el siguiente mensaje */
+				echo "There is an error selecting the DB."; 
+				exit();
+	            }
+	            error_reporting(-1);
+	            return $lotura;
 			}
-			if (!mysqli_select_db($lotura,"bees_project"))
+
+			if (!($lotura2=mysqli_connect("localhost","root","")))
 			{
-			/*Si no se conecta printea el siguiente mensaje */
-			echo "There is an error selecting the DB."; 
-			exit();
+				echo "There is an error connecting the server.";
+				exit();
+			}
+
+			if (!mysqli_select_db($lotura2,"bees_project"))
+			{
+				/*Si no se conecta printea el siguiente mensaje */
+				echo "There is an error selecting the DB."; 
+				exit();
             }
-            
-			return $lotura;
+            error_reporting(-1);
+			return $lotura2;
 		}
 ?>

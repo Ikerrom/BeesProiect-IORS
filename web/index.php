@@ -7,7 +7,8 @@
   				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 				<link rel="stylesheet" href="css.css">
-				<title>ERLETE</title>						<!-- Titulo de la Pagina(Encabezado) -->
+				<title>ERLETE</title>		<!-- Titulo de la Pagina(Encabezado) -->
+				<link rel="shortcut icon" href="resources/images/web_imges/bee.ico" type="image/x-icon">
 				<link rel="preconnect" href="https://fonts.gstatic.com">
 				<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
@@ -25,7 +26,7 @@
 					    include("test_connect_db.php");
 						$dni = $_SESSION['erablitzailea_a_g'];
 						$link =  ConnectDataBase();
-						$result=mysqli_query($link, "select nombre,Foto from Personas where dni = '$dni'"); 
+						$result=mysqli_query($link, "select nombre,Foto from personas where dni = '$dni'"); 
 						$imprimir = mysqli_fetch_array($result);
 							?>
 							<!-- En la parte del encabezado codigo para 
@@ -94,7 +95,11 @@
 					
 					
 				</div>
-						
+
+				<div class="arrowdiv">
+				<img src="resources/images/web_imges/arrow.gif" class="arrowimg">
+				</div>
+
 						<!-- HTML -->
 
 			<div class="texttotal">
@@ -153,8 +158,8 @@
 
 
 
-					<iframe src="https://maps.google.com/maps?q=San Juan Plaza 1+48291+axpe+Bizkaia,es&amp;&amp;ie=UTF8&amp;t=m&amp;z=13&amp;iwloc=B&amp;hl=en&amp;output=embed" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no">
-					</iframe>
+					<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=San%20Juan%20Plaza,%20Axpe+()&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a style="opacity:0;" href="https://www.maps.ie/draw-radius-circle-map/">Circle area map</a></div>
+
 						<br><br><br>
 
 				</div>
@@ -223,6 +228,7 @@
 
 					<iframe style="width:43vw ;height:45vh; ;" src="https://www.youtube.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+					<div id="googleMap" style="width:100%;height:400px;"></div>
 				</div>
 			</div>
 

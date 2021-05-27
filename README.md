@@ -1,4 +1,4 @@
-# BeesProiect-IORS
+# BeesProject-IORS
 ### Bees Proiect
 
 Iker Romero 
