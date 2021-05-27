@@ -6,6 +6,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -18,9 +20,10 @@ public class Reserve {
     private String dni;
     private LocalDate dia_reservado;
     private int idLata;
-    private LocalDate dia_dereserva;
+    private LocalDateTime dia_dereserva=LocalDateTime.now();
+
     /**
-     * 
+     * Constructor
      * @param dni dni of member
      * @param idLata id of lata
      * @param dia_reservado date reserved
@@ -30,7 +33,7 @@ public class Reserve {
         this.dni=dni;
         this.dia_reservado = LocalDate.parse(dia_reservado);
         this.idLata = idLata;
-        this.dia_dereserva = LocalDate.parse(dia_dereserva);
+        this.dia_dereserva = LocalDateTime.parse(this.dia_dereserva.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
     }
     /**
      * 
@@ -79,14 +82,14 @@ public class Reserve {
      * 
      * @return Reservation day
      */
-    public LocalDate getDia_dereserva() {
+    public LocalDateTime getDia_dereserva() {
         return dia_dereserva;
     }
     /**
      * 
      * @param dia_dereserva Sets the reservation day to the given valu
      */
-    public void setDia_dereserva(LocalDate dia_dereserva) {
+    public void setDia_dereserva(LocalDateTime dia_dereserva) {
         this.dia_dereserva = dia_dereserva;
     }
 

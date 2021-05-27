@@ -9,6 +9,7 @@ import ejecutes.AdminMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import model.Model;
 import model.Reserve;
@@ -52,22 +53,28 @@ public class ReservesController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                String dni = viewReserves.jComboBox1.getSelectedItem().toString();
-                String dia_reservado = (String)(viewReserves.jTextField3.getText());
-                int lata = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
-                String dia_dereserva = viewReserves.jTextField4.getText();
-                Reserve r=new Reserve(dni,dia_reservado,lata,dia_dereserva);
-                model.addReserve(r);
-                this.viewReserves.setVisible(false);
-                ViewReserves view2 = ViewReserves.viewaSortuBistaratu();
-                Model model2 = new Model();
-                ReservesController controller = new ReservesController (model2, view2);
-                break;
+                try{
+                    String dni = viewReserves.jComboBox1.getSelectedItem().toString();
+                    String dia_reservado = (String)(viewReserves.jTextField3.getText());
+                    int lata = Integer.valueOf(viewReserves.jComboBox2.getSelectedItem().toString()); 
+                    String dia_dereserva =(String)viewReserves.jTextField4.getText();
+                    Reserve r=new Reserve(dni,dia_reservado,lata,dia_dereserva);
+                    model.addReserve(r);
+                    this.viewReserves.setVisible(false);
+                    ViewReserves view2 = ViewReserves.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    ReservesController controller = new ReservesController (model2, view2);
+                    break; 
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+                
             case "Delete":
                 String dni1= (String) viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 0);
                 LocalDate day_reserved1=(LocalDate)  viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 1);
                 int lata1=(int) viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 2);
-                LocalDate day_reservation1= (LocalDate)viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 3);
+                LocalDateTime day_reservation1= (LocalDateTime)viewReserves.jTable1.getValueAt(viewReserves.jTable1.getSelectedRow(), 3);
                 if(viewReserves.jTable1.getSelectedRow()!=-1){
                     Reserve r1=new Reserve(dni1,String.valueOf(day_reserved1),lata1,String.valueOf(day_reservation1));
                     model.deleteReserve(r1);

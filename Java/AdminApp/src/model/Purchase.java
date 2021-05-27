@@ -15,7 +15,7 @@ public class Purchase {
     */
     private int numberBuy;
     private int id_product;
-    private String price;
+    private double price;
     private int account;
     /**
      * Constructor
@@ -24,7 +24,7 @@ public class Purchase {
      * @param price price of buy
      * @param account  how many buy
      */
-    public Purchase(int numberBuy, int id_product, String price, int account) {
+    public Purchase(int numberBuy, int id_product, double price, int account) {
         this.numberBuy = numberBuy;
         this.id_product = id_product;
         this.price = price;
@@ -62,14 +62,14 @@ public class Purchase {
      * 
      * @return price of this buy
      */
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
     /**
      * 
      * @param price Sets the price to the given value
      */
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     /**

@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.Model;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -63,6 +64,11 @@ public class MemberTable extends AbstractTableModel {
             default: return null;
         }
     }
+    /**
+     * Returns the most specific superclass for all cell values in the column
+     * @param c the index of column
+     * @return   the common ancestor class of the object values in the model
+     */
     public Class getColumnClass(int c){
         return getValueAt(0, c).getClass();
     }

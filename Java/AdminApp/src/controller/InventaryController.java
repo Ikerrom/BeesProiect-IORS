@@ -7,11 +7,11 @@ package controller;
 
 
 import ejecutes.AdminMenu;
-import model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Inventary;
+import model.Model;
 
 
 /**
@@ -54,13 +54,19 @@ public class InventaryController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                Inventary i=new Inventary(Integer.parseInt(viewInventary.jTextField1.getText()),viewInventary.jTextField2.getText(),Integer.parseInt(viewInventary.jTextField3.getText()));
-                model.addInventary(i);
-                this.viewInventary.setVisible(false);
-                ViewInventary view2 = ViewInventary.viewaSortuBistaratu();
-                Model model2 = new Model();
-                InventaryController controller = new InventaryController (model2, view2);
-                break;
+                try{
+                    Inventary i=new Inventary(Integer.parseInt(viewInventary.jTextField1.getText()),viewInventary.jTextField2.getText(),Integer.parseInt(viewInventary.jTextField3.getText()));
+                    model.addInventary(i);
+                    this.viewInventary.setVisible(false);
+                    ViewInventary view2 = ViewInventary.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    InventaryController controller = new InventaryController (model2, view2);
+                    break;
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+                
             case "Delete":
                 int id=(int)viewInventary.jTable1.getModel().getValueAt(viewInventary.jTable1.getSelectedRow(), 0);
                 String name=(String)viewInventary.jTable1.getModel().getValueAt(viewInventary.jTable1.getSelectedRow(), 1);

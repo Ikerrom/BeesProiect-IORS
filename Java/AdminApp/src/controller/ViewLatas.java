@@ -5,7 +5,9 @@
  */
 package controller;
 
-import model.PurchaseTable;
+import javax.swing.table.TableColumnModel;
+import model.LatasTable;
+
 
 
 
@@ -54,11 +56,11 @@ public class ViewLatas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("LATAS");
 
-        jLabel2.setText("iid_lata");
+        jLabel2.setText("id_lata:");
 
         jLabel3.setText("capacity:");
 
-        jTable1.setModel(new model.InventaryTable());
+        jTable1.setModel(new model.LatasTable());
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -174,7 +176,7 @@ public class ViewLatas extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         jTextField1.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
-        jTextField2.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 1)));
+        jTextField2.setText((String) jTable1.getValueAt(jTable1.getSelectedRow(), 1));
     }//GEN-LAST:event_jTable1MouseClicked
     /**
      * Create ViewLatas

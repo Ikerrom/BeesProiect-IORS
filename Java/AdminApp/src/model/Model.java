@@ -18,11 +18,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import model.Inventary;
+import model.Lata;
 import model.Purchase;
 import model.Member;
+import model.Purchase;
 import model.Reserve;
 
-import static model.Model.connect;
+import model.Reserve;
+
 
 /**
  *
@@ -53,7 +57,7 @@ public class Model {
      * @param pass password of member
      */
     public static void login(String user, String pass){
-        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+" AND Admin=1'";
+        String sql="SELECT dni, contraseña FROM personas WHERE dni= '"+user+"' AND contraseña= '"+pass+"'AND admin=1";
         try (Connection conn = connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 ResultSet rs = pstmt.executeQuery()) {
@@ -84,7 +88,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Member m= new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"),rs.getString("foto"));
+                Member m= new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getDouble("dinero_pagar"),rs.getDouble("dinero_cuenta"),rs.getString("foto"));
                 members.add(m);
             }
         } catch (Exception ex) {
@@ -107,10 +111,11 @@ public class Model {
             ptmt.setString(4,m.getGmail());
             ptmt.setString(5,m.getPassword());
             ptmt.setBoolean(6,m.isAdmin());
-            ptmt.setString(7,m.getMoneyToPay());
-            ptmt.setString(8,m.getMoneyInAccount());
+            ptmt.setDouble(7,m.getMoneyToPay());
+            ptmt.setDouble(8,m.getMoneyInAccount());
             ptmt.setString(9,m.getPhoto());
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -154,8 +159,8 @@ public class Model {
             pstmt.setString(3, m.getGmail());
             pstmt.setString(4, m.getPassword());
             pstmt.setBoolean(5, m.isAdmin());
-            pstmt.setString(6, m.getMoneyToPay());
-            pstmt.setString(7, m.getMoneyInAccount());
+            pstmt.setDouble(6, m.getMoneyToPay());
+            pstmt.setDouble(7, m.getMoneyInAccount());
             pstmt.setString(8, m.getPhoto());
             pstmt.setString(9, m.getDni());
             pstmt.executeUpdate();
@@ -173,7 +178,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                comboMember.addItem(new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getString("dinero_pagar"),rs.getString("dinero_cuenta"),rs.getString("foto")));
+                comboMember.addItem(new Member(rs.getString("dni"),rs.getString("nombre"),rs.getString("apellido"),rs.getString("gmail"),rs.getString("contraseña"),rs.getBoolean("admin"),rs.getDouble("dinero_pagar"),rs.getDouble("dinero_cuenta"),rs.getString("foto")));
 
             }
         } catch (Exception ex) {
@@ -190,7 +195,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                comboLata.addItem(new Lata(rs.getInt("lata_id"),rs.getInt("capacidad")));
+                comboLata.addItem(new Lata(rs.getInt("lata_id"),rs.getString("capacidad")));
 
             }
         } catch (Exception ex) {
@@ -202,22 +207,6 @@ public class Model {
      * @return reserve list
      */
     public static ArrayList<Reserve> readReserve() {
-//        ArrayList<Reserve> reserves = new ArrayList<>();
-//
-//        String sql = "SELECT personas.dni, reservas.dia_reservado,latas.lata_id, reservas.dia_dereserva FROM reservas(( INNER JOIN personas ON reservas.dni = personas.dni),INNER JOIN latas ON reservas.lata_id = latas.lata_id)";
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                Reserve r= new Reserve(rs.getString("dni"),rs.getString("dia_reservado"),rs.getInt("id_lata"),rs.getString("dia_dereserva"));
-//                reserves.add(r);
-//            }
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return reserves;
-
         ArrayList<Reserve> reserves = new ArrayList<>();
         String taula = "reservas";
         String sql = "SELECT * FROM " + taula;
@@ -247,8 +236,8 @@ public class Model {
             ptmt.setString(2,String.valueOf(r.getDia_reservado()));
             ptmt.setInt(3,r.getIdLata());
             ptmt.setString(4,String.valueOf(r.getDia_dereserva()));
-   
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -271,27 +260,6 @@ public class Model {
         }
     }
     /**
-     * Update reserve
-     * @param r Reserve object
-     */
-    public static  void updateReserve(Reserve r) {
-        String sql = "UPDATE reservas SET dni= ?,"
-                + "lata_id = ?,"
-                + "dia_dereserva = ?"
-                + "WHERE dia_reservado = ? ";
-
-        try (Connection conn = connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1,r.getDni());
-            pstmt.setInt(2,r.getIdLata());
-            pstmt.setString(3,String.valueOf(r.getDia_dereserva()));
-            pstmt.setString(4,String.valueOf(r.getDia_reservado()));
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-    }
-    /**
      * See buy list
      * @return Purchase of DataBase
      */
@@ -304,7 +272,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Purchase b= new Purchase(rs.getInt("numeroCompra"),rs.getInt("id_producto"),rs.getString("precio"),rs.getInt("cantidad"));
+                Purchase b= new Purchase(rs.getInt("numeroCompra"),rs.getInt("id_producto"),rs.getDouble("precio"),rs.getInt("cantidad"));
                 buys.add(b);
             }
         } catch (Exception ex) {
@@ -323,9 +291,10 @@ public class Model {
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,b.getNumberBuy());
             ptmt.setInt(2,b.getId_product());
-            ptmt.setString(3,b.getPrice());
+            ptmt.setDouble(3,b.getPrice());
             ptmt.setInt(4,b.getAccount());
-            return ptmt.executeUpdate();
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -357,7 +326,7 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, b.getId_product());
-            pstmt.setString(2, b.getPrice());
+            pstmt.setDouble(2, b.getPrice());
             pstmt.setInt(3, b.getAccount());
             pstmt.setInt(4, b.getNumberBuy());
             
@@ -452,7 +421,7 @@ public class Model {
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Lata l= new Lata(rs.getInt("lata_id"),rs.getInt("capacidad"));
+                Lata l= new Lata(rs.getInt("lata_id"),rs.getString("capacidad"));
                 latas.add(l);
             }
         } catch (Exception ex) {
@@ -470,8 +439,9 @@ public class Model {
         try (Connection conn = connect();
             PreparedStatement ptmt = conn.prepareStatement(sql)) {
             ptmt.setInt(1,l.getLata_id());
-            ptmt.setInt(2,l.getCapacidad());
-            return ptmt.executeUpdate();
+            ptmt.setString(2,l.getCapacidad());
+            ptmt.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
             return 0;
@@ -501,7 +471,7 @@ public class Model {
         String sql = "UPDATE inventario SET capacidad=? WHERE lata_id =?";
         try (Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1,l.getCapacidad());
+            pstmt.setString(1,l.getCapacidad());
             pstmt.setInt(2, l.getLata_id());
             pstmt.executeUpdate();
         } catch (SQLException e) {

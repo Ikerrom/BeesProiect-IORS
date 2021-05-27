@@ -53,7 +53,7 @@ public class ViewPurchases extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("BUYS");
+        jLabel1.setText("PURCHASES");
 
         jLabel2.setText("Number Buy:");
 
@@ -106,14 +106,13 @@ public class ViewPurchases extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -191,12 +190,12 @@ public class ViewPurchases extends javax.swing.JFrame {
         // TODO add your handling code here:
         int nb =(int) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
         int idpro =(int) jTable1.getValueAt(jTable1.getSelectedRow(), 1);
-        String price = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
+        double price = (double) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
         int account = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 3);
 
         jTextField1.setText(String.valueOf(nb));
         jTextField2.setText(String.valueOf(idpro));
-        jTextField3.setText(price);
+        jTextField3.setText(String.valueOf(price));
         jTextField4.setText(String.valueOf(account));
 
 

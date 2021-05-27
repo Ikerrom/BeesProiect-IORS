@@ -75,7 +75,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
-        jButton4.setText("Buys");
+        jButton4.setText("Purchases");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
@@ -128,7 +128,8 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/honey.png"))); // NOI18N
+        jButton6.setBackground(new java.awt.Color(255, 255, 0));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/miel.png"))); // NOI18N
         jButton6.setText("Latas");
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
@@ -244,7 +245,10 @@ public class AdminMenu extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * Open ViewInventary
+     * @param evt the old-style event
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ViewInventary view = ViewInventary.viewaSortuBistaratu();
@@ -252,7 +256,10 @@ public class AdminMenu extends javax.swing.JFrame {
         InventaryController controller = new InventaryController (model, view);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    /**
+     * Open ViewLatas
+     * @param evt the old-style event
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         ViewLatas view = ViewLatas.viewaSortuBistaratu();
@@ -290,6 +297,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AdminMenu().setVisible(true);
             }

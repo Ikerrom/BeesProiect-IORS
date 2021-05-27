@@ -173,15 +173,13 @@ public class ViewMembers extends javax.swing.JFrame {
                                         .addGap(40, 40, 40)
                                         .addComponent(jCheckBox1)))
                                 .addGap(70, 70, 70)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -254,8 +252,8 @@ public class ViewMembers extends javax.swing.JFrame {
         String gmail = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 3);
         String password = (String) jTable1.getValueAt(jTable1.getSelectedRow(), 4);
         boolean admin = (boolean) jTable1.getValueAt(jTable1.getSelectedRow(), 5);
-        String moneyPay =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 6);
-        String moneyAccount =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 7);
+        double moneyPay =(double) jTable1.getValueAt(jTable1.getSelectedRow(), 6);
+        double moneyAccount =(double) jTable1.getValueAt(jTable1.getSelectedRow(), 7);
         String photo =(String) jTable1.getValueAt(jTable1.getSelectedRow(), 8);
         
         jTextField1.setText(dni);
@@ -264,13 +262,13 @@ public class ViewMembers extends javax.swing.JFrame {
         jTextField4.setText(gmail);
         jTextField5.setText(password);
         jCheckBox1.setSelected(admin);
-        jTextField6.setText(moneyPay);
-        jTextField7.setText(moneyAccount);
+        jTextField6.setText(String.valueOf(moneyPay));
+        jTextField7.setText(String.valueOf(moneyAccount));
         jTextField8.setText(photo);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
-     * 
+     * Create ViewMembers
      * @return ViewMembers JFrame
      */
     public static ViewMembers viewaSortuBistaratu() {

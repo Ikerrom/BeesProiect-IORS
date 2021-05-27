@@ -160,10 +160,10 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(649, 318));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-/**
- * Validate Login 
- * @param evt  the old-style event
- */
+    /**
+     * Validate Login 
+     * @param evt  the old-style event
+     */
     private void jButtonSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingInActionPerformed
 
         Model.login(jTextFieldUser.getText(),jPasswordFieldPass.getText());

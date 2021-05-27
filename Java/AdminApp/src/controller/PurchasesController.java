@@ -6,11 +6,11 @@
 package controller;
 
 import ejecutes.AdminMenu;
-import model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.Member;
+import model.Model;
 import model.Purchase;
 
 
@@ -27,11 +27,11 @@ public class PurchasesController implements ActionListener {
     /**
      * 
      * @param model
-     * @param viewBuys 
+     * @param viewPurchase 
      */
-    public PurchasesController(Model model, ViewPurchases viewBuys) {
+    public PurchasesController(Model model, ViewPurchases viewPurchase) {
         this.model = model;
-        this.viewPurchase = viewBuys;
+        this.viewPurchase = viewPurchase;
         anadirActionListener(this);
         
     }
@@ -54,20 +54,26 @@ public class PurchasesController implements ActionListener {
         String actionCommand = e.getActionCommand();
         switch (actionCommand) {
             case "Add":
-                int numberBuy = Integer.valueOf(viewPurchase.jTextField1.getText());
-                int id_product = Integer.valueOf(viewPurchase.jTextField2.getText());
-                String price = (String)(viewPurchase.jTextField3.getText());
-                int account = Integer.valueOf(viewPurchase.jTextField4.getText());
-                Purchase b=new Purchase(numberBuy,id_product,price,account);
-                model.addPurchase(b);
-                this.viewPurchase.setVisible(false);
-                ViewPurchases view2 = ViewPurchases.viewaSortuBistaratu();
-                Model model2 = new Model();
-                PurchasesController controller = new PurchasesController (model2, view2);
-                break;
+                try{
+                    int numberBuy = Integer.parseInt(viewPurchase.jTextField1.getText());
+                    int id_product = Integer.parseInt(viewPurchase.jTextField2.getText());
+                    Double price = Double.parseDouble(viewPurchase.jTextField3.getText());
+                    int account = Integer.parseInt(viewPurchase.jTextField4.getText());
+                    Purchase b=new Purchase(numberBuy,id_product,price,account);
+                    model.addPurchase(b);
+                    this.viewPurchase.setVisible(false);
+                    ViewPurchases view2 = ViewPurchases.viewaSortuBistaratu();
+                    Model model2 = new Model();
+                    PurchasesController controller = new PurchasesController (model2, view2);
+                    break;  
+                }catch(NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,n.getMessage());
+                    break;
+                }
+                
             case "Delete":
                 if(viewPurchase.jTable1.getSelectedRow()!=-1){
-                    Purchase b1=new Purchase(Integer.parseInt(viewPurchase.jTextField1.getText()),Integer.parseInt(viewPurchase.jTextField2.getText()),(String)(viewPurchase.jTextField3.getText()),Integer.parseInt(viewPurchase.jTextField4.getText()));
+                    Purchase b1=new Purchase(Integer.parseInt(viewPurchase.jTextField1.getText()),Integer.parseInt(viewPurchase.jTextField2.getText()),Double.parseDouble(viewPurchase.jTextField3.getText()),Integer.parseInt(viewPurchase.jTextField4.getText()));
                     model.deletePurchase(b1);
                     this.viewPurchase.setVisible(false);
                     ViewPurchases view1 = ViewPurchases.viewaSortuBistaratu();
@@ -81,9 +87,9 @@ public class PurchasesController implements ActionListener {
             case "Update":
                 if (viewPurchase.jTable1.getSelectedRow()!=-1) {
                     int nb = Integer.parseInt(viewPurchase.jTextField1.getText());
-                    int idproduct = Integer.valueOf(viewPurchase.jTextField2.getText());
-                    String pric = (String)(viewPurchase.jTextField3.getText());
-                    int acco = Integer.valueOf(viewPurchase.jTextField4.getText());
+                    int idproduct = Integer.parseInt(viewPurchase.jTextField2.getText());
+                    Double pric = Double.parseDouble(viewPurchase.jTextField3.getText());
+                    int acco = Integer.parseInt(viewPurchase.jTextField4.getText());
                     viewPurchase.jTable1.setValueAt(nb, viewPurchase.jTable1.getSelectedRow(), 0);
                     viewPurchase.jTable1.setValueAt(idproduct, viewPurchase.jTable1.getSelectedRow(), 1);
                     viewPurchase.jTable1.setValueAt(pric, viewPurchase.jTable1.getSelectedRow(), 2);
