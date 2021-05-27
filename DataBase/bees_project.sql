@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2021 a las 11:54:16
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 27-05-2021 a las 08:12:10
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,6 +36,13 @@ CREATE TABLE `compras` (
   `precio` decimal(65,2) NOT NULL,
   `cantidad` int(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`numeroCompra`, `id_producto`, `precio`, `cantidad`) VALUES
+(1, 1, '1.10', 1);
 
 --
 -- Disparadores `compras`
@@ -72,7 +79,7 @@ CREATE TABLE `elkarte` (
 --
 
 INSERT INTO `elkarte` (`dinero_total`) VALUES
-('0.00');
+('50.15');
 
 -- --------------------------------------------------------
 
@@ -91,7 +98,7 @@ CREATE TABLE `inventario` (
 --
 
 INSERT INTO `inventario` (`id_producto`, `nombre`, `cantidad`) VALUES
-(1, 'jar', 20),
+(1, 'jar', 21),
 (2, 'botes', 15);
 
 -- --------------------------------------------------------
@@ -126,6 +133,14 @@ CREATE TABLE `pagos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`dni`, `dinero`, `fecha`) VALUES
+('12345678G', '1.25', '2021-05-24 11:58:30'),
+('12345678G', '50.00', '2021-05-24 11:59:11');
+
+--
 -- Disparadores `pagos`
 --
 DELIMITER $$
@@ -151,18 +166,17 @@ CREATE TABLE `personas` (
   `admin` tinyint(1) NOT NULL,
   `dinero_pagar` decimal(65,2) NOT NULL,
   `dinero_cuenta` decimal(65,2) NOT NULL,
-  `foto` varchar(100) NOT NULL DEFAULT 'resources/images/perfiles/perfil.png',
-  `cambio_contraseña` datetime DEFAULT '2018-01-01 00:00:00'
+  `foto` varchar(100) NOT NULL DEFAULT 'resources/images/perfiles/perfil.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`, `cambio_contraseña`) VALUES
-('12345678G', 'Julio Sebastián', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '32.50', '1000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00'),
-('22222222A', 'Iker', 'Romero', 'romero.iker@uni.eus', '12345', 1, '10.00', '10000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00'),
-('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000.00', 'resources/images/perfiles/perfil.png', '2018-01-01 00:00:00');
+INSERT INTO `personas` (`dni`, `nombre`, `apellido`, `gmail`, `contraseña`, `admin`, `dinero_pagar`, `dinero_cuenta`, `foto`) VALUES
+('12345678G', 'Julio Sebastián', 'Zevallos', 'zevallos.julio@uni.eus', '123456789', 1, '91.25', '1000.00', 'resources/images/perfiles/perfil.png'),
+('22222222A', 'Iker', 'Romero', 'romero.iker@uni.eus', '12345', 1, '60.00', '10000.00', 'resources/images/perfiles/perfil.png'),
+('45167495H', 'Raul', 'Parra', 'parra.raul@uni.eus', '76543210', 1, '5.00', '1000.00', 'resources/images/perfiles/perfil.png');
 
 --
 -- Disparadores `personas`
