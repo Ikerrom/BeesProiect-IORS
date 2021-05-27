@@ -75,11 +75,13 @@ if (isset($arr->date) && property_exists($arr, 'lataid')) {
 }
                                                         /*  Por ultimo manda de la base da datos las latas que hay en general  */
 $ret->lataid = array();
-$stmt3 = $conn->prepare("SELECT lata_id FROM latas");
+$ret->capacidad = array();
+$stmt3 = $conn->prepare("SELECT lata_id, capacidad FROM latas");
 $stmt3->execute();
-$stmt3->bind_result($lataid);
+$stmt3->bind_result($lataid, $litros);
 while ($stmt3->fetch()) {
     $ret->lataid[] = $lataid;
+    $ret->capacidad[] = $litros;
 }
 $stmt3->close();
 $conn->autocommit(true);

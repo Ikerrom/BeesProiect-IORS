@@ -58,7 +58,7 @@ session_start();
                     sele.innerHTML = selectInnerText;
                     for (var i = 0; i < obj.lataid.length; ++i) {
                         sele.insertAdjacentHTML('beforeend',
-                                '<option value="' + obj.lataid[i] + '">' + obj.lataid[i] + '</option>');
+                                '<option value="' + obj.lataid[i] + '">' + obj.lataid[i] + " - " + obj.capacidad[i] + 'L</option>');
                     }
                 }
             }
@@ -157,7 +157,6 @@ session_start();
             	const sentinfo = date;
             	const kgs = Math.abs(document.getElementById('kgs').value/4);
             	let info = [date,kgs];
-            	alert(info);
             	if(kgs != ""){
 	            	xhttpfinish.open("GET", "book/bookfinish.php?x=" + info, true);
 				    xhttpfinish.send();
