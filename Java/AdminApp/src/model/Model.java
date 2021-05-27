@@ -40,6 +40,10 @@ public class Model {
     public static Connection connect() {
         Connection conn = null;
         try {
+            // For server connction "jdbc:mariadb://10.2.1.67/bees_project";
+            // User= "erlete"
+            // password= "erlete"
+            
             String url = "jdbc:mariadb://localhost/bees_project";
             String user="root"; 
             String password="";
